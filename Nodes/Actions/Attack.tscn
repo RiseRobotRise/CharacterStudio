@@ -1,0 +1,33 @@
+[gd_scene format=2]
+
+[node name="GraphNode" type="GraphNode"]
+margin_right = 95.0
+margin_bottom = 67.0
+title = "Attack"
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color( 1, 1, 1, 1 )
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color( 1, 1, 1, 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 24.0
+margin_right = 79.0
+margin_bottom = 38.0
+text = "Trigger"
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 38.0
+margin_right = 79.0
+margin_bottom = 52.0
+text = "Target"
+

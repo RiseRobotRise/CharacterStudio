@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends GraphNode
+var AI : Resource = load(\"res://Basics/AI.gd\").new()
+var kinema = KinematicBody.new()
+
+func _enter_tree():
+	var AI_property = AI.get_property_list()
+	var kinema_property = kinema.get_property_list()
+	for property in kinema_property:
+		AI_property.erase(property)
+		
+	print(AI_property)
+	
+	pass
+func _ready():
+	pass 
+"
+
+[node name="AI_propertries" type="GraphNode"]
+margin_right = 32.0
+margin_bottom = 29.0
+script = SubResource( 1 )

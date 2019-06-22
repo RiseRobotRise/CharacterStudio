@@ -1,0 +1,270 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Button
+
+
+
+func _on_Button_pressed():
+	$FileDialog.popup_centered()
+"
+
+[node name="HSplitContainer" type="HSplitContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+dragger_visibility = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 172.0
+margin_bottom = 356.0
+
+[node name="Health" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 172.0
+margin_bottom = 24.0
+hint_tooltip = "The character's health. "
+
+[node name="Label" type="Label" parent="VBoxContainer/Health"]
+margin_top = 5.0
+margin_right = 42.0
+margin_bottom = 19.0
+text = "Health"
+
+[node name="value" type="SpinBox" parent="VBoxContainer/Health"]
+margin_left = 46.0
+margin_right = 120.0
+margin_bottom = 24.0
+value = 100.0
+allow_greater = true
+
+[node name="Health_max" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 28.0
+margin_right = 172.0
+margin_bottom = 52.0
+hint_tooltip = "The character's health. "
+
+[node name="Label" type="Label" parent="VBoxContainer/Health_max"]
+margin_top = 5.0
+margin_right = 73.0
+margin_bottom = 19.0
+text = "Health max"
+
+[node name="value" type="SpinBox" parent="VBoxContainer/Health_max"]
+margin_left = 77.0
+margin_right = 151.0
+margin_bottom = 24.0
+value = 100.0
+allow_greater = true
+
+[node name="Shield" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 56.0
+margin_right = 172.0
+margin_bottom = 80.0
+hint_tooltip = "The character's health. "
+
+[node name="Label" type="Label" parent="VBoxContainer/Shield"]
+margin_top = 5.0
+margin_right = 39.0
+margin_bottom = 19.0
+text = "Shield"
+
+[node name="value" type="SpinBox" parent="VBoxContainer/Shield"]
+margin_left = 43.0
+margin_right = 117.0
+margin_bottom = 24.0
+value = 100.0
+allow_greater = true
+
+[node name="Shield_max" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 84.0
+margin_right = 172.0
+margin_bottom = 108.0
+hint_tooltip = "The character's health. "
+
+[node name="Label" type="Label" parent="VBoxContainer/Shield_max"]
+margin_top = 5.0
+margin_right = 70.0
+margin_bottom = 19.0
+text = "Shield max"
+
+[node name="value" type="SpinBox" parent="VBoxContainer/Shield_max"]
+margin_left = 74.0
+margin_right = 148.0
+margin_bottom = 24.0
+value = 100.0
+allow_greater = true
+
+[node name="Speed" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 112.0
+margin_right = 172.0
+margin_bottom = 136.0
+hint_tooltip = "The character's speed. "
+
+[node name="Label" type="Label" parent="VBoxContainer/Speed"]
+margin_top = 5.0
+margin_right = 43.0
+margin_bottom = 19.0
+text = "Speed "
+
+[node name="value" type="SpinBox" parent="VBoxContainer/Speed"]
+margin_left = 47.0
+margin_right = 121.0
+margin_bottom = 24.0
+max_value = 50.0
+step = 0.1
+value = 5.0
+
+[node name="Hearing range" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 140.0
+margin_right = 172.0
+margin_bottom = 164.0
+hint_tooltip = "Allows the AI to know when a gun is fired or an explosion occurs."
+
+[node name="Label" type="Label" parent="VBoxContainer/Hearing range"]
+margin_top = 5.0
+margin_right = 69.0
+margin_bottom = 19.0
+text = "Hear range"
+
+[node name="value" type="SpinBox" parent="VBoxContainer/Hearing range"]
+margin_left = 73.0
+margin_right = 147.0
+margin_bottom = 24.0
+step = 0.1
+value = 20.0
+
+[node name="Smelling range" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 168.0
+margin_right = 172.0
+margin_bottom = 192.0
+hint_tooltip = "Similar to hearing range, allows AI to know when another character has died. (Bleeds must be enabled on the other character for it to work)"
+
+[node name="Label" type="Label" parent="VBoxContainer/Smelling range"]
+margin_top = 5.0
+margin_right = 94.0
+margin_bottom = 19.0
+text = "Smelling range"
+
+[node name="value" type="SpinBox" parent="VBoxContainer/Smelling range"]
+margin_left = 98.0
+margin_right = 172.0
+margin_bottom = 24.0
+step = 0.1
+value = 20.0
+
+[node name="Flies" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 196.0
+margin_right = 172.0
+margin_bottom = 220.0
+hint_tooltip = "Flies?"
+
+[node name="Label" type="Label" parent="VBoxContainer/Flies"]
+margin_top = 5.0
+margin_right = 30.0
+margin_bottom = 19.0
+text = "Flies"
+
+[node name="value" type="CheckBox" parent="VBoxContainer/Flies"]
+margin_left = 34.0
+margin_right = 58.0
+margin_bottom = 24.0
+
+[node name="Shield2" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 224.0
+margin_right = 172.0
+margin_bottom = 248.0
+hint_tooltip = "Allows the AI to pick up and use shields."
+
+[node name="Label" type="Label" parent="VBoxContainer/Shield2"]
+margin_top = 5.0
+margin_right = 75.0
+margin_bottom = 19.0
+text = "Uses Shield"
+
+[node name="value" type="CheckBox" parent="VBoxContainer/Shield2"]
+margin_left = 79.0
+margin_right = 103.0
+margin_bottom = 24.0
+
+[node name="Melee" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 252.0
+margin_right = 172.0
+margin_bottom = 276.0
+hint_tooltip = "Melee Attacks, check the \"attack\" animation and the damage dealer hit box in physics. "
+
+[node name="Label" type="Label" parent="VBoxContainer/Melee"]
+margin_top = 5.0
+margin_right = 91.0
+margin_bottom = 19.0
+text = "Melee Attacks"
+
+[node name="value" type="CheckBox" parent="VBoxContainer/Melee"]
+margin_left = 95.0
+margin_right = 119.0
+margin_bottom = 24.0
+
+[node name="Jumps" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 280.0
+margin_right = 172.0
+margin_bottom = 304.0
+hint_tooltip = "Allows the character to jump"
+
+[node name="Label" type="Label" parent="VBoxContainer/Jumps"]
+margin_top = 5.0
+margin_right = 39.0
+margin_bottom = 19.0
+text = "Jumps"
+
+[node name="value" type="CheckBox" parent="VBoxContainer/Jumps"]
+margin_left = 43.0
+margin_right = 67.0
+margin_bottom = 24.0
+
+[node name="Smelling range3" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 308.0
+margin_right = 172.0
+margin_bottom = 332.0
+hint_tooltip = "The stronger the jump, the further it'll move, keep values low for humans. "
+alignment = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Smelling range3"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 94.0
+margin_bottom = 19.0
+text = "Jump strenght"
+
+[node name="value" type="SpinBox" parent="VBoxContainer/Smelling range3"]
+margin_left = 98.0
+margin_right = 172.0
+margin_bottom = 24.0
+step = 0.1
+value = 20.0
+
+[node name="Gun" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 336.0
+margin_right = 172.0
+margin_bottom = 356.0
+alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/Gun"]
+margin_left = 45.0
+margin_right = 126.0
+margin_bottom = 20.0
+text = "Select Gun"
+script = SubResource( 1 )
+
+[node name="FileDialog" type="FileDialog" parent="VBoxContainer/Gun/Button"]
+visible = true
+margin_left = 365.599
+margin_top = -23.0
+margin_right = 639.599
+margin_bottom = 170.0
+window_title = "Abrir un archivo"
+mode = 0
+filters = PoolStringArray( ".gun" )
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+margin_left = 184.0
+margin_right = 184.0
+margin_bottom = 356.0
+[connection signal="pressed" from="VBoxContainer/Gun/Button" to="VBoxContainer/Gun/Button" method="_on_Button_pressed"]

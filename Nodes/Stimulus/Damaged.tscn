@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "tool
+extends GraphNode
+
+func _ready():
+	set_slot(0,false,7,Color(1,1,0.5,1),true,TYPE_BOOL,Nodes.BOOL)
+	set_slot(1,false,7,Color(1,1,0.5,1),true,TYPE_REAL,Nodes.FLOAT)
+	set_slot(2,false,7,Color(1,1,0.5,1),true,TYPE_INT,Nodes.INT)
+	"
+
+[node name="GraphNode" type="GraphNode"]
+margin_right = 32.0
+margin_bottom = 29.0
+title = "Got shot "
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color( 1, 1, 1, 1 )
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color( 1, 1, 1, 1 )
+slot/2/left_enabled = false
+slot/2/left_type = 0
+slot/2/left_color = Color( 1, 1, 1, 1 )
+slot/2/right_enabled = false
+slot/2/right_type = 0
+slot/2/right_color = Color( 1, 1, 1, 1 )
+script = SubResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 24.0
+margin_right = 118.0
+margin_bottom = 38.0
+text = "Trigger"
+align = 2
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 38.0
+margin_right = 118.0
+margin_bottom = 52.0
+text = "Damage"
+align = 2
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 53.0
+margin_right = 118.0
+margin_bottom = 67.0
+text = "Type of Damage"
+align = 2
+

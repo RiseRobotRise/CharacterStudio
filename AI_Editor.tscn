@@ -1,0 +1,173 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://AI_Editor.gd" type="Script" id=1]
+[ext_resource path="res://Behaviour_tree_editor.tscn" type="PackedScene" id=2]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="File" type="Tabs" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/File"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="VSeparator" type="VSeparator" parent="TabContainer/File/HBoxContainer"]
+margin_right = 4.0
+margin_bottom = 52.0
+
+[node name="Info" type="VSplitContainer" parent="TabContainer/File/HBoxContainer"]
+margin_left = 8.0
+margin_right = 208.0
+margin_bottom = 52.0
+
+[node name="Character" type="HBoxContainer" parent="TabContainer/File/HBoxContainer/Info"]
+margin_right = 200.0
+margin_bottom = 14.0
+
+[node name="Label" type="Label" parent="TabContainer/File/HBoxContainer/Info/Character"]
+margin_right = 159.0
+margin_bottom = 14.0
+text = "Current character edited:"
+
+[node name="Name" type="Label" parent="TabContainer/File/HBoxContainer/Info/Character"]
+margin_left = 163.0
+margin_right = 197.0
+margin_bottom = 14.0
+text = "None"
+
+[node name="Location" type="HBoxContainer" parent="TabContainer/File/HBoxContainer/Info"]
+margin_top = 26.0
+margin_right = 200.0
+margin_bottom = 52.0
+
+[node name="Label" type="Label" parent="TabContainer/File/HBoxContainer/Info/Location"]
+margin_top = 6.0
+margin_right = 142.0
+margin_bottom = 20.0
+text = "Current file located in:"
+
+[node name="Label2" type="Label" parent="TabContainer/File/HBoxContainer/Info/Location"]
+margin_left = 146.0
+margin_top = 6.0
+margin_right = 200.0
+margin_bottom = 20.0
+text = "Location"
+
+[node name="VSeparator2" type="VSeparator" parent="TabContainer/File/HBoxContainer"]
+margin_left = 212.0
+margin_right = 216.0
+margin_bottom = 52.0
+
+[node name="VSplitContainer" type="VSplitContainer" parent="TabContainer/File/HBoxContainer"]
+margin_left = 220.0
+margin_right = 291.0
+margin_bottom = 52.0
+
+[node name="Open" type="Button" parent="TabContainer/File/HBoxContainer/VSplitContainer"]
+margin_right = 71.0
+margin_bottom = 20.0
+text = "Open file"
+
+[node name="Open2" type="Button" parent="TabContainer/File/HBoxContainer/VSplitContainer"]
+margin_top = 32.0
+margin_right = 71.0
+margin_bottom = 52.0
+text = "Save as..."
+
+[node name="ViewportContainer" type="ViewportContainer" parent="TabContainer/File/HBoxContainer"]
+margin_left = 295.0
+margin_right = 295.0
+margin_bottom = 52.0
+
+[node name="Viewport" type="Viewport" parent="TabContainer/File/HBoxContainer/ViewportContainer"]
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/File/HBoxContainer/ViewportContainer"]
+margin_right = 320.0
+margin_bottom = 420.0
+
+[node name="VSeparator3" type="VSeparator" parent="TabContainer/File/HBoxContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 220.0
+margin_right = 212.0
+margin_bottom = -36.0
+
+[node name="Physics" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Parameters" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Behaviour" parent="TabContainer" instance=ExtResource( 2 )]
+visible = false
+
+[node name="Settings" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="TabContainer" type="TabContainer" parent="TabContainer/Settings"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Shortcuts" type="Tabs" parent="TabContainer/Settings/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Graphics" type="Tabs" parent="TabContainer/Settings/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="File" type="Tabs" parent="TabContainer/Settings/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0

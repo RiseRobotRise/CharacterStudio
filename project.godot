@@ -1,0 +1,67 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Character",
+"class": "AI_Character",
+"language": "GDScript",
+"path": "res://Basics/AI.gd"
+}, {
+"base": "KinematicBody",
+"class": "Character",
+"language": "GDScript",
+"path": "res://Basics/Kinematic_Movable.gd"
+}, {
+"base": "Character",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Basics/Player.gd"
+}, {
+"base": "Spatial",
+"class": "Sound_Smell_Manager",
+"language": "GDScript",
+"path": "res://Basics/Sound_Smell_system.gd"
+}, {
+"base": "Navigation",
+"class": "World_Navigator",
+"language": "GDScript",
+"path": "res://addons/WorldManagement/WorldNavigation.gd"
+} ]
+_global_script_class_icons={
+"AI_Character": "res://icons/IA_icon.png",
+"Character": "",
+"Player": "res://icons/player.png",
+"Sound_Smell_Manager": "res://icons/SH_SYSTEM.png",
+"World_Navigator": "res://icons/icon.png"
+}
+
+[application]
+
+config/name="Joyeuse"
+run/main_scene="res://AI_Editor.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+Nodes="*res://Nodes.gd"
+RAD="*res://Helpers.gd"
+
+[input]
+
+control={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777238,"unicode":0,"echo":false,"script":null)
+ ]
+}
+Shift={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"unicode":0,"echo":false,"script":null)
+ ]
+}
