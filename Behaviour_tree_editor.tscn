@@ -145,20 +145,26 @@ margin_right = 223.0
 margin_bottom = 14.0
 text = "NODE_TYPE"
 
-[node name="Button" type="Button" parent="MainSplitter/ViewMenuSplit/Container"]
+[node name="Add" type="Button" parent="MainSplitter/ViewMenuSplit/Container"]
 margin_top = 36.0
 margin_right = 223.0
 margin_bottom = 56.0
 text = "Add to Tree"
 
-[node name="Button3" type="Button" parent="MainSplitter/ViewMenuSplit/Container"]
+[node name="Compile" type="Button" parent="MainSplitter/ViewMenuSplit/Container"]
 margin_top = 60.0
 margin_right = 223.0
 margin_bottom = 80.0
 text = "Compile"
 
-[node name="Specs" parent="MainSplitter/ViewMenuSplit/Container" instance=ExtResource( 2 )]
+[node name="Open" type="Button" parent="MainSplitter/ViewMenuSplit/Container"]
 margin_top = 84.0
+margin_right = 223.0
+margin_bottom = 104.0
+text = "Open"
+
+[node name="Specs" parent="MainSplitter/ViewMenuSplit/Container" instance=ExtResource( 2 )]
+margin_top = 108.0
 margin_right = 223.0
 margin_bottom = 518.0
 
@@ -211,7 +217,8 @@ margin_top = 153.245
 margin_right = 515.528
 margin_bottom = 241.245
 items = [ "Stimulus", null, 0, false, false, 0, 0, null, "", false, "Inhibitors", null, 0, false, false, 1, 0, null, "", false, "Actions", null, 0, false, false, 2, 0, null, "", false, "Custom", null, 0, false, false, 3, 0, null, "", false ]
-[connection signal="pressed" from="MainSplitter/ViewMenuSplit/Container/Button" to="." method="_on_Add_node_pressed"]
-[connection signal="pressed" from="MainSplitter/ViewMenuSplit/Container/Button3" to="MainSplitter/ViewMenuSplit/GraphEdit" method="_on_Button3_pressed"]
+[connection signal="pressed" from="MainSplitter/ViewMenuSplit/Container/Add" to="." method="_on_Add_node_pressed"]
+[connection signal="pressed" from="MainSplitter/ViewMenuSplit/Container/Compile" to="MainSplitter/ViewMenuSplit/GraphEdit" method="_on_Button3_pressed"]
+[connection signal="pressed" from="MainSplitter/ViewMenuSplit/Container/Open" to="MainSplitter/ViewMenuSplit/GraphEdit" method="_on_Button3_pressed"]
 [connection signal="connection_request" from="MainSplitter/ViewMenuSplit/GraphEdit" to="." method="_on_GraphEdit_connection_request"]
 [connection signal="disconnection_request" from="MainSplitter/ViewMenuSplit/GraphEdit" to="." method="_on_GraphEdit_disconnection_request"]
