@@ -1,11 +1,19 @@
 extends GraphEdit
 
-var A : Dictionary #= {from_port: 0, from: "GraphNode name 0", to_port: 1, to: "GraphNode name 1" }
+var SceneNodes : Dictionary
 var Currently_selected : Node = null
 func _ready():
 	connect("node_selected", self, "_on_node_selected")
 
-
+func add_node(name : String):
+	var REGEX : RegEx = RegEx.new()
+	REGEX.compile("[A-Za-z]")
+	var Result : RegExMatch =REGEX.search(name)
+	if Result.strings.size() > 0:
+		if Result.strings[0] in Nodes.inhibitors:
+			pass
+		SceneNodes[name]="res://"+Result.strings[0]
+	
 func _input(event):
 	if event is InputEventKey:
 		if Input.is_action_pressed("Shift") and Input.is_key_pressed(KEY_A):
@@ -37,6 +45,13 @@ func compile(Connections):
 		from_node.content[from_port]
 		var function = "call_deferred("
 	pass
+func open(SaveArray : Array):
+	for connection in SaveArray:
+		if not Nodes.has(connection.from):
+			Nodes.append(connection.from)
+		if not Nodes.has(connection.to):
+			Nodes.append(connection.to)
+
 func _on_node_selected(node):
 	Currently_selected = node
 

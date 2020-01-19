@@ -4,7 +4,7 @@
 [ext_resource path="res://BehaviorParameters.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Graph_compiler.gd" type="Script" id=3]
 
-[node name="Behaviour" type="Tabs"]
+[node name="Node-Editor" type="Tabs"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -13,7 +13,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 script = ExtResource( 1 )
 
-[node name="VSplitContainer" type="VSplitContainer" parent="."]
+[node name="MainSplitter" type="VSplitContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1.948
@@ -22,197 +22,195 @@ margin_right = 1.948
 margin_bottom = 1.36725
 dragger_visibility = 1
 
-[node name="Panel" type="Panel" parent="VSplitContainer"]
+[node name="Panel" type="PanelContainer" parent="MainSplitter"]
 margin_right = 1016.0
-margin_bottom = 30.0
+margin_bottom = 34.0
 rect_min_size = Vector2( 0, 30 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VSplitContainer/Panel"]
-margin_left = 3.9816
-margin_top = 4.5504
-margin_right = 1019.98
-margin_bottom = 24.5504
+[node name="DropDowns" type="HBoxContainer" parent="MainSplitter/Panel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1009.0
+margin_bottom = 27.0
 
-[node name="VSeparator6" type="VSeparator" parent="VSplitContainer/Panel/HBoxContainer"]
+[node name="VS2" type="VSeparator" parent="MainSplitter/Panel/DropDowns"]
 margin_right = 4.0
 margin_bottom = 20.0
 
-[node name="Label" type="Label" parent="VSplitContainer/Panel/HBoxContainer"]
+[node name="Label" type="Label" parent="MainSplitter/Panel/DropDowns"]
 margin_left = 8.0
 margin_top = 3.0
 margin_right = 89.0
 margin_bottom = 17.0
 text = "Create node:"
 
-[node name="VSeparator" type="VSeparator" parent="VSplitContainer/Panel/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="MainSplitter/Panel/DropDowns"]
 margin_left = 93.0
 margin_right = 97.0
 margin_bottom = 20.0
 
-[node name="Stimulus" type="MenuButton" parent="VSplitContainer/Panel/HBoxContainer"]
+[node name="stimulus" type="MenuButton" parent="MainSplitter/Panel/DropDowns"]
 margin_left = 101.0
 margin_right = 169.0
 margin_bottom = 20.0
 text = "Stimulus"
-items = [ "Got Shot", null, 0, false, false, 0, 0, null, "", false, "Enemy on Sight", null, 0, false, false, 1, 0, null, "", false, "Hear", null, 0, false, false, 2, 0, null, "", false, "Visuals", null, 0, false, false, 3, 0, null, "", false, "Smell", null, 0, false, false, 4, 0, null, "", false ]
 
-[node name="VSeparator2" type="VSeparator" parent="VSplitContainer/Panel/HBoxContainer"]
+[node name="VS" type="VSeparator" parent="MainSplitter/Panel/DropDowns"]
 margin_left = 173.0
 margin_right = 177.0
 margin_bottom = 20.0
 
-[node name="Inhibitions" type="MenuButton" parent="VSplitContainer/Panel/HBoxContainer"]
+[node name="inhibitors" type="MenuButton" parent="MainSplitter/Panel/DropDowns"]
 margin_left = 181.0
 margin_right = 262.0
 margin_bottom = 20.0
 text = "Inhibitions"
-items = [ "Decision", null, 0, false, false, 0, 0, null, "", false, "Self-preservation", null, 0, false, false, 1, 0, null, "", false ]
 
-[node name="VSeparator3" type="VSeparator" parent="VSplitContainer/Panel/HBoxContainer"]
+[node name="VS3" type="VSeparator" parent="MainSplitter/Panel/DropDowns"]
 margin_left = 266.0
 margin_right = 270.0
 margin_bottom = 20.0
 
-[node name="Actions" type="MenuButton" parent="VSplitContainer/Panel/HBoxContainer"]
+[node name="actions" type="MenuButton" parent="MainSplitter/Panel/DropDowns"]
 margin_left = 274.0
 margin_right = 334.0
 margin_bottom = 20.0
 text = "Actions"
-items = [ "Go to", null, 0, false, false, 0, 0, null, "", false, "Shoot", null, 0, false, false, 1, 0, null, "", false, "Flee", null, 0, false, false, 2, 0, null, "", false, "Play Sound", null, 0, false, false, 3, 0, null, "", false, "Shoot", null, 0, false, false, 4, 0, null, "", false, "Run", null, 0, false, false, 5, 0, null, "", false, "Patrol", null, 0, false, false, 6, 0, null, "", false ]
 
-[node name="VSeparator4" type="VSeparator" parent="VSplitContainer/Panel/HBoxContainer"]
+[node name="VS4" type="VSeparator" parent="MainSplitter/Panel/DropDowns"]
 margin_left = 338.0
 margin_right = 342.0
 margin_bottom = 20.0
 
-[node name="Misc" type="MenuButton" parent="VSplitContainer/Panel/HBoxContainer"]
+[node name="misc" type="MenuButton" parent="MainSplitter/Panel/DropDowns"]
 margin_left = 346.0
 margin_right = 388.0
 margin_bottom = 20.0
 text = "Misc"
-items = [ "Math", null, 0, false, false, 0, 0, null, "", false, "Parallel Triggering", null, 0, false, false, 1, 0, null, "", false ]
 
-[node name="VSeparator5" type="VSeparator" parent="VSplitContainer/Panel/HBoxContainer"]
+[node name="VS6" type="VSeparator" parent="MainSplitter/Panel/DropDowns"]
 margin_left = 392.0
 margin_right = 396.0
 margin_bottom = 20.0
 
-[node name="Custom" type="MenuButton" parent="VSplitContainer/Panel/HBoxContainer"]
+[node name="custom" type="MenuButton" parent="MainSplitter/Panel/DropDowns"]
 margin_left = 400.0
 margin_right = 461.0
 margin_bottom = 20.0
 text = "Custom"
 
-[node name="VSeparator7" type="VSeparator" parent="VSplitContainer/Panel/HBoxContainer"]
+[node name="VS5" type="VSeparator" parent="MainSplitter/Panel/DropDowns"]
 margin_left = 465.0
 margin_right = 469.0
 margin_bottom = 20.0
 
-[node name="HSplitContainer" type="HSplitContainer" parent="VSplitContainer"]
-margin_top = 42.0
+[node name="ViewMenuSplit" type="HSplitContainer" parent="MainSplitter"]
+margin_top = 46.0
 margin_right = 1016.0
 margin_bottom = 564.0
 
-[node name="VSplitContainer" type="VSplitContainer" parent="VSplitContainer/HSplitContainer"]
+[node name="Container" type="VBoxContainer" parent="MainSplitter/ViewMenuSplit"]
 margin_right = 223.0
-margin_bottom = 522.0
-dragger_visibility = 1
+margin_bottom = 518.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VSplitContainer/HSplitContainer/VSplitContainer"]
-margin_right = 223.0
-margin_bottom = 522.0
-
-[node name="selection" type="HBoxContainer" parent="VSplitContainer/HSplitContainer/VSplitContainer/VBoxContainer"]
+[node name="selection" type="HBoxContainer" parent="MainSplitter/ViewMenuSplit/Container"]
 margin_right = 223.0
 margin_bottom = 14.0
 
-[node name="title" type="Label" parent="VSplitContainer/HSplitContainer/VSplitContainer/VBoxContainer/selection"]
+[node name="title" type="Label" parent="MainSplitter/ViewMenuSplit/Container/selection"]
 margin_right = 121.0
 margin_bottom = 14.0
 text = "Currently selected:"
 
-[node name="name" type="Label" parent="VSplitContainer/HSplitContainer/VSplitContainer/VBoxContainer/selection"]
+[node name="name" type="Label" parent="MainSplitter/ViewMenuSplit/Container/selection"]
 margin_left = 125.0
 margin_right = 207.0
 margin_bottom = 14.0
 text = "NODE_NAME"
 
-[node name="type" type="HBoxContainer" parent="VSplitContainer/HSplitContainer/VSplitContainer/VBoxContainer"]
+[node name="type" type="HBoxContainer" parent="MainSplitter/ViewMenuSplit/Container"]
 margin_top = 18.0
 margin_right = 223.0
 margin_bottom = 32.0
 
-[node name="title" type="Label" parent="VSplitContainer/HSplitContainer/VSplitContainer/VBoxContainer/type"]
+[node name="title" type="Label" parent="MainSplitter/ViewMenuSplit/Container/type"]
 margin_right = 146.0
 margin_bottom = 14.0
 text = "Current selection type:"
 
-[node name="name" type="Label" parent="VSplitContainer/HSplitContainer/VSplitContainer/VBoxContainer/type"]
+[node name="name" type="Label" parent="MainSplitter/ViewMenuSplit/Container/type"]
 margin_left = 150.0
 margin_right = 223.0
 margin_bottom = 14.0
 text = "NODE_TYPE"
 
-[node name="Button" type="Button" parent="VSplitContainer/HSplitContainer/VSplitContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="MainSplitter/ViewMenuSplit/Container"]
 margin_top = 36.0
 margin_right = 223.0
 margin_bottom = 56.0
 text = "Add to Tree"
 
-[node name="Button3" type="Button" parent="VSplitContainer/HSplitContainer/VSplitContainer/VBoxContainer"]
+[node name="Button3" type="Button" parent="MainSplitter/ViewMenuSplit/Container"]
 margin_top = 60.0
 margin_right = 223.0
 margin_bottom = 80.0
 text = "Compile"
 
-[node name="HSplitContainer" parent="VSplitContainer/HSplitContainer/VSplitContainer/VBoxContainer" instance=ExtResource( 2 )]
+[node name="Specs" parent="MainSplitter/ViewMenuSplit/Container" instance=ExtResource( 2 )]
 margin_top = 84.0
 margin_right = 223.0
 margin_bottom = 440.0
 
-[node name="GraphEdit" type="GraphEdit" parent="VSplitContainer/HSplitContainer"]
+[node name="GraphEdit" type="GraphEdit" parent="MainSplitter/ViewMenuSplit"]
 margin_left = 235.0
 margin_right = 1016.0
-margin_bottom = 522.0
+margin_bottom = 518.0
 right_disconnects = true
 scroll_offset = Vector2( -110, -30 )
 script = ExtResource( 3 )
 
-[node name="MainMenu" type="PopupMenu" parent="VSplitContainer/HSplitContainer/GraphEdit"]
+[node name="Behaviors" type="PopupMenu" parent="MainSplitter/ViewMenuSplit/GraphEdit"]
 margin_left = 433.528
 margin_top = 153.245
 margin_right = 515.528
 margin_bottom = 241.245
 items = [ "Stimulus", null, 0, false, false, 0, 0, null, "", false, "Inhibitors", null, 0, false, false, 1, 0, null, "", false, "Actions", null, 0, false, false, 2, 0, null, "", false, "Custom", null, 0, false, false, 3, 0, null, "", false ]
 
-[node name="Stimulus" type="PopupMenu" parent="VSplitContainer/HSplitContainer/GraphEdit/MainMenu"]
+[node name="Stimulus" type="PopupMenu" parent="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors"]
 margin_left = 78.524
 margin_top = 1.38777
 margin_right = 160.524
 margin_bottom = 89.3878
 items = [ "Elemento 0", null, 0, false, false, -1, 0, null, "", false ]
 
-[node name="Inhibitors" type="PopupMenu" parent="VSplitContainer/HSplitContainer/GraphEdit/MainMenu"]
+[node name="Inhibitors" type="PopupMenu" parent="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors"]
 margin_left = 78.524
 margin_top = 21.3878
 margin_right = 160.524
 margin_bottom = 109.388
 items = [ "Stimulus", null, 0, false, false, 0, 0, null, "", false, "Inhibitors", null, 0, false, false, 1, 0, null, "", false, "Actions", null, 0, false, false, 2, 0, null, "", false, "Custom", null, 0, false, false, 3, 0, null, "", false ]
 
-[node name="Actions" type="PopupMenu" parent="VSplitContainer/HSplitContainer/GraphEdit/MainMenu"]
+[node name="Actions" type="PopupMenu" parent="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors"]
 margin_left = 78.524
 margin_top = 41.3878
 margin_right = 160.524
 margin_bottom = 129.388
 items = [ "Stimulus", null, 0, false, false, 0, 0, null, "", false, "Inhibitors", null, 0, false, false, 1, 0, null, "", false, "Actions", null, 0, false, false, 2, 0, null, "", false, "Custom", null, 0, false, false, 3, 0, null, "", false ]
 
-[node name="Custom" type="PopupMenu" parent="VSplitContainer/HSplitContainer/GraphEdit/MainMenu"]
+[node name="Custom" type="PopupMenu" parent="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors"]
 margin_left = 78.524
 margin_top = 61.3878
 margin_right = 160.524
 margin_bottom = 149.388
 items = [ "Stimulus", null, 0, false, false, 0, 0, null, "", false, "Inhibitors", null, 0, false, false, 1, 0, null, "", false, "Actions", null, 0, false, false, 2, 0, null, "", false, "Custom", null, 0, false, false, 3, 0, null, "", false ]
-[connection signal="pressed" from="VSplitContainer/HSplitContainer/VSplitContainer/VBoxContainer/Button" to="." method="_on_Add_node_pressed"]
-[connection signal="pressed" from="VSplitContainer/HSplitContainer/VSplitContainer/VBoxContainer/Button3" to="VSplitContainer/HSplitContainer/GraphEdit" method="_on_Button3_pressed"]
-[connection signal="connection_request" from="VSplitContainer/HSplitContainer/GraphEdit" to="." method="_on_GraphEdit_connection_request"]
-[connection signal="disconnection_request" from="VSplitContainer/HSplitContainer/GraphEdit" to="." method="_on_GraphEdit_disconnection_request"]
+
+[node name="States" type="PopupMenu" parent="MainSplitter/ViewMenuSplit/GraphEdit"]
+margin_left = 433.528
+margin_top = 153.245
+margin_right = 515.528
+margin_bottom = 241.245
+items = [ "Stimulus", null, 0, false, false, 0, 0, null, "", false, "Inhibitors", null, 0, false, false, 1, 0, null, "", false, "Actions", null, 0, false, false, 2, 0, null, "", false, "Custom", null, 0, false, false, 3, 0, null, "", false ]
+[connection signal="pressed" from="MainSplitter/ViewMenuSplit/Container/Button" to="." method="_on_Add_node_pressed"]
+[connection signal="pressed" from="MainSplitter/ViewMenuSplit/Container/Button3" to="MainSplitter/ViewMenuSplit/GraphEdit" method="_on_Button3_pressed"]
+[connection signal="connection_request" from="MainSplitter/ViewMenuSplit/GraphEdit" to="." method="_on_GraphEdit_connection_request"]
+[connection signal="disconnection_request" from="MainSplitter/ViewMenuSplit/GraphEdit" to="." method="_on_GraphEdit_disconnection_request"]

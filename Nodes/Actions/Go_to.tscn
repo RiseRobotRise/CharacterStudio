@@ -17,7 +17,7 @@ func _ready():
 #	pass
 "
 
-[node name="GraphNode" type="GraphNode"]
+[node name="Go to" type="GraphNode"]
 margin_right = 75.0
 margin_bottom = 58.0
 title = "Go To"
@@ -54,4 +54,3 @@ margin_right = 43.0
 margin_bottom = 14.0
 hint_tooltip = "Position in 3d space"
 text = "To"
-

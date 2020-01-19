@@ -8,43 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "Character",
-"class": "AI_Character",
-"language": "GDScript",
-"path": "res://Basics/AI.gd"
-}, {
-"base": "KinematicBody",
-"class": "Character",
-"language": "GDScript",
-"path": "res://Basics/Kinematic_Movable.gd"
-}, {
-"base": "Character",
-"class": "Player",
-"language": "GDScript",
-"path": "res://Basics/Player.gd"
-}, {
-"base": "Spatial",
-"class": "Sound_Smell_Manager",
-"language": "GDScript",
-"path": "res://Basics/Sound_Smell_system.gd"
-}, {
-"base": "Navigation",
-"class": "World_Navigator",
-"language": "GDScript",
-"path": "res://addons/WorldManagement/WorldNavigation.gd"
-} ]
+_global_script_classes=[  ]
 _global_script_class_icons={
-"AI_Character": "res://icons/IA_icon.png",
-"Character": "",
-"Player": "res://icons/player.png",
-"Sound_Smell_Manager": "res://icons/SH_SYSTEM.png",
-"World_Navigator": "res://icons/icon.png"
+
 }
 
 [application]
 
-config/name="Joyeuse"
+config/name="Joyeuse - Character Studio"
 run/main_scene="res://AI_Editor.tscn"
 config/icon="res://icon.png"
 
