@@ -1,7 +1,7 @@
 extends Tabs
 
-var type : String
-var node_name  : String
+var type : String = ""
+var node_name  : String = ""
 var idx : int = 0
 onready var Stimulus = $MainSplitter/Panel/DropDowns/stimulus.get_popup()
 onready var Customs = $MainSplitter/Panel/DropDowns/custom.get_popup()
@@ -54,6 +54,8 @@ func _generate_nodes():
 		
 
 func _on_Add_node_pressed():
+	if (type == "" or node_name == ""):
+		return
 	var instanced = Nodes.Graphs.get(type).get(node_name).instance()
 	instanced.name = instanced.title + str(idx)
 	$MainSplitter/ViewMenuSplit/GraphEdit.add_child(instanced)

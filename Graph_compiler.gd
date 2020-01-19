@@ -7,12 +7,30 @@ func _ready():
 
 func add_node(name : String):
 	var REGEX : RegEx = RegEx.new()
-	REGEX.compile("[A-Za-z]")
-	var Result : RegExMatch =REGEX.search(name)
-	if Result.strings.size() > 0:
-		if Result.strings[0] in Nodes.inhibitors:
-			pass
-		SceneNodes[name]="res://"+Result.strings[0]
+	REGEX.compile(".[A-Za-z]*[\\s*[A-Za-z]*]*[^0-9]")
+	var Result : Array = REGEX.search_all(name)
+	if Result == null:
+		print("No matches, names don't match the RegEx")
+		return
+	if Result.size() > 0:
+		print("Theres a result")
+		if Nodes.Graphs.inhibitors.has(Result[0].get_string()):
+			SceneNodes[name]=Nodes.Graphs.inhibitors.get(Result[0].get_string()).instance()
+			return
+		if Nodes.Graphs.custom.has(Result[0].get_string()):
+			SceneNodes[name]=Nodes.Graphs.custom.get(Result[0].get_string()).instance()
+			return
+		if Nodes.Graphs.stimulus.has(Result[0].get_string()):
+			SceneNodes[name]=Nodes.Graphs.stimulus.get(Result[0].get_string()).instance()
+			return
+		if Nodes.Graphs.misc.has(Result[0].get_string()):
+			return
+			SceneNodes[name]=Nodes.Graphs.misc.get(Result[0].get_string()).instance()
+		if Nodes.Graphs.actions.has(Result[0].get_string()):
+			SceneNodes[name]=Nodes.Graphs.actions.get(Result[0].get_string()).instance()
+			return
+		else:
+			print("Non-existant node ",Result[0].get_string() ,", check your Character Studio version, if this is a custom node, please use only letters and spaces for the title")
 	
 func _input(event):
 	if event is InputEventKey:
@@ -34,6 +52,7 @@ func _input(event):
 			
 func compile(Connections):
 	#Check data types, translate into signals and code. 
+	open(Connections)
 	for elements in Connections:
 		var from_port = elements.get("from_port")
 		var from = elements.get("from")
@@ -45,18 +64,20 @@ func compile(Connections):
 		from_node.content[from_port]
 		var function = "call_deferred("
 	pass
+
+
 func open(SaveArray : Array):
 	for connection in SaveArray:
-		if not Nodes.has(connection.from):
-			Nodes.append(connection.from)
-		if not Nodes.has(connection.to):
-			Nodes.append(connection.to)
+		if not SceneNodes.has(connection.from):
+			add_node(connection.from)
+		if not SceneNodes.has(connection.to):
+			add_node(connection.to)
 
 func _on_node_selected(node):
 	Currently_selected = node
 
 func _on_Button3_pressed():
-	print(get_connection_list())
+	print(open(get_connection_list()))
 	pass # Replace with function body.
 
 func is_slot_occupied(to_port, to):

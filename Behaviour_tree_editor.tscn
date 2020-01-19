@@ -112,6 +112,7 @@ margin_bottom = 564.0
 [node name="Container" type="VBoxContainer" parent="MainSplitter/ViewMenuSplit"]
 margin_right = 223.0
 margin_bottom = 518.0
+alignment = 1
 
 [node name="selection" type="HBoxContainer" parent="MainSplitter/ViewMenuSplit/Container"]
 margin_right = 223.0
@@ -159,7 +160,7 @@ text = "Compile"
 [node name="Specs" parent="MainSplitter/ViewMenuSplit/Container" instance=ExtResource( 2 )]
 margin_top = 84.0
 margin_right = 223.0
-margin_bottom = 440.0
+margin_bottom = 518.0
 
 [node name="GraphEdit" type="GraphEdit" parent="MainSplitter/ViewMenuSplit"]
 margin_left = 235.0
