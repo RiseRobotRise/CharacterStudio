@@ -34,11 +34,10 @@ var Graphs : Dictionary = {
 	"custom" :  {}
 }
 
-func _ready():
+func _ready() -> void:
 	load_user_defined_nodes()
-	print(Graphs)
 
-func load_user_defined_nodes():
+func load_user_defined_nodes() -> void:
 	var Dir = Directory.new()
 	var CustomNodes : Array = []
 	if  not Dir.dir_exists("user://CustomNodes/"):
