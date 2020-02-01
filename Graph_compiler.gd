@@ -35,8 +35,8 @@ func add_node(name : String):
 func _input(event):
 	if event is InputEventKey:
 		if Input.is_action_pressed("Shift") and Input.is_key_pressed(KEY_A):
-			$MainMenu.rect_position = get_tree().get_root().get_mouse_position()
-			$MainMenu.popup()
+			$Behaviors.rect_position = get_tree().get_root().get_mouse_position()
+			$Behaviors.popup()
 		if Input.is_key_pressed(KEY_DELETE) and Currently_selected != null:
 			var all_connections : Array = get_connection_list()
 			for connection in all_connections:
