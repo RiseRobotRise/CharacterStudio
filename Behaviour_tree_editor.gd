@@ -51,7 +51,7 @@ func _generate_nodes() -> void:
 		var subdict = Nodes.Graphs.get(Any)
 		for N in subdict:
 			get_node("MainSplitter/Panel/DropDowns/"+Any).get_popup().add_item(N)
-		
+			get_node("MainSplitter/ViewMenuSplit/GraphEdit/Behaviors/"+Any).add_item(N)
 
 func _on_Add_node_pressed() -> void:
 	if (type == "" or node_name == ""):
