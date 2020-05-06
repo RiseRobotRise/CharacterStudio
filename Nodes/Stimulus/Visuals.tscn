@@ -4,69 +4,31 @@
 script/source = "tool
 extends GraphNode
 func _enter_tree():
-	$Panel/Type.get_popup().connect(\"index_pressed\", self, \"_on_Type_pressed\")
-	set_slot(0,false, TYPE_NIL, Nodes.BOOL, true, TYPE_INT, Nodes.INT)
-	set_slot(1,false,TYPE_NIL,Nodes.BOOL, true, TYPE_BOOL, Nodes.BOOL)
-	set_slot(2,false, TYPE_NIL, Nodes.BOOL, true, TYPE_VECTOR3, Nodes.VECTOR)
-
-
-func _on_Type_pressed(idx):
-	$Panel/Type.text = $Panel/Type.get_popup().get_item_text(idx)
+	set_meta(\"Cocos\", true)
+	set_slot(0,false,TYPE_NIL,Nodes.BOOL, true, TYPE_INT_ARRAY, Nodes.MISC_OBJ)
+	print(get_meta(\"Cocos\"))
 "
 
 [node name="Visuals" type="GraphNode"]
 margin_right = 112.0
-margin_bottom = 79.0
+margin_bottom = 56.0
 title = "Visuals"
 slot/0/left_enabled = false
 slot/0/left_type = 0
 slot/0/left_color = Color( 1, 1, 1, 1 )
 slot/0/right_enabled = true
 slot/0/right_type = 2
-slot/0/right_color = Color( 0.8, 0.3, 1, 1 )
-slot/1/left_enabled = false
-slot/1/left_type = 0
-slot/1/left_color = Color( 1, 1, 1, 1 )
-slot/1/right_enabled = true
-slot/1/right_type = 1
-slot/1/right_color = Color( 1, 1, 1, 1 )
-slot/2/left_enabled = false
-slot/2/left_type = 0
-slot/2/left_color = Color( 1, 1, 1, 1 )
-slot/2/right_enabled = true
-slot/2/right_type = 7
-slot/2/right_color = Color( 0.5, 0.2, 0.2, 1 )
+slot/0/right_color = Color( 0.117647, 0.301961, 1, 1 )
 script = SubResource( 1 )
+__meta__ = {
+"Cocos": true,
+"_edit_use_anchors_": false
+}
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Label" type="Label" parent="."]
 margin_left = 16.0
 margin_top = 24.0
-margin_right = 96.0
-margin_bottom = 44.0
-rect_min_size = Vector2( 42, 20 )
-
-[node name="Type" type="MenuButton" parent="Panel"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_top = -10.0
-margin_right = 42.0
-margin_bottom = 10.0
-text = "Type"
-align = 0
-items = [ "Enemy", null, 0, false, false, 0, 0, null, "", false, "Ally", null, 0, false, false, 1, 0, null, "", false, "Objective", null, 0, false, false, 2, 0, null, "", false, "Marker", null, 0, false, false, 3, 0, null, "", false ]
-
-[node name="Trigger" type="Label" parent="."]
-margin_left = 16.0
-margin_top = 44.0
-margin_right = 96.0
-margin_bottom = 58.0
-text = "Trigger"
-align = 2
-
-[node name="Position" type="Label" parent="."]
-margin_left = 16.0
-margin_top = 59.0
-margin_right = 96.0
-margin_bottom = 73.0
-text = "Position"
+margin_right = 125.0
+margin_bottom = 38.0
+text = "Object seen data"
 align = 2

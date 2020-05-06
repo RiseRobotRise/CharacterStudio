@@ -27,27 +27,16 @@ slot/0/left_color = Color( 1, 1, 1, 1 )
 slot/0/right_enabled = false
 slot/0/right_type = 1
 slot/0/right_color = Color( 1, 0, 1, 1 )
-slot/1/left_enabled = true
-slot/1/left_type = 1
-slot/1/left_color = Color( 1, 0, 1, 1 )
-slot/1/right_enabled = false
-slot/1/right_type = 1
-slot/1/right_color = Color( 1, 0, 1, 1 )
 script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Label" type="Label" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 16.0
 margin_top = 24.0
 margin_right = 59.0
 margin_bottom = 38.0
-hint_tooltip = "Trigger connection"
-text = "Trigger"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 16.0
-margin_top = 38.0
-margin_right = 59.0
-margin_bottom = 52.0
 
 [node name="Label2" type="Label" parent="VBoxContainer"]
 margin_right = 43.0

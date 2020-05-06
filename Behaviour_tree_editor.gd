@@ -61,12 +61,3 @@ func _on_Add_node_pressed() -> void:
 	$MainSplitter/ViewMenuSplit/GraphEdit.add_child(instanced)
 	idx+=1
 
-func _on_GraphEdit_connection_request(from, from_slot, to, to_slot) -> void:
-	if from != to:
-		if not $MainSplitter/ViewMenuSplit/GraphEdit.is_slot_occupied(to_slot, to):
-			$MainSplitter/ViewMenuSplit/GraphEdit.connect_node(from, from_slot, to, to_slot)
-			
-
-
-func _on_GraphEdit_disconnection_request(from, from_slot, to, to_slot) -> void:
-	$MainSplitter/ViewMenuSplit/GraphEdit.disconnect_node(from, from_slot, to, to_slot )

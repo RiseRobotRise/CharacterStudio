@@ -11,29 +11,28 @@ var menus : Array = []
 
 
 func _ready():
-	pass 
+	for id in get_child_count():
+		menus.append(get_child(id+1))
 
 func _on_stimulus_id_pressed(id):
-	pass # Replace with function body.
+	menus[0].popup()
 
 func _on_inhibitors_id_pressed(id):
-	pass # Replace with function body.
+	menus[1].popup()
 
 func _on_actions_id_pressed(id):
-	pass # Replace with function body.
+	menus[2].popup()
 
 func _on_misc_id_pressed(id):
-	pass # Replace with function body.
+	menus[3].popup()
 
 func _on_custom_id_pressed(id):
-	pass # Replace with function body.
+	menus[4].popup()
 
 func _on_Behaviors_id_pressed(id):
-	print(id)
-	if get_child(id+1) is PopupMenu:
-		print(id)
-		get_child(id+1).rect_position =  get_tree().get_root().get_mouse_position()
-		get_child(id+1).popup()
+	if menus[id] is PopupMenu:
+		menus[id].rect_position =  get_tree().get_root().get_mouse_position()
+		menus[id].popup()
 "
 
 [node name="Node-Editor" type="Tabs"]
@@ -242,37 +241,33 @@ __meta__ = {
 }
 
 [node name="stimulus" type="PopupMenu" parent="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors"]
-margin_left = 79.0
-margin_top = 1.0
-margin_right = 161.0
-margin_bottom = 89.0
-
-[node name="inhibitors" type="PopupMenu" parent="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors"]
-margin_left = 78.524
-margin_top = 21.3878
-margin_right = 160.524
-margin_bottom = 109.388
-
-[node name="actions" type="PopupMenu" parent="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors"]
-margin_left = 78.524
-margin_top = 41.3878
-margin_right = 160.524
-margin_bottom = 129.388
-
-[node name="misc" type="PopupMenu" parent="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors"]
-margin_left = 78.524
-margin_top = 61.3878
-margin_right = 160.524
-margin_bottom = 149.388
+margin_right = 82.0
+margin_bottom = 88.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="inhibitors" type="PopupMenu" parent="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors"]
+margin_right = 82.0
+margin_bottom = 88.0002
+
 [node name="custom" type="PopupMenu" parent="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors"]
-margin_left = 78.524
-margin_top = 79.755
-margin_right = 160.524
-margin_bottom = 167.755
+margin_right = 82.0
+margin_bottom = 88.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="misc" type="PopupMenu" parent="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors"]
+margin_right = 82.0
+margin_bottom = 88.0002
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="actions" type="PopupMenu" parent="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors"]
+margin_right = 82.0
+margin_bottom = 88.0002
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -287,11 +282,12 @@ items = [ "Stimulus", null, 0, false, false, 0, 0, null, "", false, "Inhibitors"
 [connection signal="pressed" from="MainSplitter/ViewMenuSplit/Container/type2/Save" to="MainSplitter/ViewMenuSplit/GraphEdit" method="_on_Button3_pressed"]
 [connection signal="pressed" from="MainSplitter/ViewMenuSplit/Container/Add" to="." method="_on_Add_node_pressed"]
 [connection signal="pressed" from="MainSplitter/ViewMenuSplit/Container/Compile" to="MainSplitter/ViewMenuSplit/GraphEdit" method="_on_Button3_pressed"]
-[connection signal="connection_request" from="MainSplitter/ViewMenuSplit/GraphEdit" to="." method="_on_GraphEdit_connection_request"]
-[connection signal="disconnection_request" from="MainSplitter/ViewMenuSplit/GraphEdit" to="." method="_on_GraphEdit_disconnection_request"]
+[connection signal="connection_request" from="MainSplitter/ViewMenuSplit/GraphEdit" to="MainSplitter/ViewMenuSplit/GraphEdit" method="_on_GraphEdit_connection_request"]
+[connection signal="disconnection_request" from="MainSplitter/ViewMenuSplit/GraphEdit" to="MainSplitter/ViewMenuSplit/GraphEdit" method="_on_GraphEdit_disconnection_request"]
+[connection signal="node_selected" from="MainSplitter/ViewMenuSplit/GraphEdit" to="MainSplitter/ViewMenuSplit/GraphEdit" method="_on_GraphEdit_node_selected"]
 [connection signal="id_pressed" from="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors" to="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors" method="_on_Behaviors_id_pressed"]
 [connection signal="id_pressed" from="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors/stimulus" to="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors" method="_on_stimulus_id_pressed"]
 [connection signal="id_pressed" from="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors/inhibitors" to="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors" method="_on_inhibitors_id_pressed"]
-[connection signal="id_pressed" from="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors/actions" to="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors" method="_on_actions_id_pressed"]
-[connection signal="id_pressed" from="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors/misc" to="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors" method="_on_misc_id_pressed"]
 [connection signal="id_pressed" from="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors/custom" to="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors" method="_on_custom_id_pressed"]
+[connection signal="id_pressed" from="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors/misc" to="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors" method="_on_misc_id_pressed"]
+[connection signal="id_pressed" from="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors/actions" to="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors" method="_on_actions_id_pressed"]

@@ -1,15 +1,18 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
 
-[node name="Attack" type="GraphNode"]
-margin_right = 107.0
-margin_bottom = 61.0
-title = "Attack"
+[ext_resource path="res://GraphNode.gd" type="Script" id=1]
+
+[node name="ForceNextState" type="GraphNode"]
+margin_right = 99.0
+margin_bottom = 60.0
+title = "Force next"
 slot/0/left_enabled = false
 slot/0/left_type = 0
 slot/0/left_color = Color( 1, 1, 1, 1 )
 slot/0/right_enabled = false
 slot/0/right_type = 0
 slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -17,6 +20,6 @@ __meta__ = {
 [node name="Label" type="Label" parent="."]
 margin_left = 16.0
 margin_top = 24.0
-margin_right = 91.0
+margin_right = 83.0
 margin_bottom = 38.0
-text = "Owner Data"
+text = "Next State"

@@ -46,9 +46,10 @@ func _input(event):
 				var to = connection.get("to")
 				if (Currently_selected.name == from or Currently_selected.name == to):
 					disconnect_node(from,from_port,to,to_port)
-			Currently_selected.clear_all_slots()
-			Currently_selected.queue_free()
-			update()
+			if is_instance_valid(Currently_selected):
+				Currently_selected.clear_all_slots()
+				Currently_selected.queue_free()
+				update()
 			
 func compile(Connections):
 	#Check data types, translate into signals and code. 
@@ -87,4 +88,19 @@ func is_slot_occupied(to_port, to):
 		if is_node_connected(from, from_port, to, to_port ):
 			return true
 
-	
+func _on_GraphEdit_connection_request(from, from_slot, to, to_slot) -> void:
+	print("Requesting conection from node: ", from, " port: ", from_slot, " to node: ", to, " port: ", to_slot)
+	if from != to:
+		if not is_slot_occupied(to_slot, to):
+			connect_node(from, from_slot, to, to_slot)
+			
+
+
+func _on_GraphEdit_disconnection_request(from, from_slot, to, to_slot) -> void:
+	disconnect_node(from, from_slot, to, to_slot )
+
+
+
+func _on_GraphEdit_node_selected(node : GraphNode):
+	print(node.get_slot_type_right(0), ", ",  node.get_slot_type_left(0))
+	pass # Replace with function body.
