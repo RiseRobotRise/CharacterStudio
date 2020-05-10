@@ -8,9 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "FuncRef",
+"class": "Function",
+"language": "GDScript",
+"path": "res://FuncRef_Logic.gd"
+}, {
+"base": "Resource",
+"class": "NpcDefinitions",
+"language": "GDScript",
+"path": "res://Definitions.gd"
+} ]
 _global_script_class_icons={
-
+"Function": "",
+"NpcDefinitions": ""
 }
 
 [application]

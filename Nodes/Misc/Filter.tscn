@@ -5,7 +5,7 @@ script/source = "tool
 extends GraphNode
 
 func _enter_tree():
-	set_slot(0, true,TYPE_INT_ARRAY, Nodes.MISC_OBJ,true,TYPE_DICTIONARY,Nodes.CHARACTER)
+	set_slot(0, true,TYPE_INT_ARRAY, Color(TYPE_INT_ARRAY),true,TYPE_DICTIONARY,Color(TYPE_DICTIONARY))
 
 func _change_type(idx):
 	var something : GraphEdit

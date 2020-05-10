@@ -1,12 +1,68 @@
 extends Node
 
-const VECTOR = Color(0.5,0.2,0.2,1)
-const INT = Color(0.8,0.3,1,1)
-const BOOL = Color(1,1,1,1)
-const FLOAT = Color(0,1,0,1)
-const CHARACTER = Color(0.7,0.2,0.0,1.0)
-const MISC_OBJ = Color(0.2,0.7,0.1,1)
-const NIL = Color(0,0,0,1)
+var Definitions = NpcDefinitions.new()
+var Colors : Array = [
+	Color(0,0,0,1),
+	Color(0.2,0,0,1),
+	Color(0.2,0.2,0,1),
+	Color(0.2,0.2,0.2,1),
+	Color(0.2,0.2,0.4,1),
+	Color(0.2,0.4,0.4,1),
+	Color(0.4,0.4,0.4,1),
+	Color(0.4,0,0),
+	Color(0.6,0.4,0.4,1),
+	Color(0.6,0.6,0.4,1),
+	Color(0.6,0.6,0.6,1),
+	Color(0.6,0.6,0.8,1),
+	Color(0.6,0.8,0.8,1),
+	Color(0.8,0.8,0.8,1),
+	Color(1,0.8,0.8,1),
+	Color(1,1,0.8,1),
+	Color(1,1,1,1),
+	Color(1,0,1,1),
+	Color(1,1,0,1),
+	Color(0.5, 0.2, 0.2, 1),
+	Color(0.1,0.6,0.1, 1),
+	Color(0.6, 0.2, 0.7, 1),
+	Color(0.9,0.1,0.9,1),
+	Color(0.2,0,0.2,1),
+	Color(0.7, 0, 0.5),
+	Color(0.5, 0, 0.5),
+	Color(0.2, 1, 0.1),
+	Color(1,0.5,0.2,1)
+	] 
+
+func _enter_tree() -> void:
+	_load_definitions()
+
+func _is_format_correct() -> bool:
+	if Definitions.get("_functions") == null or Definitions.get("_stimulus") == null:
+		return false
+	else:
+		return true
+
+func _define_class(_class_name : String):
+	var current : Dictionary = Definitions.get(_class_name)
+	Colors.append(current.color)
+	var properies = current.keys()
+	
+	
+func _load_definitions() -> void:
+	if not _is_format_correct():
+		return
+	var all_properties = Definitions.get_property_list()
+	var Classes : Array = []
+	for properties in all_properties:
+		if properties.get("name").begins_with("CLASS_"):
+			Classes.append(properties.get("name"))
+	#At this point all_properties has been filtered
+	
+
+
+
+func Color(id) -> Color:
+	return Colors[id]
+
 
 var Graphs : Dictionary = {
 	"actions" : {
