@@ -40,7 +40,11 @@ func _on_Misc_selected(index) -> void:
 	
 func _update_labels(name : String) -> void:
 	type = name
-	var Placeholder = Nodes.Graphs.get(name).get(node_name).instance()
+	var Placeholder
+	if Nodes.Graphs.get(name).get(node_name) is Node:
+		Placeholder = Nodes.Graphs.get(name).get(node_name).duplicate()
+	else:
+		Placeholder = Nodes.Graphs.get(name).get(node_name).instance()
 	$MainSplitter/ViewMenuSplit/Container/selection/name.text = str(Placeholder.title)
 	$MainSplitter/ViewMenuSplit/Container/type/name
 	
@@ -56,7 +60,11 @@ func _generate_nodes() -> void:
 func _on_Add_node_pressed() -> void:
 	if (type == "" or node_name == ""):
 		return
-	var instanced = Nodes.Graphs.get(type).get(node_name).instance()
+	var instanced = Nodes.Graphs.get(type).get(node_name)
+	if instanced is Node:
+		instanced = instanced.duplicate()
+	else:
+		instanced = instanced.instance()
 	instanced.name = instanced.title + str(idx)
 	$MainSplitter/ViewMenuSplit/GraphEdit.add_child(instanced)
 	idx+=1

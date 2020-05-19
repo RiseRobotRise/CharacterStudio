@@ -1,11 +1,11 @@
 extends Node
-
-var Definitions = NpcDefinitions.new()
-var Colors : Array = [
-	Color(0,0,0,1),
+const TYPE_ANY = 28
+onready var Definitions
+const Colors = [
+	Color(0,0,0,0),
 	Color(0.2,0,0,1),
-	Color(0.2,0.2,0,1),
-	Color(0.2,0.2,0.2,1),
+	Color(0.2,0.8,0.4,1),
+	Color(0.2,1.2,1.2,1),
 	Color(0.2,0.2,0.4,1),
 	Color(0.2,0.4,0.4,1),
 	Color(0.4,0.4,0.4,1),
@@ -29,11 +29,10 @@ var Colors : Array = [
 	Color(0.7, 0, 0.5),
 	Color(0.5, 0, 0.5),
 	Color(0.2, 1, 0.1),
-	Color(1,0.5,0.2,1)
+	Color(1,0.5,0.2,1),
+	Color(0.1,0.2,0.3,1)
 	] 
 
-func _enter_tree() -> void:
-	_load_definitions()
 
 func _is_format_correct() -> bool:
 	if Definitions.get("_functions") == null or Definitions.get("_stimulus") == null:
@@ -43,10 +42,62 @@ func _is_format_correct() -> bool:
 
 func _define_class(_class_name : String):
 	var current : Dictionary = Definitions.get(_class_name)
-	Colors.append(current.color)
 	var properies = current.keys()
-	
-	
+
+
+func _get_port_name(data : Dictionary, port : int, input : bool = true) -> String:
+	var ports : Array = []
+	if input:
+		ports = data.get("_input_ports")
+	else:
+		ports = data.get("_output_ports")
+	if port < ports.size():
+		print(data)
+		return ports[port].get("_label_title")
+	else:
+		return ""
+
+func _get_port_type(data : Dictionary, port : int, input : bool = true) -> int:
+	var ports : Array = []
+	if input:
+		ports = data.get("_input_ports")
+	else:
+		ports = data.get("_output_ports") 
+	if port < ports.size():
+		return ports[port].get("_type")
+	else:
+		return TYPE_NIL
+
+func _load_functions():
+	var functions : Dictionary = Definitions.get("_functions")
+	var function_names = functions.keys()
+	for function in function_names:
+		var data : Dictionary = functions.get(function)
+		var current_node : GraphNode = GraphNode.new()
+		current_node.title = function
+		for ports in max(data.get("_input_ports").size(),data.get("_output_ports").size()):
+			current_node.set_slot(
+				ports,
+				_get_port_type(data, ports, true), 
+				_get_port_type(data, ports, true),
+				Nodes.Color(_get_port_type(data, ports, true)),
+				_get_port_type(data, ports, false),
+				_get_port_type(data, ports, false),
+				Nodes.Color(_get_port_type(data, ports, false)))
+			current_node.add_child(DoubleLabel.new(
+				_get_port_name(data, ports, true),
+				_get_port_name(data, ports, false)
+			))
+			#At this point we have created the node, let's store it
+		match data.get("_category"):
+			"inhibitors":
+				Graphs.inhibitors[function]=current_node
+			"actions":
+				Graphs.actions[function]=current_node
+			"misc":
+				Graphs.misc[function]=current_node
+
+
 func _load_definitions() -> void:
 	if not _is_format_correct():
 		return
@@ -56,13 +107,26 @@ func _load_definitions() -> void:
 		if properties.get("name").begins_with("CLASS_"):
 			Classes.append(properties.get("name"))
 	#At this point all_properties has been filtered
-	
+	print(Classes)
 
 
 
 func Color(id) -> Color:
-	return Colors[id]
+	if id is int:
+		if id <= Colors.size():
+			return Colors[id] #If the color is from a default type, looks for it
+	elif id is String:
+		#If the color is from a custom class, loads it from the Definitions.
+		return _color_from_class(id) 
+	return Color(0) 
 
+func _color_from_class(id : String) -> Color:
+	var Class = Definitions.get(id)
+	var color : Color = Color(0)
+	if Class != null:
+		color = Class.get("_color")
+	return color
+	
 
 var Graphs : Dictionary = {
 	"actions" : {
@@ -93,7 +157,13 @@ var Graphs : Dictionary = {
 	"custom" :  {}
 }
 
+
+
 func _ready() -> void:
+	Definitions =  NpcDefinitions.new()
+	_load_definitions()
+	_load_functions()
+
 	load_user_defined_nodes()
 
 func load_user_defined_nodes() -> void:

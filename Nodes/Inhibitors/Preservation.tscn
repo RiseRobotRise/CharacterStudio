@@ -8,7 +8,8 @@ func _ready():
 	set_slot(0, true, TYPE_BOOL, Nodes.BOOL,false,TYPE_NIL,Nodes.BOOL)
 	set_slot(1,true,TYPE_REAL,Nodes.FLOAT,false, TYPE_REAL, Nodes.FLOAT)
 	set_slot(2,false,1,Color(1,1,1,1),true, TYPE_BOOL, Nodes.BOOL)
-	set_slot(3,false,1,Color(1,1,1,1),true, TYPE_BOOL, Nodes.BOOL)"
+	set_slot(3,false,1,Color(1,1,1,1),true, TYPE_BOOL, Nodes.BOOL)
+"
 
 [node name="GraphNode" type="GraphNode"]
 margin_right = 32.0
@@ -49,22 +50,21 @@ text = "Trigger"
 
 [node name="Label" type="Label" parent="."]
 margin_left = 16.0
-margin_top = 38.0
+margin_top = 39.0
 margin_right = 177.0
-margin_bottom = 52.0
+margin_bottom = 53.0
 text = "Desire to self preserve"
 
 [node name="Label2" type="Label" parent="."]
 margin_left = 16.0
-margin_top = 53.0
+margin_top = 54.0
 margin_right = 177.0
-margin_bottom = 67.0
+margin_bottom = 68.0
 text = "Self-preserve actions"
 
 [node name="Label3" type="Label" parent="."]
 margin_left = 16.0
-margin_top = 68.0
+margin_top = 69.0
 margin_right = 177.0
-margin_bottom = 82.0
+margin_bottom = 83.0
 text = "Non-preservation actions"
-

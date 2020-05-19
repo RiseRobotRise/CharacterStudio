@@ -42,9 +42,9 @@ text = "Trigger"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_left = 16.0
-margin_top = 38.0
+margin_top = 39.0
 margin_right = 163.0
-margin_bottom = 52.0
+margin_bottom = 53.0
 
 [node name="stim3" type="Label" parent="HBoxContainer"]
 margin_right = 42.0
@@ -71,9 +71,9 @@ valign = 3
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 margin_left = 16.0
-margin_top = 53.0
+margin_top = 54.0
 margin_right = 163.0
-margin_bottom = 67.0
+margin_bottom = 68.0
 
 [node name="stim3" type="Label" parent="HBoxContainer2"]
 margin_right = 42.0
@@ -100,9 +100,9 @@ valign = 3
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="."]
 margin_left = 16.0
-margin_top = 68.0
+margin_top = 69.0
 margin_right = 163.0
-margin_bottom = 82.0
+margin_bottom = 83.0
 
 [node name="stim3" type="Label" parent="HBoxContainer3"]
 margin_right = 42.0

@@ -4,7 +4,7 @@
 script/source = "tool
 extends GraphNode
 func _enter_tree():
-	set_slot(0,false,TYPE_NIL,Nodes.BOOL,true,TYPE_DICTIONARY,Nodes.CHARACTER)
+	set_slot(0,false,TYPE_NIL,Nodes.Color(TYPE_NIL),true,TYPE_DICTIONARY,Nodes.Color(TYPE_DICTIONARY))
 "
 
 [node name="Smell" type="GraphNode"]

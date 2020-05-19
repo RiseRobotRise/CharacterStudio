@@ -4,6 +4,9 @@ var SceneNodes : Dictionary
 var Currently_selected : Node = null
 func _ready():
 	connect("node_selected", self, "_on_node_selected")
+	for type in range (0,27):
+		add_valid_connection_type(28,type)
+#		add_valid_connection_type(type, 28)
 
 func add_node(name : String):
 	var REGEX : RegEx = RegEx.new()
@@ -53,6 +56,7 @@ func _input(event):
 			
 func compile(Connections):
 	#Check data types, translate into signals and code. 
+	print(get_connection_list())
 	open(Connections)
 	for elements in Connections:
 		var from_port = elements.get("from_port")
@@ -78,7 +82,7 @@ func _on_node_selected(node):
 	Currently_selected = node
 
 func _on_Button3_pressed():
-	print(open(get_connection_list()))
+	print(get_connection_list())
 	pass # Replace with function body.
 
 func is_slot_occupied(to_port, to):

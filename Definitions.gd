@@ -2,7 +2,28 @@ extends Resource
 class_name NpcDefinitions
 
 #Class ID will be assigned from 27 and on, in the order classes are declared
-
+func _init():
+	var expr = Expression.new()
+	var inputs = ["output"]
+	var long_input = ["input_data", "weight_1", "weight_2", "weight_3"]
+	var long_string = """
+	if max(max(weight_1,weight_2),weight_3) == weight_1:
+		print(1, input_data)
+	elif max(max(weight_1,weight_2),weight_3) == weight_2:
+		print(2, input_data)
+	elif max(max(weight_1,weight_2),weight_3) == weight_3:
+		print(3, input_data)
+"""
+	var try_with = [24, 11,2,3]
+	
+	expr.parse(long_string, long_input)
+	expr.execute(try_with, self)
+	
+	
+func misc(ind):
+	print("Parsed!", ind)
+	pass 
+	
 var CLASS_MISC = {
 	"_color" : Color(.5,.5,.1,1),
 	"_object_type" : "Any",
@@ -33,11 +54,26 @@ var CLASS_CHARACTER =  {
 		"shield" : TYPE_REAL,
 		"target_location" : TYPE_VECTOR3}
 	}
-func misc(object : Object, property:String):
-	object.get(property)
+
 var _functions = {
+	"Tri-v Decision" : {
+		"_category" : "inhibitors",
+		"_code" : "FuncRef?",
+		"_input_ports" : [
+			{"_label_title":"Value", "_type" : Nodes.TYPE_ANY},
+			{"_label_title":"Weight 1", "_type" : TYPE_REAL},
+			{"_label_title":"Weight 2", "_type" : TYPE_REAL},
+			{"_label_title":"Weight 3", "_type" : TYPE_REAL}
+		],
+		"_output_ports" : [
+			{"_label_title" : "", "_type" : TYPE_NIL },
+			{"_label_title" : "Output 1", "_type" : Nodes.TYPE_ANY },
+			{"_label_title" : "Output 2", "_type" : Nodes.TYPE_ANY },
+			{"_label_title" : "Output 3", "_type" : Nodes.TYPE_ANY }
+		]
+	},
 	"filter" : {
-		"_category" : "Misc",
+		"_category" : "misc",
 		"_code" : "<actual code>",
 		"_input_ports" : [
 			{"_label_title":"title","_type":TYPE_NIL},

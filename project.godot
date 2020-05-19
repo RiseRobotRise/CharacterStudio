@@ -9,10 +9,20 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "HBoxContainer",
+"class": "DoubleLabel",
+"language": "GDScript",
+"path": "res://Core/SeparatedLabel.gd"
+}, {
 "base": "FuncRef",
 "class": "Function",
 "language": "GDScript",
 "path": "res://FuncRef_Logic.gd"
+}, {
+"base": "Node",
+"class": "NPCLogic",
+"language": "GDScript",
+"path": "res://Core/NPC_Logic.gd"
 }, {
 "base": "Resource",
 "class": "NpcDefinitions",
@@ -20,7 +30,9 @@ _global_script_classes=[ {
 "path": "res://Definitions.gd"
 } ]
 _global_script_class_icons={
+"DoubleLabel": "",
 "Function": "",
+"NPCLogic": "",
 "NpcDefinitions": ""
 }
 
