@@ -32,7 +32,7 @@ const Colors = [
 	Color(1,0.5,0.2,1),
 	Color(0.1,0.2,0.3,1)
 	] 
-
+var custom_types : Array = []
 
 func _is_format_correct() -> bool:
 	if Definitions.get("_functions") == null or Definitions.get("_stimulus") == null:
@@ -64,9 +64,34 @@ func _get_port_type(data : Dictionary, port : int, input : bool = true) -> int:
 	else:
 		ports = data.get("_output_ports") 
 	if port < ports.size():
-		return ports[port].get("_type")
+		return _get_type(ports[port].get("_type"))
 	else:
 		return TYPE_NIL
+		
+func _get_type(type) -> int:
+	if type is int:
+		return type # The type is already a number we don't have to do anything
+	elif type is String: #Type is custom, we have to find it
+		var custom : int = custom_types.find(type)
+		if custom == -1:
+			return TYPE_NIL #If not defined we return NIL
+		else:
+			return 28+custom #28 is the Any type, this one is locked out. 
+	return TYPE_NIL
+		
+func _load_signals():
+	var signal_list : Dictionary = Definitions.get("_stimulus")
+	var signal_names : Array = signal_list.keys()
+	for signals in signal_names:
+		var data : Dictionary = signal_list.get(signals)
+		var current_node : GraphNode = GraphNode.new()
+		current_node.title = signals
+		current_node.add_child(DoubleLabel.new("", data.get("_output_name")))
+		current_node.set_slot(0,false,TYPE_NIL,0, true, 
+			_get_type(data.get("_output_type")),  #the type may be a string, so we need to parse it
+			self.Color(data.get("_output_type"))) #Special case, color parses strings
+		Graphs.stimulus[signals]=current_node
+		
 
 func _load_functions():
 	var functions : Dictionary = Definitions.get("_functions")
@@ -80,10 +105,10 @@ func _load_functions():
 				ports,
 				_get_port_type(data, ports, true), 
 				_get_port_type(data, ports, true),
-				Nodes.Color(_get_port_type(data, ports, true)),
+				self.Color(_get_port_type(data, ports, true)),
 				_get_port_type(data, ports, false),
 				_get_port_type(data, ports, false),
-				Nodes.Color(_get_port_type(data, ports, false)))
+				self.Color(_get_port_type(data, ports, false)))
 			current_node.add_child(DoubleLabel.new(
 				_get_port_name(data, ports, true),
 				_get_port_name(data, ports, false)
@@ -163,7 +188,7 @@ func _ready() -> void:
 	Definitions =  NpcDefinitions.new()
 	_load_definitions()
 	_load_functions()
-
+	_load_signals()
 	load_user_defined_nodes()
 
 func load_user_defined_nodes() -> void:
