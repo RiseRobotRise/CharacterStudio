@@ -54,11 +54,11 @@ var CLASS_CHARACTER =  {
 		"shield" : TYPE_REAL,
 		"target_location" : TYPE_VECTOR3}
 	}
-
+#Do not use spaces or symbols in function defintions. 
 var _functions = {
-	"Tri-v Decision" : {
+	"Tri_v_Decision" : {
 		"_category" : "inhibitors",
-		"_code" : "FuncRef?",
+		"_code" : "FuncRef?", #This hasn't been implemented yet
 		"_input_ports" : [
 			{"_label_title":"Value", "_type" : Nodes.TYPE_ANY},
 			{"_label_title":"Weight 1", "_type" : TYPE_REAL},
@@ -87,7 +87,7 @@ var _functions = {
 }
 
 var _stimulus = {
-	"Hear" :{
+	"NewHear" :{
 		"_output_name": "Emmiter Data",
 		"_output_type": "CLASS_MISC"
 	}

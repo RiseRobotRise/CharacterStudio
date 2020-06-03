@@ -40,6 +40,13 @@ func _is_format_correct() -> bool:
 	else:
 		return true
 
+func _are_valid_identifiers(strings : Dictionary)->bool:
+	for string in strings:
+		if not string.is_valid_identifier():
+			return false
+	return true
+
+
 func _define_class(_class_name : String):
 	var current : Dictionary = Definitions.get(_class_name)
 	var properies = current.keys()
@@ -96,6 +103,9 @@ func _load_signals():
 func _load_functions():
 	var functions : Dictionary = Definitions.get("_functions")
 	var function_names = functions.keys()
+	if not _are_valid_identifiers(function_names):
+		print_debug("A function name is not correct, please verify your definitions.")
+		return
 	for function in function_names:
 		var data : Dictionary = functions.get(function)
 		var current_node : GraphNode = GraphNode.new()
