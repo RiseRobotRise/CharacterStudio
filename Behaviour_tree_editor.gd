@@ -65,7 +65,7 @@ func _on_Add_node_pressed() -> void:
 		instanced = instanced.duplicate()
 	else:
 		instanced = instanced.instance()
-	instanced.name = instanced.title + str(idx)
+	instanced.name = instanced.title 
 	$MainSplitter/ViewMenuSplit/GraphEdit.add_child(instanced)
 	idx+=1
 
