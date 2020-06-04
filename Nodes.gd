@@ -32,7 +32,7 @@ const Colors = [
 	Color(1,0.5,0.2,1),
 	Color(0.1,0.2,0.3,1)
 	] 
-var custom_types : Array = []
+var custom_types : Dictionary = {}
 
 func _is_format_correct() -> bool:
 	if Definitions.get("_functions") == null or Definitions.get("_stimulus") == null:
@@ -40,7 +40,7 @@ func _is_format_correct() -> bool:
 	else:
 		return true
 
-func _are_valid_identifiers(strings : Dictionary)->bool:
+func _are_valid_identifiers(strings : Array)->bool:
 	for string in strings:
 		if not string.is_valid_identifier():
 			return false
@@ -79,11 +79,11 @@ func _get_type(type) -> int:
 	if type is int:
 		return type # The type is already a number we don't have to do anything
 	elif type is String: #Type is custom, we have to find it
-		var custom : int = custom_types.find(type)
-		if custom == -1:
+		var custom : bool = custom_types.has(type)
+		if custom == false:
 			return TYPE_NIL #If not defined we return NIL
 		else:
-			return 28+custom #28 is the Any type, this one is locked out. 
+			return 28+custom_types.get(type.trim_prefix("CLASS_")).idx #28 is the Any type, this one is locked out. 
 	return TYPE_NIL
 		
 func _load_signals():
@@ -134,6 +134,7 @@ func _load_functions():
 
 
 func _load_definitions() -> void:
+	var idx : int = 0
 	if not _is_format_correct():
 		return
 	var all_properties = Definitions.get_property_list()
@@ -142,6 +143,11 @@ func _load_definitions() -> void:
 		if properties.get("name").begins_with("CLASS_"):
 			Classes.append(properties.get("name"))
 	#At this point all_properties has been filtered
+	for Class in Classes:
+		idx = idx + 1
+		Definitions.get(Class)["idx"] = idx
+		print("CLASS_"+Class)
+		custom_types[Class.trim_prefix("CLASS_")] = Definitions.get(Class).get("_variables")
 	print(Classes)
 
 

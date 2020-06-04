@@ -9,10 +9,20 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "Compiler",
+"language": "GDScript",
+"path": "res://Core/Compiler/Main.gd"
+}, {
 "base": "HBoxContainer",
 "class": "DoubleLabel",
 "language": "GDScript",
-"path": "res://Core/SeparatedLabel.gd"
+"path": "res://Core/Control_Components/SeparatedLabel.gd"
+}, {
+"base": "MenuButton",
+"class": "DropDown",
+"language": "GDScript",
+"path": "res://Core/Control_Components/MenuWTitles.gd"
 }, {
 "base": "FuncRef",
 "class": "Function",
@@ -30,7 +40,9 @@ _global_script_classes=[ {
 "path": "res://Definitions.gd"
 } ]
 _global_script_class_icons={
+"Compiler": "",
 "DoubleLabel": "",
+"DropDown": "",
 "Function": "",
 "NPCLogic": "",
 "NpcDefinitions": ""
