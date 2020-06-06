@@ -18,4 +18,10 @@ func execute_on_player(function_name : String, args : Array):
 		return actor.callv(function_name, args)
 	else: 
 		return null
-
+func get_code_name(input_string : String):
+	var Regular : RegEx = RegEx.new()
+	
+func define_connection(from, from_port, to, to_port):
+	#The only information passed from signal to
+#	connect(from+from_port, self, to, )
+	pass
