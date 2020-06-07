@@ -18,9 +18,20 @@ func filter_input_label(input : String) -> void:
 		input = input.trim_suffix(processed)
 	match input:
 		"_s_text_edit":
-			Label1 = TextEdit.new()
+			Label1 = LineEdit.new()
 		"_s_prop_dropdown_":
 			Label1 = get_class_dropdown(processed)
+		"_s_int":
+			Label1 = SpinBox.new()
+			Label1.allow_greater = true
+			Label1.allow_lesser = true
+		"_s_float":
+			Label1 = SpinBox.new()
+			Label1.allow_greater = true
+			Label1.allow_lesser = true
+			Label1.step = 0
+		"_s_percent":
+			Label1 = SpinBox.new()
 		_:
 			Label1 = Label.new()
 			Label1.text = input

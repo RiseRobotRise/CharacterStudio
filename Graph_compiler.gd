@@ -2,6 +2,7 @@ extends GraphEdit
 
 var SceneNodes : Dictionary
 var Currently_selected : Node = null
+var OutputFile : ConfigFile = ConfigFile.new()
 func _ready():
 	connect("node_selected", self, "_on_node_selected")
 	for type in range (0,27):
@@ -54,21 +55,41 @@ func _input(event):
 				Currently_selected.queue_free()
 				update()
 			
-func compile(Connections):
-	#Check data types, translate into signals and code. 
-	print(get_connection_list())
-	open(Connections)
-	for elements in Connections:
-		var from_port = elements.get("from_port")
-		var from = elements.get("from")
-		var to_port = elements.get("to_port")
-		var to = elements.get("to")
-		var to_node = get_node(to)
-		var from_node = get_node(from)
-		to_node.content[to_port]
-		from_node.content[from_port]
-		var function = "call_deferred("
-	pass
+func recursive_get_variable(node : Node):
+	if node is Label:
+		return null
+	elif node is LineEdit:
+		return node.text
+	elif node is SpinBox:
+		return node.value
+	else:
+		for child in node.get_children():
+			var found = recursive_get_variable(child)
+			if found != null:
+				return found
+	return null
+
+func compile(connections):
+	var node : GraphNode
+	for child in get_child_count():
+		var node_info : Array = []
+		node = get_child(child)
+		var nodevars : Array = []
+		for child in node.get_children():
+			nodevars.append(recursive_get_variable(child))
+		OutputFile.set_value("variables", node.name, nodevars)
+		for inputs in node.get_connection_output_count():
+			if node.is_slot_enabled_right(inputs):
+				node_info.append(str(node.name,"_output_",inputs))
+		OutputFile.set_value("node_signals", node.name, node_info)
+	OutputFile.set_value("ai_config", "connections", connections)
+	
+	
+	
+	
+	
+	
+	
 
 
 func open(SaveArray : Array):
@@ -83,6 +104,8 @@ func _on_node_selected(node):
 
 func _on_Button3_pressed():
 	print(get_connection_list())
+	var Something = test_compiler.new()
+	Something.fill_listings(get_connection_list())
 	pass # Replace with function body.
 
 func is_slot_occupied(to_port, to):
