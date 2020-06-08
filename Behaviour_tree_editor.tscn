@@ -199,6 +199,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Save"
 
+[node name="FileDialog" type="FileDialog" parent="MainSplitter/ViewMenuSplit/Container/type2/Save"]
+margin_right = 307.0
+margin_bottom = 130.0
+filters = PoolStringArray( "*.jbt" )
+
 [node name="Add" type="Button" parent="MainSplitter/ViewMenuSplit/Container"]
 margin_top = 60.0
 margin_right = 223.0

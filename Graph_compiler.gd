@@ -62,6 +62,8 @@ func recursive_get_variable(node : Node):
 		return node.text
 	elif node is SpinBox:
 		return node.value
+	elif node is MenuButton:
+		return node.get_popup().text
 	else:
 		for child in node.get_children():
 			var found = recursive_get_variable(child)
@@ -84,14 +86,6 @@ func compile(connections):
 		OutputFile.set_value("node_signals", node.name, node_info)
 	OutputFile.set_value("ai_config", "connections", connections)
 	
-	
-	
-	
-	
-	
-	
-
-
 func open(SaveArray : Array):
 	for connection in SaveArray:
 		if not SceneNodes.has(connection.from):
