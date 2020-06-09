@@ -72,18 +72,25 @@ func recursive_get_variable(node : Node):
 	return null
 
 func compile(connections):
-	var node : GraphNode
+	var node : Control
 	for child in get_child_count():
 		var node_info : Array = []
 		node = get_child(child)
+		
 		var nodevars : Array = []
 		for child in node.get_children():
+			if not child is GraphNode:
+				continue
 			nodevars.append(recursive_get_variable(child))
 		OutputFile.set_value("variables", node.name, nodevars)
-		for inputs in node.get_connection_output_count():
-			if node.is_slot_enabled_right(inputs):
-				node_info.append(str(node.name,"_output_",inputs))
-		OutputFile.set_value("node_signals", node.name, node_info)
+		if node is GraphNode:
+			for inputs in max(
+					node.get_connection_output_count(),
+					node.get_connection_input_count()):
+				
+				if node.is_slot_enabled_right(inputs):
+					node_info.append(str(node.name,"_output_",inputs))
+			OutputFile.set_value("node_signals", node.name, node_info)
 	OutputFile.set_value("ai_config", "connections", connections)
 	
 func open(SaveArray : Array):
@@ -95,12 +102,9 @@ func open(SaveArray : Array):
 
 func _on_node_selected(node):
 	Currently_selected = node
-
+	
 func _on_Button3_pressed():
-	print(get_connection_list())
-	var Something = test_compiler.new()
-	Something.fill_listings(get_connection_list())
-	pass # Replace with function body.
+	compile(get_connection_list())
 
 func is_slot_occupied(to_port, to):
 	for connection in get_connection_list():
@@ -125,3 +129,11 @@ func _on_GraphEdit_disconnection_request(from, from_slot, to, to_slot) -> void:
 func _on_GraphEdit_node_selected(node : GraphNode):
 	print(node.get_slot_type_right(0), ", ",  node.get_slot_type_left(0))
 	pass # Replace with function body.
+
+
+func _on_save_file_selected(path):
+	OutputFile.save(path)
+
+
+func _on_save_pressed():
+	$Save.popup_centered()

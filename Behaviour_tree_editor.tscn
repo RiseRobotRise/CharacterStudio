@@ -55,6 +55,9 @@ margin_top = 1.36723
 margin_right = 1.948
 margin_bottom = 1.36725
 dragger_visibility = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Panel" type="PanelContainer" parent="MainSplitter"]
 margin_right = 1016.0
@@ -199,11 +202,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Save"
 
-[node name="FileDialog" type="FileDialog" parent="MainSplitter/ViewMenuSplit/Container/type2/Save"]
-margin_right = 307.0
-margin_bottom = 130.0
-filters = PoolStringArray( "*.jbt" )
-
 [node name="Add" type="Button" parent="MainSplitter/ViewMenuSplit/Container"]
 margin_top = 60.0
 margin_right = 223.0
@@ -283,8 +281,19 @@ margin_top = 153.245
 margin_right = 515.528
 margin_bottom = 241.245
 items = [ "Stimulus", null, 0, false, false, 0, 0, null, "", false, "Inhibitors", null, 0, false, false, 1, 0, null, "", false, "Actions", null, 0, false, false, 2, 0, null, "", false, "Custom", null, 0, false, false, 3, 0, null, "", false ]
+
+[node name="Save" type="FileDialog" parent="MainSplitter/ViewMenuSplit/GraphEdit"]
+visible = true
+margin_left = 14.0
+margin_top = 65.0
+margin_right = 468.0
+margin_bottom = 281.0
+filters = PoolStringArray( "*.jbt" )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="MainSplitter/ViewMenuSplit/Container/type2/Open" to="MainSplitter/ViewMenuSplit/GraphEdit" method="_on_Button3_pressed"]
-[connection signal="pressed" from="MainSplitter/ViewMenuSplit/Container/type2/Save" to="MainSplitter/ViewMenuSplit/GraphEdit" method="_on_Button3_pressed"]
+[connection signal="pressed" from="MainSplitter/ViewMenuSplit/Container/type2/Save" to="MainSplitter/ViewMenuSplit/GraphEdit" method="_on_save_pressed"]
 [connection signal="pressed" from="MainSplitter/ViewMenuSplit/Container/Add" to="." method="_on_Add_node_pressed"]
 [connection signal="pressed" from="MainSplitter/ViewMenuSplit/Container/Compile" to="MainSplitter/ViewMenuSplit/GraphEdit" method="_on_Button3_pressed"]
 [connection signal="connection_request" from="MainSplitter/ViewMenuSplit/GraphEdit" to="MainSplitter/ViewMenuSplit/GraphEdit" method="_on_GraphEdit_connection_request"]
@@ -296,3 +305,4 @@ items = [ "Stimulus", null, 0, false, false, 0, 0, null, "", false, "Inhibitors"
 [connection signal="id_pressed" from="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors/custom" to="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors" method="_on_custom_id_pressed"]
 [connection signal="id_pressed" from="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors/misc" to="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors" method="_on_misc_id_pressed"]
 [connection signal="id_pressed" from="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors/actions" to="MainSplitter/ViewMenuSplit/GraphEdit/Behaviors" method="_on_actions_id_pressed"]
+[connection signal="file_selected" from="MainSplitter/ViewMenuSplit/GraphEdit/Save" to="MainSplitter/ViewMenuSplit/GraphEdit" method="_on_save_file_selected"]
