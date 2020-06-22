@@ -92,7 +92,10 @@ func compile(connections):
 					node_info.append(str(node.name,"_output_",inputs))
 			OutputFile.set_value("node_signals", node.name, node_info)
 	OutputFile.set_value("ai_config", "connections", connections)
-	
+
+
+
+
 func open(SaveArray : Array):
 	for connection in SaveArray:
 		if not SceneNodes.has(connection.from):

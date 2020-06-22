@@ -288,6 +288,7 @@ margin_left = 14.0
 margin_top = 65.0
 margin_right = 468.0
 margin_bottom = 281.0
+window_title = "Guardar un Archivo"
 filters = PoolStringArray( "*.jbt" )
 __meta__ = {
 "_edit_use_anchors_": false
