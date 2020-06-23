@@ -8,15 +8,34 @@ var ai_script : ConfigFile = ConfigFile.new()
 
 export(String, FILE, "*.jbt") var AI_file : String = "" #This works just fine! :D
 
-func convert_to_code(name : String) -> String:
-	return ""
+func filter(input, signals, variables):
+	#input is object, get the specific variable in the variable port and then
+	#passes it to the next node
+	var filter = get_variable_from_port(variables, 1)
+	if input.has(filter):
+		emit_signal_from_port(input.get(filter), signals, 0)
 	pass
-	
-func emit_signal_from_port(signals : Array, port : int) -> void:
+
+func match(input, signals, variables):
+	#Checks if input matches with the variable input, if it does
+	#calls the next node
+	if input == get_variable_from_port(variables, 1):
+		emit_signal_from_port(true, signals, 0)
+	pass
+
+func emit_signal_from_port(what, signals : Array, port : int) -> void:
 	if not signals.size() >= port:
 		return
 	if signals[port]!=null:
-		emit_signal(signals[port])
+		emit_signal(signals[port], what)
+
+func node_set_meta(meta, signals, variables):
+	set_meta(get_variable_from_port(variables, 1), meta)
+
+func get_var_or_meta(string):
+	if has_meta(string):
+		return get_meta(string)
+	return get(string)
 
 func get_variable_from_port(variables : Array, port : int):
 	if not port >= variables.size():

@@ -1,15 +1,16 @@
-extends NPCLogic
+extends NPCBase
 
-
-var TrivDec = Function.new(self,"trivalent_decision")
-
-
-func trivalent_decision(node_name, input_data, weight_1, weight_2, weight_3, output1, output2, output3):
+func trivalent_decision(input, signals, variables):
+	var weight_1 = get_var_or_meta(get_variable_from_port(variables, 1))
+	var weight_2 = get_var_or_meta(get_variable_from_port(variables, 2))
+	var weight_3 = get_var_or_meta(get_variable_from_port(variables, 3))
+	if weight_1 == null or weight_2 == null or weight_3 == null:
+		return
 	var prevalent = max(max(weight_1,weight_2),weight_3)
 	#prevalent will be the stronger weight
 	if prevalent == weight_1:
-		emmit_from_port(1, input_data)
+		emit_signal_from_port(input, signals, 1)
 	elif prevalent == weight_2:
-		emmit_from_port(2, input_data)
+		emit_signal_from_port(input, signals, 2)
 	elif prevalent == weight_3:
-		emmit_from_port(3, input_data)
+		emit_signal_from_port(input, signals, 3)
