@@ -19,8 +19,7 @@ export(String) var initial_state : String = ""
 func _ready():
 	randomize()
 	_load_states(NPC_File)
-	yield(get_tree().create_timer(3), "timeout")
-	print("Ready!")
+	yield(get_tree().create_timer(1), "timeout")
 	emit_signal("on_ready", null)
 	
 
