@@ -244,6 +244,10 @@ config/icon="res://icon.png"
 
 Nodes="*res://addons/joyeux_npc_editor/src/Core/Nodes.gd"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "joyeux_dialog_system", "joyeux_npc_editor" )
+
 [input]
 
 control={

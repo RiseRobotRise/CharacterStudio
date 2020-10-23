@@ -49,4 +49,5 @@ func _on_FileDialog_popup_hide():
 
 
 func _on_Apply_pressed():
+	print(Nodes.behavior_paths)
 	Nodes.save_custom_paths()
