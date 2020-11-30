@@ -236,7 +236,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Joyeuse - Character Studio"
+config/name="Character Studio"
 run/main_scene="res://addons/joyeux_npc_editor/src/interface/NPCEditorSuite.tscn"
 config/icon="res://icon.png"
 
