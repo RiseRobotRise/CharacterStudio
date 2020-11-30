@@ -147,7 +147,7 @@ _global_script_classes=[ {
 "base": "NPCBase",
 "class": "JxNPC",
 "language": "GDScript",
-"path": "res://joyeuse/ai/JxNPC.gd"
+"path": "res://addons/joyeux_npc_editor/src/NPCs/JxNPC.gd"
 }, {
 "base": "NPCBase",
 "class": "MwNPC",

@@ -9,13 +9,10 @@ var CLASS_CHARACTER =  {
 	"_color" : Color(.5,.5,.1,1),
 	"_object_type" : "Character",
 	"_variables" : {
-		"character_name" : TYPE_STRING,
+		"team" : TYPE_INT,
 		"translation" : TYPE_VECTOR3,
-		"pants_color" : TYPE_COLOR,
-		"shirt_color" : TYPE_COLOR,
-		"hair_color" : TYPE_COLOR,
-		"skin_color" : TYPE_COLOR,
-		"shoes_color" : TYPE_COLOR
+		"health" : TYPE_REAL,
+		"shield" : TYPE_REAL,
 		}
 	}
 
@@ -37,12 +34,23 @@ var CLASS_WORKSTATION = {
 #_s_ prefix indicates the label would be replaced with a special component
 #This prefix only works in the input label.
 var _functions = {
-	"property_check" : {
+	"character_property_check" : {
 		"_category" : "inhibitors",
 		"_code" : "FuncRef?", #This hasn't been implemented yet
 		"_input_ports" : [
-			{"_label_title":"Object input", "_type" : TYPE_OBJECT},
+			{"_label_title":"Character", "_type" : "CLASS_CHARACTER"},
 			{"_label_title":"_s_prop_dropdown_CHARACTER", "_type" : TYPE_NIL}
+		],
+		"_output_ports" : [
+			{"_label_title" : "Property content", "_type" : Nodes.TYPE_ANY},
+		]
+	},
+	"workstation_property_check" : {
+		"_category" : "inhibitors",
+		"_code" : "FuncRef?", #This hasn't been implemented yet
+		"_input_ports" : [
+			{"_label_title":"Character", "_type" : "CLASS_WORKSTATION"},
+			{"_label_title":"_s_prop_dropdown_WORKSTATION", "_type" : TYPE_NIL}
 		],
 		"_output_ports" : [
 			{"_label_title" : "Property content", "_type" : Nodes.TYPE_ANY},
@@ -97,6 +105,24 @@ var _functions = {
 		"_category" : "actions",
 		"_input_ports" : [
 			{"_label_title":"Objective position","_type":TYPE_VECTOR3},
+			],
+		"_output_ports" : [
+			{"_label_title":"","_type":TYPE_NIL},
+			]
+	},
+	"shoot_principal" : {
+		"_category" : "actions",
+		"_input_ports" : [
+			{"_label_title":"Towards","_type":TYPE_VECTOR3},
+			],
+		"_output_ports" : [
+			{"_label_title":"","_type":TYPE_NIL},
+			]
+	},
+	"shoot_secondary" : {
+		"_category" : "actions",
+		"_input_ports" : [
+			{"_label_title":"Towards","_type":TYPE_VECTOR3},
 			],
 		"_output_ports" : [
 			{"_label_title":"","_type":TYPE_NIL},
@@ -175,8 +201,29 @@ var _stimulus = {
 		"_output_type": Nodes.TYPE_ANY,
 	},
 	#This section is for user designed signals
-	"interacted_by" :{
-		"_output_name": "Interactor",
+	
+	"wounded" :{
+		"_output_name": "Damage",
+		"_output_type": TYPE_REAL,
+	},
+	"radio_pos" :{
+		"_output_name": "Given position",
+		"_output_type": TYPE_VECTOR3,
+	},
+	"sight" :{
+		"_output_name": "Sight info",
+		"_output_type": TYPE_DICTIONARY ,
+	},
+	"character_entered" :{
+		"_output_name": "Character",
+		"_output_type": "CLASS_CHARACTER",
+	},
+	"hear" :{
+		"_output_name": "Hearing info",
+		"_output_type": TYPE_OBJECT,
+	},
+	"radio_object" :{
+		"_output_name": "Object",
 		"_output_type": TYPE_OBJECT,
 	},
 	"stopped_working" :{
