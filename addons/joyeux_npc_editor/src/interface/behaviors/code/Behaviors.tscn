@@ -59,17 +59,17 @@ __meta__ = {
 }
 
 [node name="ViewMenuSplit" type="HSplitContainer" parent="."]
-margin_right = 1016.0
-margin_bottom = 564.0
+margin_right = 1912.0
+margin_bottom = 1044.0
 
 [node name="Container" type="VBoxContainer" parent="ViewMenuSplit"]
 margin_right = 200.0
-margin_bottom = 564.0
+margin_bottom = 1044.0
 rect_min_size = Vector2( 200, 0 )
 
 [node name="Panel" type="PanelContainer" parent="ViewMenuSplit/Container"]
 margin_right = 200.0
-margin_bottom = 146.0
+margin_bottom = 166.0
 size_flags_horizontal = 5
 size_flags_vertical = 5
 
@@ -77,7 +77,7 @@ size_flags_vertical = 5
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 193.0
-margin_bottom = 139.0
+margin_bottom = 159.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 3 )
@@ -90,68 +90,68 @@ margin_bottom = 4.0
 [node name="stimulus" type="MenuButton" parent="ViewMenuSplit/Container/Panel/DropDowns"]
 margin_top = 8.0
 margin_right = 186.0
-margin_bottom = 28.0
+margin_bottom = 33.0
 size_flags_horizontal = 5
 size_flags_vertical = 5
 text = "Stimulus"
 items = [ "hear", null, 0, false, false, 0, 0, null, "", false, "user_input", null, 0, false, false, 1, 0, null, "", false, "see", null, 0, false, false, 2, 0, null, "", false ]
 
 [node name="HS3" type="HSeparator" parent="ViewMenuSplit/Container/Panel/DropDowns"]
-margin_top = 32.0
+margin_top = 37.0
 margin_right = 186.0
-margin_bottom = 36.0
+margin_bottom = 41.0
 
 [node name="inhibitors" type="MenuButton" parent="ViewMenuSplit/Container/Panel/DropDowns"]
-margin_top = 40.0
+margin_top = 45.0
 margin_right = 186.0
-margin_bottom = 60.0
+margin_bottom = 70.0
 size_flags_horizontal = 5
 size_flags_vertical = 5
 text = "Inhibitions"
 items = [ "property_check", null, 0, false, false, 0, 0, null, "", false, "match", null, 0, false, false, 1, 0, null, "", false, "tri_v_decision", null, 0, false, false, 2, 0, null, "", false ]
 
 [node name="HS4" type="HSeparator" parent="ViewMenuSplit/Container/Panel/DropDowns"]
-margin_top = 64.0
+margin_top = 74.0
 margin_right = 186.0
-margin_bottom = 68.0
+margin_bottom = 78.0
 
 [node name="actions" type="MenuButton" parent="ViewMenuSplit/Container/Panel/DropDowns"]
-margin_top = 72.0
+margin_top = 82.0
 margin_right = 186.0
-margin_bottom = 92.0
+margin_bottom = 107.0
 size_flags_horizontal = 5
 size_flags_vertical = 5
 text = "Actions"
 items = [ "set_objective", null, 0, false, false, 0, 0, null, "", false, "trigger_dialog", null, 0, false, false, 1, 0, null, "", false, "play_global_sound", null, 0, false, false, 2, 0, null, "", false, "play_pos_sound", null, 0, false, false, 3, 0, null, "", false, "force_next_state", null, 0, false, false, 4, 0, null, "", false ]
 
 [node name="hs5" type="HSeparator" parent="ViewMenuSplit/Container/Panel/DropDowns"]
-margin_top = 96.0
+margin_top = 111.0
 margin_right = 186.0
-margin_bottom = 100.0
+margin_bottom = 115.0
 
 [node name="misc" type="MenuButton" parent="ViewMenuSplit/Container/Panel/DropDowns"]
-margin_top = 104.0
+margin_top = 119.0
 margin_right = 186.0
-margin_bottom = 124.0
+margin_bottom = 144.0
 size_flags_horizontal = 5
 size_flags_vertical = 5
 text = "Misc"
 items = [ "parallel_trigger", null, 0, false, false, 0, 0, null, "", false ]
 
 [node name="HS1" type="HSeparator" parent="ViewMenuSplit/Container/Panel/DropDowns"]
-margin_top = 128.0
+margin_top = 148.0
 margin_right = 186.0
-margin_bottom = 132.0
+margin_bottom = 152.0
 
 [node name="HSeparator7" type="HSeparator" parent="ViewMenuSplit/Container"]
-margin_top = 150.0
+margin_top = 170.0
 margin_right = 200.0
-margin_bottom = 154.0
+margin_bottom = 174.0
 
 [node name="selection" type="HBoxContainer" parent="ViewMenuSplit/Container"]
-margin_top = 158.0
+margin_top = 178.0
 margin_right = 200.0
-margin_bottom = 172.0
+margin_bottom = 192.0
 
 [node name="VSeparator2" type="VSeparator" parent="ViewMenuSplit/Container/selection"]
 margin_right = 4.0
@@ -183,14 +183,14 @@ margin_right = 200.0
 margin_bottom = 14.0
 
 [node name="HSeparator8" type="HSeparator" parent="ViewMenuSplit/Container"]
-margin_top = 176.0
+margin_top = 196.0
 margin_right = 200.0
-margin_bottom = 180.0
+margin_bottom = 200.0
 
 [node name="type2" type="HBoxContainer" parent="ViewMenuSplit/Container"]
-margin_top = 184.0
+margin_top = 204.0
 margin_right = 200.0
-margin_bottom = 204.0
+margin_bottom = 224.0
 
 [node name="Open" type="Button" parent="ViewMenuSplit/Container/type2"]
 margin_right = 98.0
@@ -208,23 +208,23 @@ size_flags_vertical = 3
 text = "Save"
 
 [node name="Add" type="Button" parent="ViewMenuSplit/Container"]
-margin_top = 208.0
+margin_top = 228.0
 margin_right = 200.0
-margin_bottom = 228.0
+margin_bottom = 248.0
 text = "Add to Tree"
 
 [node name="HSeparator" type="HSeparator" parent="ViewMenuSplit/Container"]
-margin_top = 232.0
+margin_top = 252.0
 margin_right = 200.0
-margin_bottom = 236.0
+margin_bottom = 256.0
 
 [node name="GraphEdit" type="GraphEdit" parent="ViewMenuSplit"]
 margin_left = 212.0
-margin_right = 1016.0
-margin_bottom = 564.0
+margin_right = 1912.0
+margin_bottom = 1044.0
 mouse_default_cursor_shape = 3
 right_disconnects = true
-scroll_offset = Vector2( -804, -480 )
+scroll_offset = Vector2( -184, -116 )
 script = ExtResource( 2 )
 
 [node name="Behaviors" type="PopupMenu" parent="ViewMenuSplit/GraphEdit"]
