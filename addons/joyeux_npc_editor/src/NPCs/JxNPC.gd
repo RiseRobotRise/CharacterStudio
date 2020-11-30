@@ -15,8 +15,8 @@ export(float) var attack_min_range = 10
 export(float) var attack_max_range = 50
 export(float) var health : float = 100
 export(float) var shield : float = 0
-export(Color) var primary_color : Color = Color("white")
-export(Color) var secondary_color : Color = Color("white")
+export(Color) var primary_color : Color = Color.white
+export(Color) var secondary_color : Color = Color.white
 export(String) var character_name : String = ""
 #######################
 

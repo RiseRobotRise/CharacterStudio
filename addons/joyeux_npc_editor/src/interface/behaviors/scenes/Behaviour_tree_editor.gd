@@ -62,8 +62,6 @@ func _on_Add_pressed() -> void:
 		instanced = instanced.instance()
 	instanced.name = instanced.title 
 	$ViewMenuSplit/GraphEdit.add_child(instanced)
-	if instanced.owner == null:
-		instanced.queue_free()
 	idx+=1
 	
 

@@ -183,6 +183,7 @@ __meta__ = {
 [connection signal="pressed" from="ViewMenuSplit/Container/selection/Refresh" to="." method="_on_Refresh_pressed"]
 [connection signal="pressed" from="ViewMenuSplit/Container/Add" to="." method="_on_Add_pressed"]
 [connection signal="connection_request" from="ViewMenuSplit/StatesGraphEdit" to="ViewMenuSplit/StatesGraphEdit" method="_on_StatesGraphEdit_connection_request"]
+[connection signal="delete_nodes_request" from="ViewMenuSplit/StatesGraphEdit" to="ViewMenuSplit/StatesGraphEdit" method="_on_StatesGraphEdit_delete_nodes_request"]
 [connection signal="disconnection_request" from="ViewMenuSplit/StatesGraphEdit" to="ViewMenuSplit/StatesGraphEdit" method="_on_StatesGraphEdit_disconnection_request"]
 [connection signal="popup_request" from="ViewMenuSplit/StatesGraphEdit" to="ViewMenuSplit/StatesGraphEdit" method="_on_StatesGraphEdit_popup_request"]
 [connection signal="id_pressed" from="ViewMenuSplit/StatesGraphEdit/States" to="ViewMenuSplit/StatesGraphEdit" method="_on_States_id_pressed"]

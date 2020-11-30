@@ -1,4 +1,3 @@
-tool
 extends HBoxContainer
 class_name DoubleLabel
 

@@ -294,6 +294,7 @@ Start_path = ""
 [connection signal="pressed" from="ViewMenuSplit/Container/type2/Save" to="ViewMenuSplit/GraphEdit" method="_on_save_pressed"]
 [connection signal="pressed" from="ViewMenuSplit/Container/Add" to="." method="_on_Add_pressed"]
 [connection signal="connection_request" from="ViewMenuSplit/GraphEdit" to="ViewMenuSplit/GraphEdit" method="_on_GraphEdit_connection_request"]
+[connection signal="delete_nodes_request" from="ViewMenuSplit/GraphEdit" to="ViewMenuSplit/GraphEdit" method="_on_GraphEdit_delete_nodes_request"]
 [connection signal="disconnection_request" from="ViewMenuSplit/GraphEdit" to="ViewMenuSplit/GraphEdit" method="_on_GraphEdit_disconnection_request"]
 [connection signal="popup_request" from="ViewMenuSplit/GraphEdit" to="ViewMenuSplit/GraphEdit" method="_on_GraphEdit_popup_request"]
 [connection signal="id_pressed" from="ViewMenuSplit/GraphEdit/Behaviors" to="ViewMenuSplit/GraphEdit/Behaviors" method="_on_Behaviors_id_pressed"]
