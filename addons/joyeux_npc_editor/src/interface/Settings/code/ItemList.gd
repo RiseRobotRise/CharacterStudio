@@ -20,7 +20,7 @@ func add_item(path : String) -> void:
 	content.editable = false
 	content.text = path
 	button.text = "-"
-	title.text = "Path: "
+	title.text = "Path:"
 	content.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	cont.set_meta("name", path)
 	cont.name = Nodes.filter_node_name(path)

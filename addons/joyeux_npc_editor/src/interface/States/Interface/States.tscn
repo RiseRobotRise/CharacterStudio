@@ -22,12 +22,12 @@ node_path = NodePath("../TemplateNPC")
 BehaviorsPath = "res://addons/joyeux_npc_editor/src/NPCs/DefaultBehaviors"
 
 [node name="ViewMenuSplit" type="HSplitContainer" parent="."]
-margin_right = 1912.0
-margin_bottom = 1044.0
+margin_right = 1016.0
+margin_bottom = 564.0
 
 [node name="Container" type="VBoxContainer" parent="ViewMenuSplit"]
 margin_right = 280.0
-margin_bottom = 1044.0
+margin_bottom = 564.0
 rect_min_size = Vector2( 280, 0 )
 
 [node name="type2" type="HBoxContainer" parent="ViewMenuSplit/Container"]
@@ -63,7 +63,7 @@ margin_right = 280.0
 margin_bottom = 120.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-items = [ "BasicWorkSeparator", null, false, "Say_test", null, false, "simple", null, false, "Use", null, false, "WorkingBusy", null, false, "test", null, false, "test2", null, false ]
+items = [ "BasicWorkSeparator", null, false, "Say_test", null, false, "simple", null, false, "Use", null, false, "WorkingBusy", null, false ]
 
 [node name="selection" type="HBoxContainer" parent="ViewMenuSplit/Container"]
 margin_top = 148.0
@@ -82,7 +82,7 @@ margin_top = 3.0
 margin_right = 250.0
 margin_bottom = 17.0
 size_flags_horizontal = 3
-text = " None"
+text = "None"
 align = 1
 
 [node name="Refresh" type="Button" parent="ViewMenuSplit/Container/selection"]
@@ -108,7 +108,7 @@ margin_bottom = 200.0
 [node name="InspectorGadgetScrollContainer" type="ScrollContainer" parent="ViewMenuSplit/Container"]
 margin_top = 204.0
 margin_right = 280.0
-margin_bottom = 1036.0
+margin_bottom = 556.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -117,7 +117,7 @@ __meta__ = {
 
 [node name="InspectorGadget" type="MarginContainer" parent="ViewMenuSplit/Container/InspectorGadgetScrollContainer"]
 margin_right = 280.0
-margin_bottom = 832.0
+margin_bottom = 352.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )
@@ -143,16 +143,16 @@ container_type_hints = {
 filter_built_in_properties = true
 
 [node name="HSeparator2" type="HSeparator" parent="ViewMenuSplit/Container"]
-margin_top = 1040.0
+margin_top = 560.0
 margin_right = 280.0
-margin_bottom = 1044.0
+margin_bottom = 564.0
 
 [node name="StatesGraphEdit" type="GraphEdit" parent="ViewMenuSplit"]
 margin_left = 292.0
-margin_right = 1912.0
-margin_bottom = 1044.0
+margin_right = 1016.0
+margin_bottom = 564.0
 right_disconnects = true
-scroll_offset = Vector2( -184, -116 )
+scroll_offset = Vector2( -724, -480 )
 script = ExtResource( 3 )
 
 [node name="States" type="PopupMenu" parent="ViewMenuSplit/StatesGraphEdit"]
@@ -160,7 +160,7 @@ margin_left = 433.528
 margin_top = 153.245
 margin_right = 515.528
 margin_bottom = 241.245
-items = [ "BasicWorkSeparator", null, 0, false, false, 0, 0, null, "", false, "Say_test", null, 0, false, false, 1, 0, null, "", false, "simple", null, 0, false, false, 2, 0, null, "", false, "Use", null, 0, false, false, 3, 0, null, "", false, "WorkingBusy", null, 0, false, false, 4, 0, null, "", false, "test", null, 0, false, false, 5, 0, null, "", false, "test2", null, 0, false, false, 6, 0, null, "", false ]
+items = [ "BasicWorkSeparator", null, 0, false, false, 0, 0, null, "", false, "Say_test", null, 0, false, false, 1, 0, null, "", false, "simple", null, 0, false, false, 2, 0, null, "", false, "Use", null, 0, false, false, 3, 0, null, "", false, "WorkingBusy", null, 0, false, false, 4, 0, null, "", false ]
 
 [node name="Save" type="FileDialog" parent="ViewMenuSplit/StatesGraphEdit"]
 visible = true

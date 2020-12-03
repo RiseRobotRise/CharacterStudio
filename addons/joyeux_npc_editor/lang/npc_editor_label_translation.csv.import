@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+
+[deps]
+
+files=[ "res://addons/joyeux_npc_editor/lang/npc_editor_label_translation.en.translation", "res://addons/joyeux_npc_editor/lang/npc_editor_label_translation.es.translation" ]
+
+source_file="res://addons/joyeux_npc_editor/lang/npc_editor_label_translation.csv"
+dest_files=[ "res://addons/joyeux_npc_editor/lang/npc_editor_label_translation.en.translation", "res://addons/joyeux_npc_editor/lang/npc_editor_label_translation.es.translation" ]
+
+[params]
+
+compress=false
+delimiter=0
