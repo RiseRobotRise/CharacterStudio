@@ -75,7 +75,7 @@ func _start_machine():
 			current_state = state 
 			_change_behavior(behaviors.get(current_state))
 			return
-	print_debug("Error: This states file has no start state defined")
+	push_warning("Warning: This states file has no start state defined")
 
 func _next_state(force : bool = false, condition = null):
 	#Sets the next state in the machine
@@ -109,8 +109,16 @@ func _get_variable_from_port(variables : Array, port : int):
 		return
 	return variables[port]
 
-
+func get_self_property(input, signals, variables):
+	var var_name =  _get_variable_from_port(variables, 1)
+	var variable = _get_var_or_meta(var_name)
 		
+func set_self_property(input, signals, variables):
+	var prop_name = _get_variable_from_port(variables, 1)
+	set(prop_name, input)
+	if get(prop_name) == null:
+		set_meta(prop_name, input)
+
 func _change_behavior(behavior : ConfigFile):
 	#loads the behavior provided
 	for nodes in behavior.get_section_keys("node_signals"):
@@ -145,8 +153,8 @@ func _define_connection(behavior : ConfigFile, from : String, from_port : int , 
 		print("connection defined!, signal = ", signal_name," function is ", function)
 		connect(signal_name, self, function, connection_bindings) 
 	else:
-		print_debug("Warning: Either a signal (", signal_name
-			, ") or a method (", function, ")is missing from the NPC")
+		push_error(str("Error: Either a signal (", signal_name
+			, ") or a method (", function, ")is missing from the NPC"))
 		
 func _undefine_connection(behavior : ConfigFile):
 	for connection in behavior.get_value("ai_config", "connections", []):
