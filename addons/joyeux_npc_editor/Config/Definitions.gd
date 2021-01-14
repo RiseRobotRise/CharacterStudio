@@ -34,6 +34,36 @@ var CLASS_WORKSTATION = {
 #_s_ prefix indicates the label would be replaced with a special component
 #This prefix only works in the input label.
 var _functions = {
+	"set_variable" : {
+		"_category" : "misc",
+		"_input_ports" : [
+			{"_label_title":"Value","_type":Nodes.TYPE_ANY},
+			{"_label_title":"_s_text_edit","_type":TYPE_NIL},
+			],
+		"_output_ports" : [
+			{"_label_title":"","_type":TYPE_NIL},
+			]
+	},
+	"get_variable" : {
+		"_category" : "misc",
+		"_input_ports" : [
+			{"_label_title":"","_type":TYPE_NIL},
+			{"_label_title":"_s_text_edit","_type":TYPE_NIL},
+			],
+		"_output_ports" : [
+			{"_label_title":"Value","_type":Nodes.TYPE_ANY},
+			]
+	},  
+	"swap_input_for_variable" : {
+		"_category" : "misc",
+		"_input_ports" : [
+			{"_label_title":"Trigger","_type":Nodes.TYPE_ANY},
+			{"_label_title":"_s_text_edit","_type":TYPE_NIL},
+			],
+		"_output_ports" : [
+			{"_label_title":"Value","_type":Nodes.TYPE_ANY},
+			]
+	},  
 	"character_property_check" : {
 		"_category" : "inhibitors",
 		"_code" : "FuncRef?", #This hasn't been implemented yet
