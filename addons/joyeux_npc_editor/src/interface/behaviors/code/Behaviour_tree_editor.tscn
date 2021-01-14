@@ -2,7 +2,7 @@
 
 [ext_resource path="res://addons/joyeux_npc_editor/src/interface/States/Interface/States.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/joyeux_npc_editor/src/interface/behaviors/code/Behaviors.tscn" type="PackedScene" id=2]
-[ext_resource path="res://addons/joyeux_npc_editor/src/NPCs/MwNPC.gd" type="Script" id=3]
+[ext_resource path="res://addons/joyeux_npc_editor/src/NPCs/JxNPC.gd" type="Script" id=3]
 [ext_resource path="res://addons/joyeux_npc_editor/src/interface/Settings/code/Settings.gd" type="Script" id=4]
 [ext_resource path="res://addons/joyeux_npc_editor/src/interface/Settings/code/ItemList.gd" type="Script" id=5]
 [ext_resource path="res://addons/joyeux_npc_editor/src/interface/Settings/code/FileDialog.gd" type="Script" id=6]
@@ -18,12 +18,12 @@ __meta__ = {
 }
 
 [node name="States" parent="." instance=ExtResource( 1 )]
-visible = false
 
 [node name="Behaviors" parent="." instance=ExtResource( 2 )]
 visible = false
 
 [node name="Settings" type="VBoxContainer" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
