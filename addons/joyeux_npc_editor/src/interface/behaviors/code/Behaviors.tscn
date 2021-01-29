@@ -59,17 +59,22 @@ __meta__ = {
 }
 
 [node name="ViewMenuSplit" type="HSplitContainer" parent="."]
-margin_right = 1912.0
-margin_bottom = 1044.0
+margin_right = 1016.0
+margin_bottom = 564.0
 
 [node name="Container" type="VBoxContainer" parent="ViewMenuSplit"]
 margin_right = 200.0
-margin_bottom = 1044.0
+margin_bottom = 564.0
 rect_min_size = Vector2( 200, 0 )
 
-[node name="Panel" type="PanelContainer" parent="ViewMenuSplit/Container"]
+[node name="HSeparator9" type="HSeparator" parent="ViewMenuSplit/Container"]
 margin_right = 200.0
-margin_bottom = 166.0
+margin_bottom = 4.0
+
+[node name="Panel" type="PanelContainer" parent="ViewMenuSplit/Container"]
+margin_top = 8.0
+margin_right = 200.0
+margin_bottom = 174.0
 size_flags_horizontal = 5
 size_flags_vertical = 5
 
@@ -94,7 +99,7 @@ margin_bottom = 33.0
 size_flags_horizontal = 5
 size_flags_vertical = 5
 text = "Stimulus"
-items = [ "hear", null, 0, false, false, 0, 0, null, "", false, "user_input", null, 0, false, false, 1, 0, null, "", false, "see", null, 0, false, false, 2, 0, null, "", false ]
+items = [ "on_ready", null, 0, false, false, 0, 0, null, "", false, "tree_exiting", null, 0, false, false, 1, 0, null, "", false, "visibility_changed", null, 0, false, false, 2, 0, null, "", false, "wounded", null, 0, false, false, 3, 0, null, "", false, "radio_pos", null, 0, false, false, 4, 0, null, "", false, "sight", null, 0, false, false, 5, 0, null, "", false, "character_entered", null, 0, false, false, 6, 0, null, "", false, "hear", null, 0, false, false, 7, 0, null, "", false, "radio_object", null, 0, false, false, 8, 0, null, "", false, "stopped_working", null, 0, false, false, 9, 0, null, "", false, "workstation_assigned", null, 0, false, false, 10, 0, null, "", false, "request_rejected", null, 0, false, false, 11, 0, null, "", false ]
 
 [node name="HS3" type="HSeparator" parent="ViewMenuSplit/Container/Panel/DropDowns"]
 margin_top = 37.0
@@ -108,7 +113,7 @@ margin_bottom = 70.0
 size_flags_horizontal = 5
 size_flags_vertical = 5
 text = "Inhibitions"
-items = [ "property_check", null, 0, false, false, 0, 0, null, "", false, "match", null, 0, false, false, 1, 0, null, "", false, "tri_v_decision", null, 0, false, false, 2, 0, null, "", false ]
+items = [ "character_property_check", null, 0, false, false, 0, 0, null, "", false, "workstation_property_check", null, 0, false, false, 1, 0, null, "", false, "match", null, 0, false, false, 2, 0, null, "", false, "delay", null, 0, false, false, 3, 0, null, "", false, "tri_v_decision", null, 0, false, false, 4, 0, null, "", false ]
 
 [node name="HS4" type="HSeparator" parent="ViewMenuSplit/Container/Panel/DropDowns"]
 margin_top = 74.0
@@ -122,7 +127,7 @@ margin_bottom = 107.0
 size_flags_horizontal = 5
 size_flags_vertical = 5
 text = "Actions"
-items = [ "set_objective", null, 0, false, false, 0, 0, null, "", false, "trigger_dialog", null, 0, false, false, 1, 0, null, "", false, "play_global_sound", null, 0, false, false, 2, 0, null, "", false, "play_pos_sound", null, 0, false, false, 3, 0, null, "", false, "force_next_state", null, 0, false, false, 4, 0, null, "", false ]
+items = [ "set_objective", null, 0, false, false, 0, 0, null, "", false, "shoot_principal", null, 0, false, false, 1, 0, null, "", false, "shoot_secondary", null, 0, false, false, 2, 0, null, "", false, "trigger_dialog", null, 0, false, false, 3, 0, null, "", false, "find_workstation", null, 0, false, false, 4, 0, null, "", false, "request_workstation", null, 0, false, false, 5, 0, null, "", false, "play_global_sound", null, 0, false, false, 6, 0, null, "", false, "play_pos_sound", null, 0, false, false, 7, 0, null, "", false, "force_next_state", null, 0, false, false, 8, 0, null, "", false ]
 
 [node name="hs5" type="HSeparator" parent="ViewMenuSplit/Container/Panel/DropDowns"]
 margin_top = 111.0
@@ -136,7 +141,7 @@ margin_bottom = 144.0
 size_flags_horizontal = 5
 size_flags_vertical = 5
 text = "Misc"
-items = [ "parallel_trigger", null, 0, false, false, 0, 0, null, "", false ]
+items = [ "set_variable", null, 0, false, false, 0, 0, null, "", false, "get_variable", null, 0, false, false, 1, 0, null, "", false, "swap_input_for_variable", null, 0, false, false, 2, 0, null, "", false, "parallel_trigger", null, 0, false, false, 3, 0, null, "", false ]
 
 [node name="HS1" type="HSeparator" parent="ViewMenuSplit/Container/Panel/DropDowns"]
 margin_top = 148.0
@@ -144,14 +149,14 @@ margin_right = 186.0
 margin_bottom = 152.0
 
 [node name="HSeparator7" type="HSeparator" parent="ViewMenuSplit/Container"]
-margin_top = 170.0
-margin_right = 200.0
-margin_bottom = 174.0
-
-[node name="selection" type="HBoxContainer" parent="ViewMenuSplit/Container"]
 margin_top = 178.0
 margin_right = 200.0
-margin_bottom = 192.0
+margin_bottom = 182.0
+
+[node name="selection" type="HBoxContainer" parent="ViewMenuSplit/Container"]
+margin_top = 186.0
+margin_right = 200.0
+margin_bottom = 200.0
 
 [node name="VSeparator2" type="VSeparator" parent="ViewMenuSplit/Container/selection"]
 margin_right = 4.0
@@ -183,14 +188,14 @@ margin_right = 200.0
 margin_bottom = 14.0
 
 [node name="HSeparator8" type="HSeparator" parent="ViewMenuSplit/Container"]
-margin_top = 196.0
-margin_right = 200.0
-margin_bottom = 200.0
-
-[node name="type2" type="HBoxContainer" parent="ViewMenuSplit/Container"]
 margin_top = 204.0
 margin_right = 200.0
-margin_bottom = 224.0
+margin_bottom = 208.0
+
+[node name="type2" type="HBoxContainer" parent="ViewMenuSplit/Container"]
+margin_top = 212.0
+margin_right = 200.0
+margin_bottom = 232.0
 
 [node name="Open" type="Button" parent="ViewMenuSplit/Container/type2"]
 margin_right = 98.0
@@ -208,23 +213,23 @@ size_flags_vertical = 3
 text = "Save"
 
 [node name="Add" type="Button" parent="ViewMenuSplit/Container"]
-margin_top = 228.0
+margin_top = 236.0
 margin_right = 200.0
-margin_bottom = 248.0
+margin_bottom = 256.0
 text = "Add to Tree"
 
 [node name="HSeparator" type="HSeparator" parent="ViewMenuSplit/Container"]
-margin_top = 252.0
+margin_top = 260.0
 margin_right = 200.0
-margin_bottom = 256.0
+margin_bottom = 264.0
 
 [node name="GraphEdit" type="GraphEdit" parent="ViewMenuSplit"]
 margin_left = 212.0
-margin_right = 1912.0
-margin_bottom = 1044.0
+margin_right = 1016.0
+margin_bottom = 564.0
 mouse_default_cursor_shape = 3
 right_disconnects = true
-scroll_offset = Vector2( -184, -116 )
+scroll_offset = Vector2( -790, -480 )
 script = ExtResource( 2 )
 
 [node name="Behaviors" type="PopupMenu" parent="ViewMenuSplit/GraphEdit"]
@@ -241,7 +246,7 @@ __meta__ = {
 [node name="stimulus" type="PopupMenu" parent="ViewMenuSplit/GraphEdit/Behaviors"]
 margin_right = 82.0
 margin_bottom = 88.0
-items = [ "hear", null, 0, false, false, 0, 0, null, "", false, "user_input", null, 0, false, false, 1, 0, null, "", false, "see", null, 0, false, false, 2, 0, null, "", false ]
+items = [ "on_ready", null, 0, false, false, 0, 0, null, "", false, "tree_exiting", null, 0, false, false, 1, 0, null, "", false, "visibility_changed", null, 0, false, false, 2, 0, null, "", false, "wounded", null, 0, false, false, 3, 0, null, "", false, "radio_pos", null, 0, false, false, 4, 0, null, "", false, "sight", null, 0, false, false, 5, 0, null, "", false, "character_entered", null, 0, false, false, 6, 0, null, "", false, "hear", null, 0, false, false, 7, 0, null, "", false, "radio_object", null, 0, false, false, 8, 0, null, "", false, "stopped_working", null, 0, false, false, 9, 0, null, "", false, "workstation_assigned", null, 0, false, false, 10, 0, null, "", false, "request_rejected", null, 0, false, false, 11, 0, null, "", false ]
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -249,12 +254,12 @@ __meta__ = {
 [node name="inhibitors" type="PopupMenu" parent="ViewMenuSplit/GraphEdit/Behaviors"]
 margin_right = 82.0
 margin_bottom = 88.0002
-items = [ "property_check", null, 0, false, false, 0, 0, null, "", false, "match", null, 0, false, false, 1, 0, null, "", false, "tri_v_decision", null, 0, false, false, 2, 0, null, "", false ]
+items = [ "character_property_check", null, 0, false, false, 0, 0, null, "", false, "workstation_property_check", null, 0, false, false, 1, 0, null, "", false, "match", null, 0, false, false, 2, 0, null, "", false, "delay", null, 0, false, false, 3, 0, null, "", false, "tri_v_decision", null, 0, false, false, 4, 0, null, "", false ]
 
 [node name="actions" type="PopupMenu" parent="ViewMenuSplit/GraphEdit/Behaviors"]
 margin_right = 82.0
 margin_bottom = 88.0002
-items = [ "set_objective", null, 0, false, false, 0, 0, null, "", false, "trigger_dialog", null, 0, false, false, 1, 0, null, "", false, "play_global_sound", null, 0, false, false, 2, 0, null, "", false, "play_pos_sound", null, 0, false, false, 3, 0, null, "", false, "force_next_state", null, 0, false, false, 4, 0, null, "", false ]
+items = [ "set_objective", null, 0, false, false, 0, 0, null, "", false, "shoot_principal", null, 0, false, false, 1, 0, null, "", false, "shoot_secondary", null, 0, false, false, 2, 0, null, "", false, "trigger_dialog", null, 0, false, false, 3, 0, null, "", false, "find_workstation", null, 0, false, false, 4, 0, null, "", false, "request_workstation", null, 0, false, false, 5, 0, null, "", false, "play_global_sound", null, 0, false, false, 6, 0, null, "", false, "play_pos_sound", null, 0, false, false, 7, 0, null, "", false, "force_next_state", null, 0, false, false, 8, 0, null, "", false ]
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -262,7 +267,7 @@ __meta__ = {
 [node name="misc" type="PopupMenu" parent="ViewMenuSplit/GraphEdit/Behaviors"]
 margin_right = 82.0
 margin_bottom = 88.0002
-items = [ "parallel_trigger", null, 0, false, false, 0, 0, null, "", false ]
+items = [ "set_variable", null, 0, false, false, 0, 0, null, "", false, "get_variable", null, 0, false, false, 1, 0, null, "", false, "swap_input_for_variable", null, 0, false, false, 2, 0, null, "", false, "parallel_trigger", null, 0, false, false, 3, 0, null, "", false ]
 __meta__ = {
 "_edit_use_anchors_": false
 }
