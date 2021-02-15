@@ -1,7 +1,7 @@
 tool
 extends EditorPlugin
 
-const main_panel = preload("res://addons/joyeux_npc_editor/src/interface/NPCEditorSuite.tscn")
+const main_panel = preload("res://addons/joyeux_npc_editor/src/interface/Addon_UI.tscn")
 const lang = [
 	"res://addons/joyeux_npc_editor/lang/npc_editor_label_translation.en.translation",
 	"res://addons/joyeux_npc_editor/lang/npc_editor_label_translation.es.translation"

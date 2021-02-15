@@ -88,6 +88,7 @@ func play_3d_sound(input, signals, variables):
 	sound_player.connect("finished", sound_player, "queue_free")
 	actor.add_child(sound_player)
 	sound_player.play()
+	
 """
 func trigger_dialog(input, signals, variables):
 	var path = _get_variable_from_port(variables, 0)
@@ -97,6 +98,7 @@ func trigger_dialog(input, signals, variables):
 	actor.add_child(dialog_display)
 	dialog_display.connect("finished", dialog_display, "queue_free")
 """
+
 func request_workstation(input, signals, variables):
 	if worker.current_station != null:
 		return

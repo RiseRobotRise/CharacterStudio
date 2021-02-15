@@ -16,17 +16,17 @@ __meta__ = {
 [node name="VBC" type="VBoxContainer" parent="."]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 1913.0
-margin_bottom = 1073.0
+margin_right = 1017.0
+margin_bottom = 593.0
 
 [node name="PanelContainer" type="PanelContainer" parent="VBC"]
-margin_right = 1906.0
+margin_right = 1010.0
 margin_bottom = 38.0
 
 [node name="HBC" type="HBoxContainer" parent="VBC/PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 1899.0
+margin_right = 1003.0
 margin_bottom = 31.0
 alignment = 1
 __meta__ = {
@@ -34,22 +34,22 @@ __meta__ = {
 }
 
 [node name="File" type="MenuButton" parent="VBC/PanelContainer/HBC"]
-margin_right = 51.0
+margin_right = 35.0
 margin_bottom = 24.0
-text = "  File  "
+text = "File"
 items = [ "Open", null, 0, false, false, 0, 0, null, "", false, "Save", null, 0, false, false, 1, 0, null, "", false ]
 
 [node name="VS" type="VSeparator" parent="VBC/PanelContainer/HBC"]
-margin_left = 55.0
-margin_right = 59.0
+margin_left = 39.0
+margin_right = 43.0
 margin_bottom = 24.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBC" type="HBoxContainer" parent="VBC/PanelContainer/HBC"]
-margin_left = 63.0
-margin_right = 1892.0
+margin_left = 47.0
+margin_right = 996.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 alignment = 2
@@ -59,13 +59,13 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="VBC/PanelContainer/HBC/HBC"]
 margin_top = 5.0
-margin_right = 110.0
+margin_right = 106.0
 margin_bottom = 19.0
-text = "Character Name: "
+text = "Character Name:"
 
 [node name="CharName" type="LineEdit" parent="VBC/PanelContainer/HBC/HBC"]
-margin_left = 114.0
-margin_right = 1829.0
+margin_left = 110.0
+margin_right = 949.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 __meta__ = {
@@ -74,8 +74,8 @@ __meta__ = {
 
 [node name="Graph" type="GraphEdit" parent="VBC"]
 margin_top = 42.0
-margin_right = 1906.0
-margin_bottom = 1066.0
+margin_right = 1010.0
+margin_bottom = 586.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 right_disconnects = true
@@ -90,10 +90,13 @@ __meta__ = {
 }
 
 [node name="Start" type="GraphNode" parent="VBC/Graph"]
-margin_right = 140.0
-margin_bottom = 78.0
+margin_left = 90.0
+margin_top = 70.0
+margin_right = 230.0
+margin_bottom = 148.0
 mouse_filter = 1
 title = "Dialog Start"
+offset = Vector2( 90, 70 )
 slot/0/left_enabled = false
 slot/0/left_type = 0
 slot/0/left_color = Color( 1, 1, 1, 1 )
@@ -104,15 +107,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="VBC/Graph/Start"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBC/Graph/Start"]
 margin_left = 16.0
 margin_top = 24.0
 margin_right = 124.0
-margin_bottom = 72.0
-text = "
-Next Dialog
-"
+margin_bottom = 74.0
+
+[node name="Control2" type="Control" parent="VBC/Graph/Start/VBoxContainer"]
+margin_right = 108.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 0, 14 )
+
+[node name="Label" type="Label" parent="VBC/Graph/Start/VBoxContainer"]
+margin_top = 18.0
+margin_right = 108.0
+margin_bottom = 32.0
+text = "Next Dialog"
 align = 2
+
+[node name="Control" type="Control" parent="VBC/Graph/Start/VBoxContainer"]
+margin_top = 36.0
+margin_right = 108.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 14 )
 
 [node name="Dialogs" type="Control" parent="VBC/Graph"]
 margin_left = 7.0

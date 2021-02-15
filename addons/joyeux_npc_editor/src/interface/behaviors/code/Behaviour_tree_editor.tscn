@@ -18,7 +18,7 @@ __meta__ = {
 
 [node name="States" parent="." instance=ExtResource( 1 )]
 
-[node name="Behaviors" parent="." instance=ExtResource( 2 )]
+[node name="Behaviours" parent="." instance=ExtResource( 2 )]
 visible = false
 
 [node name="TemplateNPC" type="Node" parent="."]

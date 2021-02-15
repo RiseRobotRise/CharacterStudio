@@ -1,16 +1,35 @@
 keys,en,es
 States,States,Estados
-Behaviors,Behaviors,Comportamientos
+Stimulus,Stimulus,Estímulos
+Inhibitions,Inhibitions,Inhibiciones
+Actions,Actions,Acciones
+stimulus,stimulus,estímulos
+inhibitions,inhibitions,inhibiciones
+actions,actions,acciones
+Misc,Misc,Misc
+Behaviours,Behaviours,Comportamientos
 Settings,Settings,Configuración
 Open,Open,Abrir
 Save,Save,Guardar
 Add to Tree,Add to Tree,Añadir al árbol
 Information,Information,Información
-Current in project default Behaviors Location:,Current in project default Behaviors Location:,Localización actual de los Comportamientos en el proyecto:
-Current in user default Behaviors Location:,Current in user default Behaviors Location:,Localización actual de los Comportamientos en el usuario:
+Current in project default Behaviours Location:,Current in project default Behaviours Location:,Localización actual de los Comportamientos en el proyecto:
+Current in user default Behaviours Location:,Current in user default Behaviours Location:,Localización actual de los Comportamientos en el usuario:
 User defined paths,User defined paths,Rutas establecidas por el usuario
 Path:,Path:,Ruta: 
 Apply,Apply,Aplicar
 Selected:,Selected:,Seleccionado:
 None,None,Ninguno
 NPC Editor,NPC Editor,Editor de PNJ
+Behavioural,Behavioural,Conductual
+Dialogs,Dialogs,Diálogos
+File,File,Archivo
+Preview,Preview,Previsualizar
+Packaging,Packaging,Empaquetado
+Character Name:,Character Name:,Nombre del personaje:
+Dialog Start,Dialog Start,Inicio del diálogo
+Dialog,Dialog,Diálogo
+Choice,Choice,Elección
+Text Input,Text Input,Entrada de texto
+Next Dialog,Next Dialog,Diálogo siguiente
+Please name your character first,Please name your character first,Por favor nombra a tu personaje primero

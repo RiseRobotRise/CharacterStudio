@@ -13,6 +13,9 @@ margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Control2" type="Control" parent="."]
 margin_right = 1016.0
@@ -57,12 +60,12 @@ size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="HBoxContainer/Locations/Project Location"]
 margin_top = 5.0
-margin_right = 289.0
+margin_right = 297.0
 margin_bottom = 19.0
-text = "Current in project default Behaviors Location:"
+text = "Current in project default Behaviours Location:"
 
 [node name="Path" type="LineEdit" parent="HBoxContainer/Locations/Project Location"]
-margin_left = 293.0
+margin_left = 301.0
 margin_right = 926.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
@@ -91,12 +94,12 @@ size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="HBoxContainer/Locations/User Location"]
 margin_top = 5.0
-margin_right = 272.0
+margin_right = 280.0
 margin_bottom = 19.0
-text = "Current in user default Behaviors Location:"
+text = "Current in user default Behaviours Location:"
 
 [node name="Path" type="LineEdit" parent="HBoxContainer/Locations/User Location"]
-margin_left = 276.0
+margin_left = 284.0
 margin_right = 926.0
 margin_bottom = 24.0
 size_flags_horizontal = 3

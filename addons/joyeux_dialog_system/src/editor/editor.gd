@@ -31,7 +31,7 @@ func _on_FileDialog_file_selected(path):
 			
 
 func warn(what : String):
-	Warn.dialog_text = what
+	Warn.dialog_text = TranslationServer.translate(what)
 	Warn.popup_centered()
 
 
