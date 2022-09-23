@@ -103,7 +103,7 @@ margin_left = 284.0
 margin_right = 926.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
-text = "C:/Users/biodude/AppData/Roaming/Godot/app_userdata/Character Studio/behaviors"
+text = "C:/Users/byksp/AppData/Roaming/Godot/app_userdata/Character Studio/behaviors"
 editable = false
 
 [node name="UserLoc" type="Button" parent="HBoxContainer/Locations/User Location"]
@@ -208,9 +208,6 @@ margin_bottom = -355.0
 window_title = "Abrir un Directorio"
 mode = 2
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="Dialogs"]
 visible = true
@@ -224,6 +221,7 @@ dialog_autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="HBoxContainer/Locations/Project Location/ProjLoc" to="." method="_on_ProjLoc_pressed"]
 [connection signal="pressed" from="HBoxContainer/Locations/User Location/UserLoc" to="." method="_on_UserLoc_pressed"]
 [connection signal="pressed" from="HBoxContainer/Locations/ScrollContainer/ItemList/Add" to="HBoxContainer/Locations/ScrollContainer/ItemList" method="call_add_item"]

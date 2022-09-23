@@ -47,9 +47,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_vertical = 3
 theme = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_right = 1024.0
@@ -192,6 +189,7 @@ margin_left = 1.0
 margin_top = 1.0
 margin_right = -1.0
 margin_bottom = -1.0
+
 [connection signal="pressed" from="HBoxContainer/TabsControl/Packaging" to="HBoxContainer/TabsControl" method="_on_Packaging_pressed"]
 [connection signal="pressed" from="HBoxContainer/TabsControl/Behavioural" to="HBoxContainer/TabsControl" method="_on_Behavioral_pressed"]
 [connection signal="pressed" from="HBoxContainer/TabsControl/Preview" to="HBoxContainer/TabsControl" method="_on_Preview_pressed"]
