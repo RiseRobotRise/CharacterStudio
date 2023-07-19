@@ -1,4 +1,4 @@
-tool
+@tool
 extends FileDialog
 
 func set_project():

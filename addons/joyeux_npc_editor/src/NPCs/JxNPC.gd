@@ -11,18 +11,18 @@ signal workstation_assigned(which)
 
 
 #### Properties ####
-export(float) var attack_min_range = 10
-export(float) var attack_max_range = 50
-export(float) var health : float = 100
-export(float) var shield : float = 0
-export(Color) var primary_color : Color = Color.white
-export(Color) var secondary_color : Color = Color.white
-export(String) var character_name : String = ""
+@export var attack_min_range: float = 10
+@export var attack_max_range: float = 50
+@export var health: float : float = 100
+@export var shield: float : float = 0
+@export var primary_color: Color : Color = Color.WHITE
+@export var secondary_color: Color : Color = Color.WHITE
+@export var character_name: String : String = ""
 #######################
 
 
 
-var actor : Spatial = null
+var actor : Node3D = null
 var worker = null
 var navigator  = null
 
@@ -50,7 +50,7 @@ func match(input, signals, variables):
 func delay(input, signals, variables):
 	var time = float(_get_variable_from_port(variables, 1))
 	if time > 0:
-		yield(get_tree().create_timer(time), "timeout")
+		await get_tree().create_timer(time).timeout
 	_emit_signal_from_port(input, signals, 0)
 
 func parallel_trigger(input, signals, variables):
@@ -77,7 +77,7 @@ func play_global_sound(input, signals, variables):
 	var path = _get_variable_from_port(variables, 0)
 	var sound_player = AudioStreamPlayer.new()
 	sound_player.stream = load(path)
-	sound_player.connect("finished", sound_player, "queue_free")
+	sound_player.connect("finished", Callable(sound_player, "queue_free"))
 	actor.add_child(sound_player)
 	sound_player.play()
 
@@ -85,18 +85,18 @@ func play_3d_sound(input, signals, variables):
 	var path = _get_variable_from_port(variables, 0)
 	var sound_player = AudioStreamPlayer3D.new()
 	sound_player.stream = load(path)
-	sound_player.connect("finished", sound_player, "queue_free")
+	sound_player.connect("finished", Callable(sound_player, "queue_free"))
 	actor.add_child(sound_player)
 	sound_player.play()
 	
 """
 func trigger_dialog(input, signals, variables):
 	var path = _get_variable_from_port(variables, 0)
-	var dialog_display = DialogDisplay.instance()
+	var dialog_display = DialogDisplay.instantiate()
 	dialog_display.dialog = path
 	dialog_display.name_override = character_name 
 	actor.add_child(dialog_display)
-	dialog_display.connect("finished", dialog_display, "queue_free")
+	dialog_display.connect("finished", Callable(dialog_display, "queue_free"))
 """
 
 func request_workstation(input, signals, variables):
@@ -107,7 +107,7 @@ func request_workstation(input, signals, variables):
 
 func find_workstation(input, signals, variables):
 	var filter = _get_variable_from_port(variables, 1)
-	var destination = navigator.world_ref.get_nearest_workstation(actor.translation, filter).position
+	var destination = navigator.world_ref.get_nearest_workstation(actor.position, filter).position
 	_emit_signal_from_port(input, signals, 0) #This is, emmits a Vector3 position
 	
 func set_objective(input, _signals, _variables):

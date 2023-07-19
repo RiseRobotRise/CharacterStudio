@@ -6,7 +6,7 @@ signal color_changed(color)
 func _enter_tree():
 	window_title = "Pick a color"
 	
-	picker.connect("color_changed", self, "_on_color_changed")
+	picker.connect("color_changed", Callable(self, "_on_color_changed"))
 	add_child(picker)
 
 func _on_color_changed(color : Color):

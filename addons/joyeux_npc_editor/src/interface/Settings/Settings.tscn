@@ -3,163 +3,163 @@
 [ext_resource path="res://addons/joyeux_npc_editor/src/interface/Settings/code/ItemList.gd" type="Script" id=1]
 [ext_resource path="res://addons/joyeux_npc_editor/src/interface/Settings/code/Settings.gd" type="Script" id=2]
 [ext_resource path="res://addons/joyeux_npc_editor/src/interface/Settings/code/FileDialog.gd" type="Script" id=3]
-[ext_resource path="res://addons/joyeux_npc_editor/src/icons/Edit.svg" type="Texture" id=4]
+[ext_resource path="res://addons/joyeux_npc_editor/src/icons/Edit.svg" type="Texture2D" id=4]
 
 [node name="Settings" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
+offset_left = 4.0
+offset_top = 32.0
+offset_right = -4.0
+offset_bottom = -4.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Control2" type="Control" parent="."]
-margin_right = 1016.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 0, 30 )
+offset_right = 1016.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 0, 30 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_top = 34.0
-margin_right = 1016.0
-margin_bottom = 560.0
+offset_top = 34.0
+offset_right = 1016.0
+offset_bottom = 560.0
 size_flags_vertical = 3
 
 [node name="Control" type="Control" parent="HBoxContainer"]
-margin_right = 30.0
-margin_bottom = 526.0
-rect_min_size = Vector2( 30, 0 )
+offset_right = 30.0
+offset_bottom = 526.0
+custom_minimum_size = Vector2( 30, 0 )
 
 [node name="Locations" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 34.0
-margin_right = 992.0
-margin_bottom = 526.0
+offset_left = 34.0
+offset_right = 992.0
+offset_bottom = 526.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="HBoxContainer/Locations"]
-margin_right = 958.0
-margin_bottom = 14.0
+offset_right = 958.0
+offset_bottom = 14.0
 text = "Information"
 
 [node name="HSeparator" type="HSeparator" parent="HBoxContainer/Locations"]
-margin_top = 18.0
-margin_right = 958.0
-margin_bottom = 22.0
+offset_top = 18.0
+offset_right = 958.0
+offset_bottom = 22.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Project Location" type="HBoxContainer" parent="HBoxContainer/Locations"]
-margin_top = 26.0
-margin_right = 958.0
-margin_bottom = 50.0
+offset_top = 26.0
+offset_right = 958.0
+offset_bottom = 50.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="HBoxContainer/Locations/Project Location"]
-margin_top = 5.0
-margin_right = 297.0
-margin_bottom = 19.0
+offset_top = 5.0
+offset_right = 297.0
+offset_bottom = 19.0
 text = "Current in project default Behaviours Location:"
 
-[node name="Path" type="LineEdit" parent="HBoxContainer/Locations/Project Location"]
-margin_left = 301.0
-margin_right = 926.0
-margin_bottom = 24.0
+[node name="Path3D" type="LineEdit" parent="HBoxContainer/Locations/Project Location"]
+offset_left = 301.0
+offset_right = 926.0
+offset_bottom = 24.0
 size_flags_horizontal = 3
 text = "res://addons/joyeux_npc_editor/src/NPCs/DefaultBehaviors/"
 editable = false
 
 [node name="ProjLoc" type="Button" parent="HBoxContainer/Locations/Project Location"]
-margin_left = 930.0
-margin_right = 958.0
-margin_bottom = 24.0
+offset_left = 930.0
+offset_right = 958.0
+offset_bottom = 24.0
 icon = ExtResource( 4 )
 
 [node name="HSeparator2" type="HSeparator" parent="HBoxContainer/Locations"]
-margin_top = 54.0
-margin_right = 958.0
-margin_bottom = 58.0
+offset_top = 54.0
+offset_right = 958.0
+offset_bottom = 58.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="User Location" type="HBoxContainer" parent="HBoxContainer/Locations"]
-margin_top = 62.0
-margin_right = 958.0
-margin_bottom = 86.0
+offset_top = 62.0
+offset_right = 958.0
+offset_bottom = 86.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="HBoxContainer/Locations/User Location"]
-margin_top = 5.0
-margin_right = 280.0
-margin_bottom = 19.0
+offset_top = 5.0
+offset_right = 280.0
+offset_bottom = 19.0
 text = "Current in user default Behaviours Location:"
 
-[node name="Path" type="LineEdit" parent="HBoxContainer/Locations/User Location"]
-margin_left = 284.0
-margin_right = 926.0
-margin_bottom = 24.0
+[node name="Path3D" type="LineEdit" parent="HBoxContainer/Locations/User Location"]
+offset_left = 284.0
+offset_right = 926.0
+offset_bottom = 24.0
 size_flags_horizontal = 3
 text = "C:/Users/byksp/AppData/Roaming/Godot/app_userdata/Character Studio/behaviors"
 editable = false
 
 [node name="UserLoc" type="Button" parent="HBoxContainer/Locations/User Location"]
-margin_left = 930.0
-margin_right = 958.0
-margin_bottom = 24.0
+offset_left = 930.0
+offset_right = 958.0
+offset_bottom = 24.0
 icon = ExtResource( 4 )
 
 [node name="HSeparator4" type="HSeparator" parent="HBoxContainer/Locations"]
-margin_top = 90.0
-margin_right = 958.0
-margin_bottom = 94.0
+offset_top = 90.0
+offset_right = 958.0
+offset_bottom = 94.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label2" type="Label" parent="HBoxContainer/Locations"]
-margin_top = 98.0
-margin_right = 958.0
-margin_bottom = 112.0
+offset_top = 98.0
+offset_right = 958.0
+offset_bottom = 112.0
 text = "User defined paths"
 
 [node name="HSeparator3" type="HSeparator" parent="HBoxContainer/Locations"]
-margin_top = 116.0
-margin_right = 958.0
-margin_bottom = 120.0
+offset_top = 116.0
+offset_right = 958.0
+offset_bottom = 120.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/Locations"]
-margin_top = 124.0
-margin_right = 958.0
-margin_bottom = 470.0
+offset_top = 124.0
+offset_right = 958.0
+offset_bottom = 470.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ItemList" type="VBoxContainer" parent="HBoxContainer/Locations/ScrollContainer"]
-margin_right = 958.0
-margin_bottom = 346.0
+offset_right = 958.0
+offset_bottom = 346.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )
 
 [node name="Add" type="Button" parent="HBoxContainer/Locations/ScrollContainer/ItemList"]
-margin_top = 28.0
-margin_right = 958.0
-margin_bottom = 48.0
-hint_tooltip = "Add new location"
+offset_top = 28.0
+offset_right = 958.0
+offset_bottom = 48.0
+tooltip_text = "Add new location"
 text = "+"
 
 [node name="FileDialog" type="FileDialog" parent="HBoxContainer/Locations/ScrollContainer/ItemList/Add"]
-margin_left = 423.812
-margin_top = 177.884
-margin_right = 919.812
-margin_bottom = 598.884
+offset_left = 423.812
+offset_top = 177.884
+offset_right = 919.812
+offset_bottom = 598.884
 window_title = "Abrir un Directorio"
 mode = 2
 __meta__ = {
@@ -167,19 +167,19 @@ __meta__ = {
 }
 
 [node name="Apply" type="Button" parent="HBoxContainer/Locations"]
-margin_top = 474.0
-margin_right = 958.0
-margin_bottom = 504.0
-rect_min_size = Vector2( 0, 30 )
+offset_top = 474.0
+offset_right = 958.0
+offset_bottom = 504.0
+custom_minimum_size = Vector2( 0, 30 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
 text = "Apply"
 
 [node name="Control2" type="Control" parent="HBoxContainer/Locations"]
-margin_top = 508.0
-margin_right = 958.0
-margin_bottom = 526.0
+offset_top = 508.0
+offset_right = 958.0
+offset_bottom = 526.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
@@ -188,33 +188,33 @@ __meta__ = {
 }
 
 [node name="Control3" type="Control" parent="HBoxContainer"]
-margin_left = 996.0
-margin_right = 1016.0
-margin_bottom = 526.0
+offset_left = 996.0
+offset_right = 1016.0
+offset_bottom = 526.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.02
 
 [node name="Dialogs" type="Control" parent="."]
-margin_top = 564.0
-margin_right = 1016.0
-margin_bottom = 564.0
+offset_top = 564.0
+offset_right = 1016.0
+offset_bottom = 564.0
 
 [node name="FileDialog" type="FileDialog" parent="Dialogs"]
 visible = true
-margin_left = 663.0
-margin_top = -578.0
-margin_right = 1088.0
-margin_bottom = -355.0
+offset_left = 663.0
+offset_top = -578.0
+offset_right = 1088.0
+offset_bottom = -355.0
 window_title = "Abrir un Directorio"
 mode = 2
 script = ExtResource( 3 )
 
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="Dialogs"]
 visible = true
-margin_left = 932.0
-margin_top = -808.0
-margin_right = 1242.0
-margin_bottom = -733.0
+offset_left = 932.0
+offset_top = -808.0
+offset_right = 1242.0
+offset_bottom = -733.0
 window_title = "Por favor, Confirma..."
 dialog_text = "Warning, changing the default path may break your current NPCs, do you want to continue?"
 dialog_autowrap = true

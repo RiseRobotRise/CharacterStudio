@@ -15,10 +15,10 @@ __meta__ = {
 [node name="Node-Editor" parent="." instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 1017.0
-margin_bottom = 593.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 1017.0
+offset_bottom = 593.0
 
 [node name="Settings" parent="Node-Editor" instance=ExtResource( 2 )]
 visible = false

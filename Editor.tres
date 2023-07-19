@@ -1,12 +1,12 @@
-[gd_resource type="Theme" load_steps=33 format=2]
+[gd_resource type="Theme" load_steps=34 format=2]
 
-[ext_resource path="res://assets/interface/Fonts/Atkinson-Hyperlegible/Print Fonts/Atkinson-Hyperlegible-Regular-102.otf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/interface/Fonts/Atkinson-Hyperlegible/Print Fonts/Atkinson-Hyperlegible-Bold-102.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/interface/Fonts/Atkinson-Hyperlegible/Print Fonts/Atkinson-Hyperlegible-Regular-102.otf" type="FontFile" id=1]
+[ext_resource path="res://assets/interface/Fonts/Atkinson-Hyperlegible/Print Fonts/Atkinson-Hyperlegible-Bold-102.otf" type="FontFile" id=2]
 
-[sub_resource type="DynamicFontData" id=30]
-font_path = "res://assets/interface/Fonts/Exo2/Exo2-Light.ttf"
+[sub_resource type="FontFile" id=30]
+font_path = "res://assets/interface/Fonts/Exo2/Exo2-Light3D.ttf"
 
-[sub_resource type="DynamicFont" id=29]
+[sub_resource type="FontFile" id=29]
 size = 15
 font_data = SubResource( 30 )
 
@@ -90,7 +90,7 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="FontFile" id=6]
 font_data = ExtResource( 2 )
 fallback/0 = ExtResource( 1 )
 
@@ -325,6 +325,23 @@ corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id=31]
+bg_color = Color( 0.6319, 0.699587, 0.71, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.584314, 0.584314, 0.584314, 1 )
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxFlat" id=24]
 bg_color = Color( 0.780392, 0.92549, 0.94902, 1 )
@@ -618,7 +635,7 @@ OptionButton/styles/normal = null
 OptionButton/styles/pressed = null
 Panel/styles/panel = SubResource( 21 )
 PanelContainer/styles/panel = SubResource( 21 )
-PopupDialog/styles/panel = SubResource( 20 )
+Popup/styles/panel = SubResource( 20 )
 PopupMenu/colors/font_color = Color( 0, 0, 0, 1 )
 PopupMenu/colors/font_color_accel = Color( 0, 0, 0, 1 )
 PopupMenu/colors/font_color_disabled = Color( 0, 0, 0, 1 )
@@ -660,7 +677,7 @@ RichTextLabel/fonts/mono_font = SubResource( 29 )
 RichTextLabel/fonts/normal_font = SubResource( 29 )
 RichTextLabel/styles/focus = null
 RichTextLabel/styles/normal = null
-ScrollContainer/styles/bg = null
+ScrollContainer/styles/bg = SubResource( 31 )
 SpinBox/icons/updown = null
 TabContainer/colors/font_color_bg = Color( 1, 1, 1, 1 )
 TabContainer/colors/font_color_disabled = Color( 0, 0, 0, 1 )
@@ -681,25 +698,25 @@ TabContainer/styles/panel = SubResource( 24 )
 TabContainer/styles/tab_bg = SubResource( 25 )
 TabContainer/styles/tab_disabled = null
 TabContainer/styles/tab_fg = SubResource( 26 )
-Tabs/colors/font_color_bg = Color( 0.843137, 0.843137, 0.843137, 1 )
-Tabs/colors/font_color_disabled = Color( 0, 0, 0, 1 )
-Tabs/colors/font_color_fg = Color( 0, 0, 0, 1 )
-Tabs/constants/hseparation = 4
-Tabs/constants/label_valign_bg = 2
-Tabs/constants/label_valign_fg = 0
-Tabs/constants/top_margin = 24
-Tabs/fonts/font = SubResource( 29 )
-Tabs/icons/close = null
-Tabs/icons/decrement = null
-Tabs/icons/decrement_highlight = null
-Tabs/icons/increment = null
-Tabs/icons/increment_highlight = null
-Tabs/styles/button = null
-Tabs/styles/button_pressed = null
-Tabs/styles/panel = null
-Tabs/styles/tab_bg = SubResource( 21 )
-Tabs/styles/tab_disabled = null
-Tabs/styles/tab_fg = SubResource( 26 )
+TabBar/colors/font_color_bg = Color( 0.843137, 0.843137, 0.843137, 1 )
+TabBar/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+TabBar/colors/font_color_fg = Color( 0, 0, 0, 1 )
+TabBar/constants/hseparation = 4
+TabBar/constants/label_valign_bg = 2
+TabBar/constants/label_valign_fg = 0
+TabBar/constants/top_margin = 24
+TabBar/fonts/font = SubResource( 29 )
+TabBar/icons/close = null
+TabBar/icons/decrement = null
+TabBar/icons/decrement_highlight = null
+TabBar/icons/increment = null
+TabBar/icons/increment_highlight = null
+TabBar/styles/button = null
+TabBar/styles/button_pressed = null
+TabBar/styles/panel = null
+TabBar/styles/tab_bg = SubResource( 21 )
+TabBar/styles/tab_disabled = null
+TabBar/styles/tab_fg = SubResource( 26 )
 TextEdit/colors/background_color = Color( 0, 0, 0, 1 )
 TextEdit/colors/bookmark_color = Color( 0, 0, 0, 1 )
 TextEdit/colors/brace_mismatch_color = Color( 0, 0, 0, 1 )
@@ -739,17 +756,17 @@ TextEdit/styles/completion = null
 TextEdit/styles/focus = null
 TextEdit/styles/normal = SubResource( 18 )
 TextEdit/styles/read_only = SubResource( 19 )
-ToolButton/colors/font_color = Color( 0, 0, 0, 1 )
-ToolButton/colors/font_color_disabled = Color( 0, 0, 0, 1 )
-ToolButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
-ToolButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
-ToolButton/constants/hseparation = 3
-ToolButton/fonts/font = SubResource( 29 )
-ToolButton/styles/disabled = null
-ToolButton/styles/focus = null
-ToolButton/styles/hover = null
-ToolButton/styles/normal = null
-ToolButton/styles/pressed = null
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+Button/constants/hseparation = 3
+Button/fonts/font = SubResource( 29 )
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/normal = null
+Button/styles/pressed = null
 TooltipLabel/colors/font_color = Color( 0, 0, 0, 1 )
 TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 1 )
 TooltipLabel/constants/shadow_offset_x = 1
@@ -815,12 +832,12 @@ VSplitContainer/constants/autohide = 1
 VSplitContainer/constants/separation = 12
 VSplitContainer/icons/grabber = null
 VSplitContainer/styles/bg = null
-WindowDialog/colors/title_color = Color( 0.145098, 0.207843, 0.231373, 1 )
-WindowDialog/constants/close_h_ofs = 18
-WindowDialog/constants/close_v_ofs = 18
-WindowDialog/constants/scaleborder_size = 4
-WindowDialog/constants/title_height = 20
-WindowDialog/fonts/title_font = SubResource( 29 )
-WindowDialog/icons/close = null
-WindowDialog/icons/close_highlight = null
-WindowDialog/styles/panel = SubResource( 28 )
+Window/colors/title_color = Color( 0.145098, 0.207843, 0.231373, 1 )
+Window/constants/close_h_ofs = 18
+Window/constants/close_v_ofs = 18
+Window/constants/scaleborder_size = 4
+Window/constants/title_height = 20
+Window/fonts/title_font = SubResource( 29 )
+Window/icons/close = null
+Window/icons/close_highlight = null
+Window/styles/panel = SubResource( 28 )

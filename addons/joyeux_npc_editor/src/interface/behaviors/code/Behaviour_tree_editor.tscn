@@ -9,9 +9,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/label_valign_fg = 4
-custom_constants/hseparation = 5
-tab_align = 0
+theme_override_constants/label_valign_fg = 4
+theme_override_constants/h_separation = 5
+tab_alignment = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }

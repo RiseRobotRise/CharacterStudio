@@ -14,8 +14,8 @@ func _ready():
 	Workstations = get_tree().get_nodes_in_group("Workstations")
 	
 func get_nearest_workstation(position : Vector3, filter : int = ANY):
-	var nearest : Spatial = Spatial.new()
-	nearest.translation = position
+	var nearest : Node3D = Node3D.new()
+	nearest.position = position
 	var nearest_size : int
 	if Workstations.size()>0:
 		for station in Workstations:

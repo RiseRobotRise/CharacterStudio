@@ -62,7 +62,7 @@ func filter_input_label(input : String) -> void:
 			Label1.text = input
 	if Label1 == null:
 		return
-	Label1.rect_min_size = Vector2(50,20)
+	Label1.custom_minimum_size = Vector2(50,20)
 	Label1.name = "L_Label"
 	add_child(Label1, true)
 

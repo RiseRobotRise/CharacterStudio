@@ -3,13 +3,13 @@ class_name InspectorGadgetUtil
 static func is_array_type(value) -> bool:
 	var is_array = false
 	is_array = is_array or value is Array
-	is_array = is_array or value is PoolByteArray
-	is_array = is_array or value is PoolColorArray
-	is_array = is_array or value is PoolIntArray
-	is_array = is_array or value is PoolRealArray
-	is_array = is_array or value is PoolStringArray
-	is_array = is_array or value is PoolVector2Array
-	is_array = is_array or value is PoolVector3Array
+	is_array = is_array or value is PackedByteArray
+	is_array = is_array or value is PackedColorArray
+	is_array = is_array or value is PackedInt32Array
+	is_array = is_array or value is PackedFloat32Array
+	is_array = is_array or value is PackedStringArray
+	is_array = is_array or value is PackedVector2Array
+	is_array = is_array or value is PackedVector3Array
 	return is_array
 
 static func is_by_ref_type(value) -> bool:
@@ -22,17 +22,17 @@ static func is_by_ref_type(value) -> bool:
 const BASIC_TYPE_PROPERTIES := {
 	TYPE_NIL: [],
 	TYPE_INT: [],
-	TYPE_REAL: [],
+	TYPE_FLOAT: [],
 	TYPE_STRING: [],
 	TYPE_VECTOR2: ["x", "y"],
 	TYPE_RECT2: ["position", "size"],
 	TYPE_VECTOR3: ["x", "y", "z"],
 	TYPE_TRANSFORM2D: ["x", "y", "origin"],
 	TYPE_PLANE: ["x", "y", "z", "d"],
-	TYPE_QUAT: ["x", "y", "z", "w"],
+	TYPE_QUATERNION: ["x", "y", "z", "w"],
 	TYPE_AABB: ["position", "size", "end"],
 	TYPE_BASIS: ["x", "y", "z"],
-	TYPE_TRANSFORM: ["basis", "origin"],
+	TYPE_TRANSFORM3D: ["basis", "origin"],
 	TYPE_COLOR: ["r", "g", "b", "a", "h", "s", "v", "r8", "g8", "b8", "a8"],
 	TYPE_NODE_PATH: [],
 	TYPE_RID: []
@@ -45,10 +45,10 @@ const BASIC_TYPE_INT_INDEXED := [
 	TYPE_VECTOR3,
 	TYPE_TRANSFORM2D,
 	TYPE_PLANE,
-	TYPE_QUAT,
+	TYPE_QUATERNION,
 	TYPE_AABB,
 	TYPE_BASIS,
-	TYPE_TRANSFORM,
+	TYPE_TRANSFORM3D,
 	TYPE_COLOR
 ]
 
@@ -102,7 +102,7 @@ static func set_indexed_ex(node: Node, subnames: String, value) -> void:
 		var is_values_subname = property == '[values]'
 		if target is Dictionary and property_comps.size() == 1 and (is_keys_subname or is_values_subname):
 			var end_property = property_comps[0]
-			if not end_property.is_valid_integer():
+			if not end_property.is_valid_int():
 				return
 
 			var key_idx = end_property.to_int()
@@ -156,7 +156,7 @@ static func _traverse(target, property):
 		if property in target:
 			return target[property]
 	elif is_array_type(target):
-		if property.is_valid_integer():
+		if property.is_valid_int():
 			var idx = property.to_int()
 			if idx >= 0 and idx < target.size():
 				return target[idx]
@@ -168,7 +168,7 @@ static func _traverse(target, property):
 		elif property == "[values]":
 			return target.values()
 	else:
-		if typeof(target) in BASIC_TYPE_INT_INDEXED and property.is_valid_integer():
+		if typeof(target) in BASIC_TYPE_INT_INDEXED and property.is_valid_int():
 			return target[property.to_int()]
 		elif typeof(target) in BASIC_TYPE_PROPERTIES and property in BASIC_TYPE_PROPERTIES[typeof(target)]:
 			return target[property]

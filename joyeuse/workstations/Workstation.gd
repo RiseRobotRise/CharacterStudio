@@ -1,4 +1,4 @@
-extends Area
+extends Area3D
 class_name Workstation
 """
 Base class  for the NPC Interactors, namely Workstations. 
@@ -17,25 +17,25 @@ var in_queue_for_use : Array = []
 var current_worker : Worker = null
 var lookdir : Vector3 = Vector3.ZERO
 var position : Vector3 = Vector3.ZERO
-export(bool) var usable_by_players = false
-export(bool) var is_available = true
-export(bool) var uses_queue : bool = false
-export(bool) var call_best_first : bool = false
-export(bool) var gives_xp : bool = false
-export(int) var maximum_progress : int = 100
-export(CATEGORY) var category : int = CATEGORY.WORK
-export(String) var subcategory : String = ""
-export(Array, NodePath) var Exclude : Array = []
+@export var usable_by_players: bool = false
+@export var is_available: bool = true
+@export var uses_queue: bool : bool = false
+@export var call_best_first: bool : bool = false
+@export var gives_xp: bool : bool = false
+@export var maximum_progress: int : int = 100
+@export var category: CATEGORY : int = CATEGORY.WORK
+@export var subcategory: String : String = ""
+@export var Exclude : Array = [] # (Array, NodePath)
 
-onready var pos = $NPCPosition
+@onready var pos = $NPCPosition
 func _enter_tree() -> void:
 	add_to_group("Workstations")
-	connect("body_entered", self, "_on_body_entered")
+	connect("body_entered", Callable(self, "_on_body_entered"))
 
 func _ready() -> void:
 	if not usable_by_players:
-		set_collision_mask_bit(16, true)
-		set_collision_layer_bit(16, true)
+		set_collision_mask_value(16, true)
+		set_collision_layer_value(16, true)
 	for path in Exclude:
 		if path is Object:
 			continue
@@ -43,8 +43,8 @@ func _ready() -> void:
 			Exclude.append(get_node(path))
 			Exclude.erase(path)
 	if pos:
-		position = get_parent().to_local(to_global(pos.translation))
-		lookdir = (translation - pos.translation)/2
+		position = get_parent().to_local(to_global(pos.position))
+		lookdir = (position - pos.position)/2
 func check_for_next() -> void:
 	progress = 0
 	if not uses_queue:
@@ -81,7 +81,7 @@ func select_neareast() -> Worker:
 		return null
 	nearest_worker = in_queue_for_use[0]
 	for worker in in_queue_for_use:
-		if (worker.entity.translation - translation).length() < (nearest_worker.entity.translation - translation).length():
+		if (worker.entity.position - position).length() < (nearest_worker.entity.position - position).length():
 			nearest_worker = worker
 	return nearest_worker
 
@@ -115,7 +115,7 @@ func _on_body_entered(entity) -> void:
 	var worker : Worker = entity.get_component("AI handler").worker
 	if worker:
 		if worker == current_worker:
-			entity.get_component("NPCInput").get_navpath(translation)
+			entity.get_component("NPCInput").get_navpath(position)
 			print("The worker has arrived")
 			worker.start_working(self)
 			_change_state_on_user(worker)

@@ -1,5 +1,5 @@
-tool
-extends WindowDialog
+@tool
+extends Window
 class_name TextPopup
 
 var content : String= ""
@@ -16,7 +16,7 @@ func _init(txt = "", cntnt = "", ov = ""):
 
 func  _ready():
 	resizable = true
-	rect_min_size = Vector2(400, 400)
+	custom_minimum_size = Vector2(400, 400)
 	
 	var cont = VBoxContainer.new()
 	cont.anchor_right = 0.99
@@ -58,11 +58,11 @@ func  _ready():
 	
 	var close = Button.new()
 	close.text = "Cancel"
-	accept.connect("pressed", self, "_on_Accept_pressed")
-	close.connect("pressed", self, "_on_Cancel_pressed")
+	accept.connect("pressed", Callable(self, "_on_Accept_pressed"))
+	close.connect("pressed", Callable(self, "_on_Cancel_pressed"))
 	
 	var button_cont = HBoxContainer.new()
-	button_cont.alignment = HBoxContainer.ALIGN_CENTER
+	button_cont.alignment = HBoxContainer.ALIGNMENT_CENTER
 
 	add_child(cont)
 	cont.add_child(label_cont)

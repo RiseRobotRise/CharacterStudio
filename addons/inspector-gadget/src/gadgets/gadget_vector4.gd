@@ -1,17 +1,18 @@
+@tool
 class_name GadgetVector4
 extends InspectorGadgetBase
-tool
 
 var x_axis := "x"
 var y_axis := "y"
 var z_axis := "z"
 var w_axis := "w"
 
-func _init(in_node_path: NodePath = NodePath(), in_subnames: String = "").(in_node_path, in_subnames):
+func _init(in_node_path: NodePath = NodePath(), in_subnames: String = ""):
+	super(in_node_path, in_subnames)
 	pass
 
 func set_node_path(new_node_path: NodePath):
-	.set_node_path(new_node_path)
+	super.set_node_path(new_node_path)
 
 	if not has_controls():
 		return
@@ -27,7 +28,7 @@ func set_node_path(new_node_path: NodePath):
 	float_gadget_w.node_path = node_path
 
 func set_subnames(new_subnames: String):
-	.set_subnames(new_subnames)
+	super.set_subnames(new_subnames)
 
 	if not has_controls():
 		return
@@ -43,7 +44,7 @@ func set_subnames(new_subnames: String):
 	float_gadget_w.subnames = subnames + ":" + w_axis
 
 static func supports_type(value) -> bool:
-	if value is Plane or value is Quat or value is Color:
+	if value is Plane or value is Quaternion or value is Color:
 		return true
 	return false
 
@@ -69,30 +70,30 @@ func populate_controls() -> void:
 	var float_gadget_x = GadgetFloat.new("../../" + node_path, subnames + ":" + x_axis)
 	float_gadget_x.name = "FloatGadgetX"
 	float_gadget_x.size_flags_horizontal = SIZE_EXPAND_FILL
-	float_gadget_x.connect("change_property_begin", self, "change_property_begin")
-	float_gadget_x.connect("change_property_end", self, "change_property_end")
+	float_gadget_x.connect("change_property_begin", Callable(self, "change_property_begin"))
+	float_gadget_x.connect("change_property_end", Callable(self, "change_property_end"))
 
 	var float_gadget_y = GadgetFloat.new("../../" + node_path, subnames + ":" + y_axis)
 	float_gadget_y.name = "FloatGadgetY"
 	float_gadget_y.size_flags_horizontal = SIZE_EXPAND_FILL
-	float_gadget_y.connect("change_property_begin", self, "change_property_begin")
-	float_gadget_y.connect("change_property_end", self, "change_property_end")
+	float_gadget_y.connect("change_property_begin", Callable(self, "change_property_begin"))
+	float_gadget_y.connect("change_property_end", Callable(self, "change_property_end"))
 
 	var float_gadget_z = GadgetFloat.new("../../" + node_path, subnames + ":" + z_axis)
 	float_gadget_z.name = "FloatGadgetZ"
 	float_gadget_z.size_flags_horizontal = SIZE_EXPAND_FILL
-	float_gadget_z.connect("change_property_begin", self, "change_property_begin")
-	float_gadget_z.connect("change_property_end", self, "change_property_end")
+	float_gadget_z.connect("change_property_begin", Callable(self, "change_property_begin"))
+	float_gadget_z.connect("change_property_end", Callable(self, "change_property_end"))
 
 	var float_gadget_w = GadgetFloat.new("../../" + node_path, subnames + ":" + w_axis)
 	float_gadget_w.name = "FloatGadgetW"
 	float_gadget_w.size_flags_horizontal = SIZE_EXPAND_FILL
-	float_gadget_w.connect("change_property_begin", self, "change_property_begin")
-	float_gadget_w.connect("change_property_end", self, "change_property_end")
+	float_gadget_w.connect("change_property_begin", Callable(self, "change_property_begin"))
+	float_gadget_w.connect("change_property_end", Callable(self, "change_property_end"))
 
 	var hbox = HBoxContainer.new()
 	hbox.name = "HBoxContainer"
-	hbox.set_anchors_and_margins_preset(PRESET_WIDE)
+	hbox.set_anchors_and_offsets_preset(PRESET_WIDE)
 	hbox.add_child(label_x)
 	hbox.add_child(float_gadget_x)
 	hbox.add_child(label_y)

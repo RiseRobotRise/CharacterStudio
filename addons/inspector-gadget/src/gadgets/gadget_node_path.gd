@@ -1,8 +1,9 @@
+@tool
 class_name GadgetNodePath
 extends GadgetStringEdit
-tool
 
-func _init(in_node_path: NodePath = NodePath(), in_subnames: String = "").(in_node_path, in_subnames):
+func _init(in_node_path: NodePath = NodePath(), in_subnames: String = ""):
+	super(in_node_path, in_subnames)
 	pass
 
 static func supports_type(value) -> bool:
@@ -14,7 +15,7 @@ func populate_controls() -> void:
 	var line_edit = LineEdit.new()
 	line_edit.name = "LineEdit"
 	line_edit.editable = false
-	line_edit.set_anchors_and_margins_preset(PRESET_WIDE)
+	line_edit.set_anchors_and_offsets_preset(PRESET_WIDE)
 	add_child(line_edit)
 
 func populate_value(value) -> void:

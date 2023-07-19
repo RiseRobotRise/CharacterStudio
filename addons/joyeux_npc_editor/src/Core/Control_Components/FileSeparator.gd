@@ -1,4 +1,4 @@
-tool
+@tool
 extends HBoxContainer
 class_name FileLabel
 
@@ -19,11 +19,11 @@ func _init(filters = ""):
 		add_child(Dialog)
 
 func _ready():
-	get_node("Button").connect("pressed", self, "open_file")
-	get_node("OpenFile").connect("about_to_show", get_node("Text"), "clear")
-	get_node("OpenFile").connect("file_selected",  get_node("Text"), "append_at_cursor")
-	get_node("OpenFile").get_cancel().connect("pressed",  get_node("Text"), "clear")
-	get_node("OpenFile").rect_min_size = Vector2(400,500)
+	get_node("Button").connect("pressed", Callable(self, "open_file"))
+	get_node("OpenFile").connect("about_to_popup", Callable(get_node("Text"), "clear"))
+	get_node("OpenFile").connect("file_selected", Callable(get_node("Text"), "append_at_cursor"))
+	get_node("OpenFile").get_cancel_button().connect("pressed", Callable(get_node("Text"), "clear"))
+	get_node("OpenFile").custom_minimum_size = Vector2(400,500)
 	get_node("Text").editable = false
 	pass
 

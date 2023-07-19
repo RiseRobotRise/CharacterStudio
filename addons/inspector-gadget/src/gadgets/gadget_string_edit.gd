@@ -1,8 +1,8 @@
+@tool
 class_name GadgetStringEdit
 extends InspectorGadgetBase
-tool
 
-export(String) var placeholder_text setget set_placeholder_text
+@export var placeholder_text: String: set = set_placeholder_text
 
 func set_placeholder_text(new_placeholder_text: String) -> void:
 	if placeholder_text != new_placeholder_text:
@@ -11,7 +11,8 @@ func set_placeholder_text(new_placeholder_text: String) -> void:
 		if has_controls():
 			get_controls()[0].placeholder_text = placeholder_text
 
-func _init(in_node_path: NodePath = NodePath(), in_subnames: String = "").(in_node_path, in_subnames):
+func _init(in_node_path: NodePath = NodePath(), in_subnames: String = ""):
+	super(in_node_path, in_subnames)
 	pass
 
 static func supports_type(value) -> bool:
@@ -29,8 +30,8 @@ func populate_controls() -> void:
 	var line_edit = LineEdit.new()
 	line_edit.name = "LineEdit"
 	line_edit.placeholder_text = placeholder_text
-	line_edit.set_anchors_and_margins_preset(PRESET_WIDE)
-	line_edit.connect("text_entered", self, "set_node_value")
+	line_edit.set_anchors_and_offsets_preset(PRESET_WIDE)
+	line_edit.connect("text_submitted", Callable(self, "set_node_value"))
 	add_child(line_edit)
 
 func populate_value(value) -> void:

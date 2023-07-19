@@ -1,6 +1,6 @@
+@tool
 class_name GadgetColor
 extends GadgetVector4
-tool
 
 var colorbox : StyleBoxFlat = _set_colorbox()
 
@@ -12,40 +12,41 @@ func _set_colorbox() -> StyleBoxFlat:
 	return colorbox
 
 func _set_button_stylebox(button, colorbox):
-	button.add_stylebox_override("normal", colorbox)
-	button.add_stylebox_override("pressed", colorbox)
-	button.add_stylebox_override("focus", colorbox)
-	button.add_stylebox_override("hover", colorbox)
-	button.rect_min_size = Vector2(50,10)
+	button.add_theme_stylebox_override("normal", colorbox)
+	button.add_theme_stylebox_override("pressed", colorbox)
+	button.add_theme_stylebox_override("focus", colorbox)
+	button.add_theme_stylebox_override("hover", colorbox)
+	button.custom_minimum_size = Vector2(50,10)
 
-func _init(in_node_path: NodePath = NodePath(), in_subnames: String = "").(in_node_path, in_subnames):
+func _init(in_node_path: NodePath = NodePath(), in_subnames: String = ""):
+	super(in_node_path, in_subnames)
 	x_axis = "r"
 	y_axis = "g"
 	z_axis = "b"
 	w_axis = "a"
-	yield(self, "ready")
+	await self.ready
 	var button = Button.new()
 	button.text = "Pick"
 	
 	var popup = PopupColor.new()
-	popup.connect("color_changed", self, "set_node_value")
-	get_node("HBoxContainer/FloatGadgetX").connect("value_changed", popup, "change_color_r")
-	get_node("HBoxContainer/FloatGadgetY").connect("value_changed", popup, "change_color_g")
-	get_node("HBoxContainer/FloatGadgetZ").connect("value_changed", popup, "change_color_b")
-	get_node("HBoxContainer/FloatGadgetW").connect("value_changed", popup, "change_color_a")
+	popup.connect("color_changed", Callable(self, "set_node_value"))
+	get_node("HBoxContainer/FloatGadgetX").connect("value_changed", Callable(popup, "change_color_r"))
+	get_node("HBoxContainer/FloatGadgetY").connect("value_changed", Callable(popup, "change_color_g"))
+	get_node("HBoxContainer/FloatGadgetZ").connect("value_changed", Callable(popup, "change_color_b"))
+	get_node("HBoxContainer/FloatGadgetW").connect("value_changed", Callable(popup, "change_color_a"))
 	
-	get_node("HBoxContainer/FloatGadgetX").connect("value_changed", self, "change_colorbox", ["r"])
-	get_node("HBoxContainer/FloatGadgetY").connect("value_changed", self, "change_colorbox", ["g"])
-	get_node("HBoxContainer/FloatGadgetZ").connect("value_changed", self, "change_colorbox", ["b"])
-	get_node("HBoxContainer/FloatGadgetW").connect("value_changed", self, "change_colorbox", ["a"])
+	get_node("HBoxContainer/FloatGadgetX").connect("value_changed", Callable(self, "change_colorbox").bind("r"))
+	get_node("HBoxContainer/FloatGadgetY").connect("value_changed", Callable(self, "change_colorbox").bind("g"))
+	get_node("HBoxContainer/FloatGadgetZ").connect("value_changed", Callable(self, "change_colorbox").bind("b"))
+	get_node("HBoxContainer/FloatGadgetW").connect("value_changed", Callable(self, "change_colorbox").bind("a"))
 	
-	button.connect("pressed", popup, "popup_centered")
+	button.connect("pressed", Callable(popup, "popup_centered"))
 	get_node("HBoxContainer").add_child(button)
 	_set_button_stylebox(button, colorbox)
 	
 	
-	connect("value_changed", colorbox, "set_bg_color")
-	popup.connect("color_changed", colorbox, "set_bg_color")
+	connect("value_changed", Callable(colorbox, "set_bg_color"))
+	popup.connect("color_changed", Callable(colorbox, "set_bg_color"))
 	add_child(popup)
 	get_node("HBoxContainer").move_child(button, 0)
 	

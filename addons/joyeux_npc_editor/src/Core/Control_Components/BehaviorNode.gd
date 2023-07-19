@@ -1,4 +1,4 @@
-tool
+@tool
 extends GraphNode
 class_name BehaviorNode
 signal connected_to(slot, type)
@@ -8,13 +8,13 @@ signal disconnected_from(slot)
 var slots_to_reset : Array = []
 
 func _ready():
-	connect("connected_to", self, "_on_connection_to")
-	connect("disconnected_from", self, "_on_disconnected_from")
+	connect("connected_to", Callable(self, "_on_connection_to"))
+	connect("disconnected_from", Callable(self, "_on_disconnected_from"))
 	for id in get_children().size():
 		var child = get_child(id)
 		for subchild in child.get_children():
 			if subchild is DropDown:
-				subchild.connect("selected_type", self, "_on_dropdown_change", [id])
+				subchild.connect("selected_type", Callable(self, "_on_dropdown_change").bind(id))
 				
 func _on_connection_to(slot : int, type):
 	if get_slot_type_left(slot) == Nodes.TYPE_ANY:

@@ -1,17 +1,17 @@
-tool
+@tool
 extends GraphEdit
 
 var m_position : Vector2 = Vector2.ZERO
 var ChoiceNode = load("res://addons/joyeux_dialog_system/src/components/ChoiceNode.tscn")
 
-onready var popup = $PopupMenu
+@onready var popup = $PopupMenu
 
 func clear_graph():
 	clear_connections()
 	for child in get_children():
 		if child is GraphNode and child.name != "Start":
 			child.queue_free()
-	yield(get_tree().create_timer(0.5), "timeout")
+	await get_tree().create_timer(0.5).timeout
 
 func save_dialogs(path : String, character_name : String) -> void:
 	var file = ConfigFile.new()
@@ -60,7 +60,7 @@ func save_dialogs(path : String, character_name : String) -> void:
 
 func load_dialogs(path : String) -> void:
 	clear_graph()
-	yield(get_tree().create_timer(1),"timeout")
+	await get_tree().create_timer(1).timeout
 	var fload : ConfigFile = ConfigFile.new()
 	fload.load(path)
 	var offsets : Dictionary = {}
@@ -100,7 +100,7 @@ func is_slot_occupied(from, from_port) -> bool:
 
 
 func create_option(text : bool = false, offset : Vector2 = Vector2.ZERO, options : Array  = []):
-	var child = ChoiceNode.instance()
+	var child = ChoiceNode.instantiate()
 	if text:
 		child.interface_type = child.TEXT_INPUT
 	child.offset = offset
@@ -116,7 +116,7 @@ func create_node(text: String = "", input : String = "", override : String = "",
 	node.set_slot(0, true, TYPE_BOOL, Color(1,1,1,1), true, TYPE_BOOL, Color(1,1,1,1))
 	var popbutton = Button.new()
 	popbutton.text = "Edit"
-	popbutton.connect("pressed", text_popup, "popup_centered")
+	popbutton.connect("pressed", Callable(text_popup, "popup_centered"))
 	node.add_child(popbutton)
 	node.add_child(text_popup)
 	add_child(node)
@@ -143,15 +143,15 @@ func _on_GraphEdit_disconnection_request(from, from_slot, to, to_slot):
 
 
 func _on_GraphEdit_popup_request(position):
-	popup.rect_position = position
+	popup.position = position
 	m_position = position
 	popup.popup()
 	
 func _on_PopupMenu_id_pressed(id):
 	match id:
 		0:
-			create_node("", "","",(scroll_offset + (m_position - rect_global_position))/zoom )
+			create_node("", "","",(scroll_offset + (m_position - global_position))/zoom )
 		2: 
-			create_option(false, (scroll_offset + (m_position - rect_global_position))/zoom)
+			create_option(false, (scroll_offset + (m_position - global_position))/zoom)
 		3: 
-			create_option(true, (scroll_offset + (m_position - rect_global_position))/zoom)
+			create_option(true, (scroll_offset + (m_position - global_position))/zoom)

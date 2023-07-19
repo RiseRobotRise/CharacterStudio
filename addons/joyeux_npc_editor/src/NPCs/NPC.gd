@@ -12,18 +12,18 @@ var current_state : String
 var states : Dictionary = {} #Stores the states and their next states
 var behaviors : Dictionary = {} #Stores the loaded behaviors
 
-export(String, FILE, "*.jsm") var NPC_File : String = "" #This works just fine! :D
-export(String) var initial_state : String = ""
+@export var NPC_File : String = "" #This works just fine! :D # (String, FILE, "*.jsm")
+@export var initial_state: String : String = ""
 
 
 func _ready():
 	randomize()
 	_load_states(NPC_File)
-	connect("next_state", self, "_next_state")
+	connect("next_state", Callable(self, "_next_state"))
 	_emit_with_delay("on_ready")
 
 func _emit_with_delay(signl : String)->void:
-	yield(get_tree().create_timer(1), "timeout")
+	await get_tree().create_timer(1).timeout
 	emit_signal(signl, null)
 	
 
@@ -88,7 +88,7 @@ func _next_state(force : bool = false, condition = null):
 	if not next_states.size() >= 1:
 		_start_machine()
 	else:
-		current_state = next_states[int(rand_range(0, next_states.size()))]
+		current_state = next_states[int(randf_range(0, next_states.size()))]
 		#Connects the new behavior
 		_change_behavior(behaviors.get(current_state))
 
@@ -188,7 +188,7 @@ func _define_connection(behavior : ConfigFile, from : String, from_port : int , 
 	var function =_clean_function_name(to) 
 	#name cleaned up
 	if has_signal(signal_name) and has_method(function):
-		connect(signal_name, self, function, connection_bindings) 
+		connect(signal_name, Callable(self, function).bind(connection_bindings)) 
 	else:
 		push_error(str("Error: Either a signal (", signal_name
 			, ") or a method (", function, ")is missing from the NPC"))
@@ -198,5 +198,5 @@ func _undefine_connection(behavior : ConfigFile):
 		var function = _clean_function_name(connection.get("to"))
 		for signals in behavior.get_section_keys("node_signals"):
 			for sign_al in behavior.get_value("node_signals", signals, ""):
-				if is_connected(sign_al, self, function):
-					disconnect(sign_al, self, function)
+				if is_connected(sign_al, Callable(self, function)):
+					disconnect(sign_al, Callable(self, function))

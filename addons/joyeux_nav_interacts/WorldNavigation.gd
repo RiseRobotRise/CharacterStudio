@@ -1,14 +1,14 @@
 extends Navigation
 class_name WorldNavigator
 
-var astar : AStar = AStar.new()
-var m = SpatialMaterial.new()
+var astar : AStar3D = AStar3D.new()
+var m = StandardMaterial3D.new()
 
 func _enter_tree():
 	add_to_group("Navigator") #This is for ease of access
 	m.flags_unshaded = true
 	m.flags_use_point_size = true
-	m.albedo_color = Color.white
+	m.albedo_color = Color.WHITE
 	#There can only be one Navigator accounted per scene
 func draw_path(begin : Vector3, end : Vector3, p : Array):
 	var im = get_node("Draw")
@@ -26,7 +26,7 @@ func draw_path(begin : Vector3, end : Vector3, p : Array):
 	im.end()
 	
 func get_astar_from_paths(parent : Node) -> void:
-	var vertices : PoolVector3Array = PoolVector3Array()
+	var vertices : PackedVector3Array = PackedVector3Array()
 	var astar_array : Array = []
 	var use_array : bool = false
 	if parent.get_child_count() > 1:
@@ -35,12 +35,12 @@ func get_astar_from_paths(parent : Node) -> void:
 	for node in get_children():
 #		if node is Position3D: #We're not checking for positions yet
 #			vertices.push_back(node.translation)
-		if node is Path:
+		if node is Path3D:
 			for point in node.get_curve().get_baked_points():
 				vertices.push_back(point)
 		if use_array:
 			astar_array.append(Array(vertices))
-			vertices.empty()
+			vertices.is_empty()
 	if use_array:
 		for array in astar_array:
 			calculate_astar(array)
@@ -58,12 +58,12 @@ func calculate_nav_mesh():
 		mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLE_FAN, arrays)
 		mesh.generate_triangle_mesh()
 		var NavMesh = NavigationMesh.new()
-		var MeshVis = MeshInstance.new()
+		var MeshVis = MeshInstance3D.new()
 		MeshVis.mesh = mesh
 		NavMesh.create_from_mesh(mesh)
 		NavMesh.set_vertices(vertices)
-		var NavMeshInstance = NavigationMeshInstance.new()
-		NavMeshInstance.navmesh = NavMesh
+		var NavMeshInstance = NavigationRegion3D.new()
+		NavMeshInstance.navigation_mesh = NavMesh
 		add_child(NavMeshInstance)
 		add_child(MeshVis)
 
@@ -71,12 +71,12 @@ func calculate_nav_mesh():
 
 func find_shortest_path(from: Vector3, to : Vector3):
 	var absoulut = get_absolute_path(from, to)
-	var navmesh = get_navmesh_path(from, to)
-	if min(absoulut.size(), navmesh.size()) == absoulut.size():
+	var navigation_mesh = get_navmesh_path(from, to)
+	if min(absoulut.size(), navigation_mesh.size()) == absoulut.size():
 		return absoulut
 	else:
-		if navmesh.size()>1:
-			return navmesh 
+		if navigation_mesh.size()>1:
+			return navigation_mesh 
 		else:
 			return absoulut
 
@@ -92,7 +92,7 @@ func get_navmesh_path(from: Vector3, to: Vector3, global : bool = false):
 		path2.invert()
 		for point in path2:
 			path_points.append(point)
-	if get_node("Draw") is ImmediateGeometry:
+	if get_node("Draw") is ImmediateMesh:
 		draw_path(from, to, path_points)
 	if global:
 		var temp : Array = []

@@ -1,12 +1,12 @@
-extends Spatial
+extends Node3D
 
 """
 Interface/Integrator to connect all signals to a behavior tree and provide its functionality
 """
 
-export(String, FILE, "*.jsm") var NPC_File : String = "" #This works just fine! :D
-export(String) var initial_state : String = ""
-export(NodePath) var Interactable_Path : NodePath = ""
+@export var NPC_File : String = "" #This works just fine! :D # (String, FILE, "*.jsm")
+@export var initial_state: String : String = ""
+@export var Interactable_Path: NodePath : NodePath = ""
 
 
 var BehaviorTree : JxNPC = null
@@ -25,13 +25,13 @@ func _ready():
 	BehaviorTree._create_signal("workstation_assigned")
 	BehaviorTree._create_signal("stopped_working")
 	BehaviorTree._create_signal("request_rejected")
-	worker.connect("request_rejected", self, "_on_request_rejected")
-	worker.connect("stopped_working", self, "_on_worker_stopped")
-	worker.connect("workstation_assigned", self, "_on_worker_assigned")
+	worker.connect("request_rejected", Callable(self, "_on_request_rejected"))
+	worker.connect("stopped_working", Callable(self, "_on_worker_stopped"))
+	worker.connect("workstation_assigned", Callable(self, "_on_worker_assigned"))
 	
 	#Workstation setup
 	BehaviorTree._create_signal("interacted_by")
-	get_node(Interactable_Path).connect("interacted_by", self, "_on_interacted")
+	get_node(Interactable_Path).connect("interacted_by", Callable(self, "_on_interacted"))
 	get_node(Interactable_Path).title = BehaviorTree.character_name
 	add_child(BehaviorTree)
 	#Load settings

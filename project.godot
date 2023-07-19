@@ -6,238 +6,13 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
-
-_global_script_classes=[ {
-"base": "GraphNode",
-"class": "BehaviorNode",
-"language": "GDScript",
-"path": "res://addons/joyeux_npc_editor/src/Core/Control_Components/BehaviorNode.gd"
-}, {
-"base": "HBoxContainer",
-"class": "DoubleLabel",
-"language": "GDScript",
-"path": "res://addons/joyeux_npc_editor/src/Core/Control_Components/SeparatedLabel.gd"
-}, {
-"base": "MenuButton",
-"class": "DropDown",
-"language": "GDScript",
-"path": "res://addons/joyeux_npc_editor/src/Core/Control_Components/MenuWTitles.gd"
-}, {
-"base": "DropDown",
-"class": "EnumDropDown",
-"language": "GDScript",
-"path": "res://addons/joyeux_npc_editor/src/Core/Control_Components/EnumDropDown.gd"
-}, {
-"base": "HBoxContainer",
-"class": "FileLabel",
-"language": "GDScript",
-"path": "res://addons/joyeux_npc_editor/src/Core/Control_Components/FileSeparator.gd"
-}, {
-"base": "InspectorGadgetBase",
-"class": "GadgetAABB",
-"language": "GDScript",
-"path": "res://addons/inspector-gadget/src/gadgets/gadget_aabb.gd"
-}, {
-"base": "InspectorGadgetBase",
-"class": "GadgetBasis",
-"language": "GDScript",
-"path": "res://addons/inspector-gadget/src/gadgets/gadget_basis.gd"
-}, {
-"base": "InspectorGadgetBase",
-"class": "GadgetBool",
-"language": "GDScript",
-"path": "res://addons/inspector-gadget/src/gadgets/gadget_bool.gd"
-}, {
-"base": "GadgetVector4",
-"class": "GadgetColor",
-"language": "GDScript",
-"path": "res://addons/inspector-gadget/src/gadgets/gadget_vector4/gadget_color.gd"
-}, {
-"base": "InspectorGadgetBase",
-"class": "GadgetFloat",
-"language": "GDScript",
-"path": "res://addons/inspector-gadget/src/gadgets/gadget_float.gd"
-}, {
-"base": "InspectorGadgetBase",
-"class": "GadgetInt",
-"language": "GDScript",
-"path": "res://addons/inspector-gadget/src/gadgets/gadget_int.gd"
-}, {
-"base": "GadgetStringEdit",
-"class": "GadgetNodePath",
-"language": "GDScript",
-"path": "res://addons/inspector-gadget/src/gadgets/gadget_node_path.gd"
-}, {
-"base": "GadgetVector4",
-"class": "GadgetPlane",
-"language": "GDScript",
-"path": "res://addons/inspector-gadget/src/gadgets/gadget_vector4/gadget_plane.gd"
-}, {
-"base": "GadgetVector4",
-"class": "GadgetQuat",
-"language": "GDScript",
-"path": "res://addons/inspector-gadget/src/gadgets/gadget_vector4/gadget_quat.gd"
-}, {
-"base": "GadgetStringEdit",
-"class": "GadgetRID",
-"language": "GDScript",
-"path": "res://addons/inspector-gadget/src/gadgets/gadget_rid.gd"
-}, {
-"base": "InspectorGadgetBase",
-"class": "GadgetRect2",
-"language": "GDScript",
-"path": "res://addons/inspector-gadget/src/gadgets/gadget_rect2.gd"
-}, {
-"base": "InspectorGadgetBase",
-"class": "GadgetResource",
-"language": "GDScript",
-"path": "res://addons/inspector-gadget/src/gadgets/gadget_resource.gd"
-}, {
-"base": "InspectorGadgetBase",
-"class": "GadgetStringEdit",
-"language": "GDScript",
-"path": "res://addons/inspector-gadget/src/gadgets/gadget_string_edit.gd"
-}, {
-"base": "InspectorGadgetBase",
-"class": "GadgetStringLabel",
-"language": "GDScript",
-"path": "res://addons/inspector-gadget/src/gadgets/gadget_string_label.gd"
-}, {
-"base": "InspectorGadgetBase",
-"class": "GadgetTransform",
-"language": "GDScript",
-"path": "res://addons/inspector-gadget/src/gadgets/gadget_transform.gd"
-}, {
-"base": "InspectorGadgetBase",
-"class": "GadgetTransform2D",
-"language": "GDScript",
-"path": "res://addons/inspector-gadget/src/gadgets/gadget_transform2d.gd"
-}, {
-"base": "InspectorGadgetBase",
-"class": "GadgetVector2",
-"language": "GDScript",
-"path": "res://addons/inspector-gadget/src/gadgets/gadget_vector2.gd"
-}, {
-"base": "InspectorGadgetBase",
-"class": "GadgetVector3",
-"language": "GDScript",
-"path": "res://addons/inspector-gadget/src/gadgets/gadget_vector3.gd"
-}, {
-"base": "InspectorGadgetBase",
-"class": "GadgetVector4",
-"language": "GDScript",
-"path": "res://addons/inspector-gadget/src/gadgets/gadget_vector4.gd"
-}, {
-"base": "InspectorGadgetBase",
-"class": "InspectorGadget",
-"language": "GDScript",
-"path": "res://addons/inspector-gadget/src/inspector_gadget.gd"
-}, {
-"base": "MarginContainer",
-"class": "InspectorGadgetBase",
-"language": "GDScript",
-"path": "res://addons/inspector-gadget/src/inspector_gadget_base.gd"
-}, {
-"base": "Reference",
-"class": "InspectorGadgetUtil",
-"language": "GDScript",
-"path": "res://addons/inspector-gadget/src/inspector_gadget_util.gd"
-}, {
-"base": "NPCBase",
-"class": "JxNPC",
-"language": "GDScript",
-"path": "res://addons/joyeux_npc_editor/src/NPCs/JxNPC.gd"
-}, {
-"base": "NPCBase",
-"class": "MwNPC",
-"language": "GDScript",
-"path": "res://addons/joyeux_npc_editor/src/NPCs/MwNPC.gd"
-}, {
-"base": "WorldNavigator",
-"class": "MwNavigator",
-"language": "GDScript",
-"path": "res://joyeuse/workstations/WorkerNavigator.gd"
-}, {
-"base": "Node",
-"class": "NPCBase",
-"language": "GDScript",
-"path": "res://addons/joyeux_npc_editor/src/NPCs/NPC.gd"
-}, {
-"base": "Resource",
-"class": "NpcDefinitions",
-"language": "GDScript",
-"path": "res://addons/joyeux_npc_editor/Config/Definitions.gd"
-}, {
-"base": "AcceptDialog",
-"class": "PopupColor",
-"language": "GDScript",
-"path": "res://addons/inspector-gadget/src/gadgets/gadget_popup/popup_color.gd"
-}, {
-"base": "WindowDialog",
-"class": "TextPopup",
-"language": "GDScript",
-"path": "res://addons/joyeux_dialog_system/src/components/text_popup.gd"
-}, {
-"base": "Node",
-"class": "Worker",
-"language": "GDScript",
-"path": "res://joyeuse/workstations/JxWorker.gd"
-}, {
-"base": "Area",
-"class": "Workstation",
-"language": "GDScript",
-"path": "res://joyeuse/workstations/Workstation.gd"
-}, {
-"base": "Navigation",
-"class": "WorldNavigator",
-"language": "GDScript",
-"path": "res://addons/joyeux_nav_interacts/WorldNavigation.gd"
-} ]
-_global_script_class_icons={
-"BehaviorNode": "",
-"DoubleLabel": "",
-"DropDown": "",
-"EnumDropDown": "",
-"FileLabel": "",
-"GadgetAABB": "",
-"GadgetBasis": "",
-"GadgetBool": "",
-"GadgetColor": "",
-"GadgetFloat": "",
-"GadgetInt": "",
-"GadgetNodePath": "",
-"GadgetPlane": "",
-"GadgetQuat": "",
-"GadgetRID": "",
-"GadgetRect2": "",
-"GadgetResource": "",
-"GadgetStringEdit": "",
-"GadgetStringLabel": "",
-"GadgetTransform": "",
-"GadgetTransform2D": "",
-"GadgetVector2": "",
-"GadgetVector3": "",
-"GadgetVector4": "",
-"InspectorGadget": "",
-"InspectorGadgetBase": "",
-"InspectorGadgetUtil": "",
-"JxNPC": "",
-"MwNPC": "",
-"MwNavigator": "",
-"NPCBase": "",
-"NpcDefinitions": "",
-"PopupColor": "",
-"TextPopup": "",
-"Worker": "",
-"Workstation": "",
-"WorldNavigator": ""
-}
+config_version=5
 
 [application]
 
 config/name="Character Studio"
 run/main_scene="res://addons/joyeux_npc_editor/src/interface/NPCEditorSuite.tscn"
+config/features=PackedStringArray("4.0")
 config/icon="res://icon.png"
 
 [autoload]
@@ -246,21 +21,31 @@ Nodes="*res://addons/joyeux_npc_editor/src/Core/Nodes.gd"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "joyeux_dialog_system", "joyeux_npc_editor" )
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/joyeux_dialog_system/plugin.cfg", "res://addons/joyeux_npc_editor/plugin.cfg")
 
 [input]
 
 control={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777238,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
+dialogic_default_action={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"pressed":true,"double_click":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
+]
 }
 Shift={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
 }
 
 [locale]
 
-translations=PoolStringArray( "res://addons/joyeux_npc_editor/lang/npc_editor_label_translation.en.translation", "res://addons/joyeux_npc_editor/lang/npc_editor_label_translation.es.translation" )
+translations=PackedStringArray("res://addons/joyeux_npc_editor/lang/npc_editor_label_translation.en.translation", "res://addons/joyeux_npc_editor/lang/npc_editor_label_translation.es.translation", "res://addons/joyeux_npc_editor/lang/npc_editor_label_translation.en.position", "res://addons/joyeux_npc_editor/lang/npc_editor_label_translation.es.position")

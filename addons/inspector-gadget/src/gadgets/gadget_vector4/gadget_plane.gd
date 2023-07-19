@@ -1,8 +1,9 @@
+@tool
 class_name GadgetPlane
 extends GadgetVector4
-tool
 
-func _init(in_node_path: NodePath = NodePath(), in_subnames: String = "").(in_node_path, in_subnames):
+func _init(in_node_path: NodePath = NodePath(), in_subnames: String = ""):
+	super(in_node_path, in_subnames)
 	x_axis = "x"
 	y_axis = "y"
 	z_axis = "z"

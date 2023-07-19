@@ -1,4 +1,4 @@
-tool
+@tool
 extends DropDown
 class_name EnumDropDown
 

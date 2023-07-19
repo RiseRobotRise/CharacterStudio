@@ -1,12 +1,13 @@
+@tool
 class_name GadgetRect2
 extends InspectorGadgetBase
-tool
 
-func _init(in_node_path: NodePath = NodePath(), in_subnames: String = "").(in_node_path, in_subnames):
+func _init(in_node_path: NodePath = NodePath(), in_subnames: String = ""):
+	super(in_node_path, in_subnames)
 	pass
 
 func set_node_path(new_node_path: NodePath):
-	.set_node_path(new_node_path)
+	super.set_node_path(new_node_path)
 
 	if not has_controls():
 		return
@@ -18,7 +19,7 @@ func set_node_path(new_node_path: NodePath):
 	size_gadget.node_path = node_path
 
 func set_subnames(new_subnames: String):
-	.set_subnames(new_subnames)
+	super.set_subnames(new_subnames)
 
 	if not has_controls():
 		return
@@ -50,18 +51,18 @@ func populate_controls() -> void:
 	var position_gadget = GadgetVector2.new("../../" + node_path, subnames + ":position")
 	position_gadget.name = "PositionGadget"
 	position_gadget.size_flags_horizontal = SIZE_EXPAND_FILL
-	position_gadget.connect("change_property_begin", self, "change_property_begin")
-	position_gadget.connect("change_property_end", self, "change_property_end")
+	position_gadget.connect("change_property_begin", Callable(self, "change_property_begin"))
+	position_gadget.connect("change_property_end", Callable(self, "change_property_end"))
 
 	var size_gadget = GadgetVector2.new("../../" + node_path, subnames + ":size")
 	size_gadget.name = "SizeGadget"
 	size_gadget.size_flags_horizontal = SIZE_EXPAND_FILL
-	size_gadget.connect("change_property_begin", self, "change_property_begin")
-	size_gadget.connect("change_property_end", self, "change_property_end")
+	size_gadget.connect("change_property_begin", Callable(self, "change_property_begin"))
+	size_gadget.connect("change_property_end", Callable(self, "change_property_end"))
 
 	var vbox = VBoxContainer.new()
 	vbox.name = "VBoxContainer"
-	vbox.set_anchors_and_margins_preset(PRESET_WIDE)
+	vbox.set_anchors_and_offsets_preset(PRESET_WIDE)
 	vbox.add_child(position_label)
 	vbox.add_child(position_gadget)
 	vbox.add_child(size_label)

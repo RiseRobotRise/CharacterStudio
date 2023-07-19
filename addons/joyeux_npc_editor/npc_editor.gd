@@ -1,19 +1,19 @@
-tool
+@tool
 extends EditorPlugin
 
 const main_panel = preload("res://addons/joyeux_npc_editor/src/interface/Addon_UI.tscn")
 const lang = [
-	"res://addons/joyeux_npc_editor/lang/npc_editor_label_translation.en.translation",
-	"res://addons/joyeux_npc_editor/lang/npc_editor_label_translation.es.translation"
+	"res://addons/joyeux_npc_editor/lang/npc_editor_label_translation.en.position",
+	"res://addons/joyeux_npc_editor/lang/npc_editor_label_translation.es.position"
 ]
 var main_panel_instance
 
 func _enter_tree():
 	
 	if ProjectSettings.get("locale/translations") == null:
-		ProjectSettings.set("locale/translations", PoolStringArray())
+		ProjectSettings.set("locale/translations", PackedStringArray())
 		pass
-	var current_translations : PoolStringArray = ProjectSettings.get("locale/translations")
+	var current_translations : PackedStringArray = ProjectSettings.get("locale/translations")
 	for locale in lang:
 		if locale in current_translations:
 			continue
@@ -23,19 +23,19 @@ func _enter_tree():
 
 	if not Engine.has_singleton("Nodes"):
 		add_autoload_singleton("Nodes", "res://addons/joyeux_npc_editor/src/Core/Nodes.gd")
-	main_panel_instance = main_panel.instance()
-	get_editor_interface().get_editor_viewport().add_child(main_panel_instance)
-	make_visible(false)
+	main_panel_instance = main_panel.instantiate()
+	get_editor_interface().get_editor_main_screen().add_child(main_panel_instance)
+	_make_visible(false)
 
 func _exit_tree():
 	
-	var current_translations : PoolStringArray = ProjectSettings.get("locale/translations")
-	var new_translations : PoolStringArray = PoolStringArray()
-	for translation in current_translations:
-		if translation in lang:
+	var current_translations : PackedStringArray = ProjectSettings.get("locale/translations")
+	var new_translations : PackedStringArray = PackedStringArray()
+	for position in current_translations:
+		if position in lang:
 			continue
 		else:
-			new_translations.append(translation)
+			new_translations.append(position)
 	ProjectSettings.set("locale/translations", new_translations)
 	
 	if Engine.has_singleton("Nodes"):
@@ -47,11 +47,11 @@ func _exit_tree():
 
 
 
-func make_visible(visible):
+func _make_visible(visible):
 	if main_panel_instance:
 		main_panel_instance.visible = visible
 
-func has_main_screen():
+func _has_main_screen():
 	return true
-func get_plugin_name():
+func _get_plugin_name():
 	return TranslationServer.translate("NPC Editor")

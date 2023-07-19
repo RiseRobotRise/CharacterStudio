@@ -1,20 +1,20 @@
-tool
+@tool
 extends VSplitContainer
 
 var type : String = ""
 var node_name  : String = ""
 var idx : int = 0
-onready var Stimulus = $ViewMenuSplit/Container/Panel/DropDowns/stimulus.get_popup()
-onready var Actions = $ViewMenuSplit/Container/Panel/DropDowns/actions.get_popup()
-onready var Inhibitors = $ViewMenuSplit/Container/Panel/DropDowns/inhibitors.get_popup()
-onready var Misc = $ViewMenuSplit/Container/Panel/DropDowns/misc.get_popup()
+@onready var Stimulus = $ViewMenuSplit/Container/Panel/DropDowns/stimulus.get_popup()
+@onready var Actions = $ViewMenuSplit/Container/Panel/DropDowns/actions.get_popup()
+@onready var Inhibitors = $ViewMenuSplit/Container/Panel/DropDowns/inhibitors.get_popup()
+@onready var Misc = $ViewMenuSplit/Container/Panel/DropDowns/misc.get_popup()
 
 func _on_ready() -> void:
 	Nodes.initiate()
-	Stimulus.connect("index_pressed",self,"_on_Stimulus_selected")
-	Actions.connect("index_pressed",self,"_on_Actions_selected")
-	Inhibitors.connect("index_pressed",self, "_on_Inhibitions_selected")
-	Misc.connect("index_pressed",self, "_on_Misc_selected")
+	Stimulus.connect("index_pressed", Callable(self, "_on_Stimulus_selected"))
+	Actions.connect("index_pressed", Callable(self, "_on_Actions_selected"))
+	Inhibitors.connect("index_pressed", Callable(self, "_on_Inhibitions_selected"))
+	Misc.connect("index_pressed", Callable(self, "_on_Misc_selected"))
 	_generate_nodes()
 
 func _on_Stimulus_selected(index) -> void:
@@ -39,7 +39,7 @@ func _update_labels(name : String) -> void:
 	if Nodes.Graphs.get(name).get(node_name) is Node:
 		Placeholder = Nodes.Graphs.get(name).get(node_name).duplicate(7)
 	else:
-		Placeholder = Nodes.Graphs.get(name).get(node_name).instance()
+		Placeholder = Nodes.Graphs.get(name).get(node_name).instantiate()
 	$ViewMenuSplit/Container/selection/name.text = str(Placeholder.title)
 	Placeholder.queue_free()
 
@@ -59,7 +59,7 @@ func _on_Add_pressed() -> void:
 	if instanced is Node:
 		instanced = instanced.duplicate(7)
 	else:
-		instanced = instanced.instance()
+		instanced = instanced.instantiate()
 	instanced.name = instanced.title 
 	$ViewMenuSplit/GraphEdit.add_child(instanced)
 	idx+=1

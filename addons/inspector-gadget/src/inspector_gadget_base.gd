@@ -6,12 +6,12 @@ signal change_property_begin(object, property)
 signal change_property_end(object, property)
 signal gadget_event(event)
 
-export(NodePath) var node_path: NodePath setget set_node_path
-export(String) var subnames: String setget set_subnames
-export(bool) var editable := true
+@export var node_path: NodePath: NodePath: set = set_node_path
+@export var subnames: String: String: set = set_subnames
+@export var editable: bool := true
 
 var _node_ref := weakref(null)
-var _value setget _set_value
+var _value : set = _set_value
 var _prev_container_size := -1
 
 # Public Setters
@@ -19,20 +19,20 @@ func set_node_path(new_node_path: NodePath) -> void:
 	if node_path != new_node_path:
 		node_path = new_node_path
 		update_node()
-	update_configuration_warning()
+	update_configuration_warnings()
 
 func set_subnames(new_subnames: String) -> void:
 	if subnames != new_subnames:
 		subnames = new_subnames
 		_value_changed()
-	update_configuration_warning()
+	update_configuration_warnings()
 
 # Private setters
 func _set_node(new_node: Node) -> void:
 	if _node_ref.get_ref() != new_node:
 		_node_ref = weakref(new_node)
 		_node_changed()
-	update_configuration_warning()
+	update_configuration_warnings()
 
 func _set_value(new_value) -> void:
 	var value_type = typeof(_value)
@@ -82,7 +82,7 @@ func _process(delta: float) -> void:
 
 	_set_value(InspectorGadgetUtil.get_indexed_ex(_node, subnames))
 
-func _get_configuration_warning() -> String:
+func _get_configuration_warnings() -> String:
 	var _node = _node_ref.get_ref()
 	if not _node:
 		return "Node path invalid"

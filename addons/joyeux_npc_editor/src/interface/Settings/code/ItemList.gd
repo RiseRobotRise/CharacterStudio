@@ -1,7 +1,7 @@
-tool
+@tool
 extends VBoxContainer
 
-onready var popup = $Add/FileDialog
+@onready var popup = $Add/FileDialog
 
 func _ready():
 	if Nodes.behavior_paths.size() > 2:
@@ -20,11 +20,11 @@ func add_item(path : String) -> void:
 	content.editable = false
 	content.text = path
 	button.text = "-"
-	title.text = "Path:"
+	title.text = "Path3D:"
 	content.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	cont.set_meta("name", path)
 	cont.name = Nodes.filter_node_name(path)
-	button.connect("pressed", self, "delete_item", [cont])
+	button.connect("pressed", Callable(self, "delete_item").bind(cont))
 	cont.add_child(title)
 	cont.add_child(content)
 	cont.add_child(button)

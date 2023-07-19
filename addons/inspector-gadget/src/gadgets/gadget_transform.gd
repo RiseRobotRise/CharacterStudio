@@ -1,12 +1,13 @@
+@tool
 class_name GadgetTransform
 extends InspectorGadgetBase
-tool
 
-func _init(in_node_path: NodePath = NodePath(), in_subnames: String = "").(in_node_path, in_subnames):
+func _init(in_node_path: NodePath = NodePath(), in_subnames: String = ""):
+	super(in_node_path, in_subnames)
 	pass
 
 func set_node_path(new_node_path: NodePath):
-	.set_node_path(new_node_path)
+	super.set_node_path(new_node_path)
 
 	if not has_controls():
 		return
@@ -18,7 +19,7 @@ func set_node_path(new_node_path: NodePath):
 	origin_gadget.node_path = node_path
 
 func set_subnames(new_subnames: String):
-	.set_subnames(new_subnames)
+	super.set_subnames(new_subnames)
 
 	if not has_controls():
 		return
@@ -30,7 +31,7 @@ func set_subnames(new_subnames: String):
 	origin_gadget.subnames = subnames + ":origin"
 
 static func supports_type(value) -> bool:
-	if value is Transform:
+	if value is Transform3D:
 		return true
 	return false
 
@@ -50,18 +51,18 @@ func populate_controls() -> void:
 	var basis_gadget = GadgetBasis.new("../../" + node_path, subnames + ":basis")
 	basis_gadget.name = "BasisGadget"
 	basis_gadget.size_flags_horizontal = SIZE_EXPAND_FILL
-	basis_gadget.connect("change_property_begin", self, "change_property_begin")
-	basis_gadget.connect("change_property_end", self, "change_property_end")
+	basis_gadget.connect("change_property_begin", Callable(self, "change_property_begin"))
+	basis_gadget.connect("change_property_end", Callable(self, "change_property_end"))
 
 	var origin_gadget = GadgetVector3.new("../../" + node_path, subnames + ":origin")
 	origin_gadget.name = "OriginGadget"
 	origin_gadget.size_flags_horizontal = SIZE_EXPAND_FILL
-	origin_gadget.connect("change_property_begin", self, "change_property_begin")
-	origin_gadget.connect("change_property_end", self, "change_property_end")
+	origin_gadget.connect("change_property_begin", Callable(self, "change_property_begin"))
+	origin_gadget.connect("change_property_end", Callable(self, "change_property_end"))
 
 	var vbox = VBoxContainer.new()
 	vbox.name = "VBoxContainer"
-	vbox.set_anchors_and_margins_preset(PRESET_WIDE)
+	vbox.set_anchors_and_offsets_preset(PRESET_WIDE)
 	vbox.add_child(label_basis)
 	vbox.add_child(basis_gadget)
 	vbox.add_child(label_origin)

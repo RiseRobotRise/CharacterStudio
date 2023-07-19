@@ -1,23 +1,23 @@
+@tool
 extends Control
-tool
 
-export(bool) var bool_value := true setget set_bool_value
-export(int) var int_value := 1 setget set_int_value
-export(float) var float_value := PI setget set_float_value
-export(String) var string_value := "Foo Bar Baz Decafisbad" setget set_string_value
-export(Vector2) var vector2_value := Vector2(0.0, 0.0) setget set_vector2_value
-export(Rect2) var rect2_value := Rect2(Vector2(0.0, 0.0), Vector2(40.0, 20.0)) setget set_rect2_value
-export(Vector3) var vector3_value := Vector3(0.0, 0.0, 0.0) setget set_vector3_value
-export(Transform2D) var transform2d_value := Transform2D(Vector2(1.0, 0.0), Vector2(0.0, 1.0), Vector2(0.0, 0.0)) setget set_transform2d_value
-export(Plane) var plane_value := Plane(0.0, 1.0, 0.0, 0.0) setget set_plane_value
-export(Quat) var quat_value := Quat(PI, 0.0, 0.0, 1.0) setget set_quat_value
-export(Color) var color_value := Color.orangered setget set_color_value
-export(AABB) var aabb_value := AABB(Vector3(-7.5, -7.5, -7.5), Vector3(15.0, 15.0, 15.0)) setget set_aabb_value
-export(Basis) var basis_value := Basis(Vector3.RIGHT, Vector3.UP, Vector3.FORWARD) setget set_basis_value
-export(Transform) var transform_value := Transform(Basis(Vector3.RIGHT, Vector3.UP, Vector3.FORWARD), Vector3(5.0, 5.0, 5.0)) setget set_transform_value
-export(RID) var rid_value = null setget set_rid_value
+@export var bool_value: bool := true: set = set_bool_value
+@export var int_value: int := 1: set = set_int_value
+@export var float_value: float := PI: set = set_float_value
+@export var string_value: String := "Foo Bar Baz Decafisbad": set = set_string_value
+@export var vector2_value: Vector2 := Vector2(0.0, 0.0): set = set_vector2_value
+@export var rect2_value: Rect2 := Rect2(Vector2(0.0, 0.0), Vector2(40.0, 20.0)): set = set_rect2_value
+@export var vector3_value: Vector3 := Vector3(0.0, 0.0, 0.0): set = set_vector3_value
+@export var transform2d_value: Transform2D := Transform2D(Vector2(1.0, 0.0), Vector2(0.0, 1.0), Vector2(0.0, 0.0)): set = set_transform2d_value
+@export var plane_value: Plane := Plane(0.0, 1.0, 0.0, 0.0): set = set_plane_value
+@export var quat_value: Quaternion := Quaternion(PI, 0.0, 0.0, 1.0): set = set_quat_value
+@export var color_value: Color := Color.ORANGE_RED: set = set_color_value
+@export var aabb_value: AABB := AABB(Vector3(-7.5, -7.5, -7.5), Vector3(15.0, 15.0, 15.0)): set = set_aabb_value
+@export var basis_value: Basis := Basis(Vector3.RIGHT, Vector3.UP, Vector3.FORWARD): set = set_basis_value
+@export var transform_value: Transform3D := Transform3D(Basis(Vector3.RIGHT, Vector3.UP, Vector3.FORWARD), Vector3(5.0, 5.0, 5.0)): set = set_transform_value
+@export var rid_value: RID = null: set = set_rid_value
 
-export(Array, String) var array_value := [
+@export var array_value := [ # (Array, String)
 	true,
 	12,
 	140.5,
@@ -26,28 +26,28 @@ export(Array, String) var array_value := [
 	["one", "two", "three"]
 ] setget set_array_value
 
-export(Dictionary) var dictionary_value := {
+@export var dictionary_value: Dictionary := {
 	"foo": "foo string",
 	"bar": "bar string",
 	"baz": "baz string",
 } setget set_dictionary_value
 
-export(PoolByteArray) var pool_byte_array_value := PoolByteArray([0, 1, 2, 3, 7, 15, 31, 63, 127, 255]) setget set_pool_byte_array_value
-export(PoolIntArray) var pool_int_array_value := PoolIntArray([0, 1, 2, 3, 4, 5, 6, 7]) setget set_pool_int_array_value
-export(PoolRealArray) var pool_real_array_value := PoolRealArray([0.0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.7, 2.0, 2.3, 2.7, 3.0]) setget set_pool_real_array_value
-export(PoolStringArray) var pool_string_array_value := PoolStringArray(["foo", "bar", "baz"]) setget set_pool_string_array_value
-export(PoolVector2Array) var pool_vector2_array_value := PoolVector2Array([Vector2.ZERO, Vector2.UP * 5, Vector2.RIGHT * 5, Vector2.ONE * 5]) setget set_pool_vector2_array_value
-export(PoolVector3Array) var pool_vector3_array_value := PoolVector3Array([Vector3.ZERO, Vector3.UP * 10, Vector3.RIGHT * 10, Vector3.BACK * 10]) setget set_pool_vector3_array_value
-export(PoolColorArray) var pool_color_array_value := PoolColorArray([Color.red, Color.green, Color.blue, Color.black, Color.white]) setget set_pool_color_array_value
+@export var pool_byte_array_value: PackedByteArray := PackedByteArray([0, 1, 2, 3, 7, 15, 31, 63, 127, 255]): set = set_pool_byte_array_value
+@export var pool_int_array_value: PackedInt32Array := PackedInt32Array([0, 1, 2, 3, 4, 5, 6, 7]): set = set_pool_int_array_value
+@export var pool_real_array_value: PackedFloat32Array := PackedFloat32Array([0.0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.7, 2.0, 2.3, 2.7, 3.0]): set = set_pool_real_array_value
+@export var pool_string_array_value: PackedStringArray := PackedStringArray(["foo", "bar", "baz"]): set = set_pool_string_array_value
+@export var pool_vector2_array_value: PackedVector2Array := PackedVector2Array([Vector2.ZERO, Vector2.UP * 5, Vector2.RIGHT * 5, Vector2.ONE * 5]): set = set_pool_vector2_array_value
+@export var pool_vector3_array_value: PackedVector3Array := PackedVector3Array([Vector3.ZERO, Vector3.UP * 10, Vector3.RIGHT * 10, Vector3.BACK * 10]): set = set_pool_vector3_array_value
+@export var pool_color_array_value: PackedColorArray := PackedColorArray([Color.RED, Color.GREEN, Color.BLUE, Color.BLACK, Color.WHITE]): set = set_pool_color_array_value
 
-export(String) var blacklisted_property := "You'll never find me, Gadget! Wahahahaha!"
+@export var blacklisted_property: String := "You'll never find me, Gadget! Wahahahaha!"
 
 func _init() -> void:
-	quat_value = Quat(Vector3(deg2rad(-30), deg2rad(-30), deg2rad(-30)))
+	quat_value = Quaternion(Vector3(deg_to_rad(-30), deg_to_rad(-30), deg_to_rad(-30)))
 	basis_value = Basis.IDENTITY
-	basis_value = basis_value.rotated(Vector3.UP, deg2rad(45))
-	basis_value = basis_value.rotated(Vector3.RIGHT, deg2rad(45))
-	basis_value = basis_value.rotated(Vector3.FORWARD, deg2rad(45))
+	basis_value = basis_value.rotated(Vector3.UP, deg_to_rad(45))
+	basis_value = basis_value.rotated(Vector3.RIGHT, deg_to_rad(45))
+	basis_value = basis_value.rotated(Vector3.FORWARD, deg_to_rad(45))
 
 func set_bool_value(new_bool_value: bool) -> void:
 	if bool_value != new_bool_value:
@@ -103,7 +103,7 @@ func set_plane_value(new_plane_value: Plane) -> void:
 	print("set plane value: ", plane_value)
 	update()
 
-func set_quat_value(new_quat_value: Quat) -> void:
+func set_quat_value(new_quat_value: Quaternion) -> void:
 	if quat_value != new_quat_value:
 		quat_value = new_quat_value
 	print("set quat value: ", quat_value)
@@ -127,7 +127,7 @@ func set_basis_value(new_basis_value: Basis) -> void:
 	print("set basis value: ", basis_value)
 	update()
 
-func set_transform_value(new_transform_value: Transform) -> void:
+func set_transform_value(new_transform_value: Transform3D) -> void:
 	if transform_value != new_transform_value:
 		transform_value = new_transform_value
 	print("set transform value: ", transform_value)
@@ -151,43 +151,43 @@ func set_dictionary_value(new_dictionary_value: Dictionary) -> void:
 	print("set dictionary value: ", dictionary_value)
 	update()
 
-func set_pool_byte_array_value(new_pool_byte_array_value: PoolByteArray) -> void:
+func set_pool_byte_array_value(new_pool_byte_array_value: PackedByteArray) -> void:
 	if pool_byte_array_value != new_pool_byte_array_value:
 		pool_byte_array_value = new_pool_byte_array_value
 	print("set pool byte array value: ", pool_byte_array_value)
 	update()
 
-func set_pool_int_array_value(new_pool_int_array_value: PoolIntArray) -> void:
+func set_pool_int_array_value(new_pool_int_array_value: PackedInt32Array) -> void:
 	if pool_int_array_value != new_pool_int_array_value:
 		pool_int_array_value = new_pool_int_array_value
 	print("set pool int array value: ", pool_int_array_value)
 	update()
 
-func set_pool_real_array_value(new_pool_real_array_value: PoolRealArray) -> void:
+func set_pool_real_array_value(new_pool_real_array_value: PackedFloat32Array) -> void:
 	if pool_real_array_value != new_pool_real_array_value:
 		pool_real_array_value = new_pool_real_array_value
 	print("set pool real array value: ", pool_real_array_value)
 	update()
 
-func set_pool_string_array_value(new_pool_string_array_value: PoolStringArray) -> void:
+func set_pool_string_array_value(new_pool_string_array_value: PackedStringArray) -> void:
 	if pool_string_array_value != new_pool_string_array_value:
 		pool_string_array_value = new_pool_string_array_value
 	print("set pool string array value: ", pool_string_array_value)
 	update()
 
-func set_pool_vector2_array_value(new_pool_vector2_array_value: PoolVector2Array) -> void:
+func set_pool_vector2_array_value(new_pool_vector2_array_value: PackedVector2Array) -> void:
 	if pool_vector2_array_value != new_pool_vector2_array_value:
 		pool_vector2_array_value = new_pool_vector2_array_value
 	print("set pool vector2 array value: ", pool_vector2_array_value)
 	update()
 
-func set_pool_vector3_array_value(new_pool_vector3_array_value: PoolVector3Array) -> void:
+func set_pool_vector3_array_value(new_pool_vector3_array_value: PackedVector3Array) -> void:
 	if pool_vector3_array_value != new_pool_vector3_array_value:
 		pool_vector3_array_value = new_pool_vector3_array_value
 	print("set pool vector3 array value: ", pool_vector3_array_value)
 	update()
 
-func set_pool_color_array_value(new_pool_color_array_value: PoolColorArray) -> void:
+func set_pool_color_array_value(new_pool_color_array_value: PackedColorArray) -> void:
 	if pool_color_array_value != new_pool_color_array_value:
 		pool_color_array_value = new_pool_color_array_value
 	print("set pool color array value: ", pool_color_array_value)
@@ -213,7 +213,7 @@ func _draw() -> void:
 	origin += visualize_transform2d(origin, transform2d_value)
 	origin += draw_heading(origin, "Plane")
 	origin += visualize_plane(origin, plane_value)
-	origin += draw_heading(origin, "Quat")
+	origin += draw_heading(origin, "Quaternion")
 	origin += visualize_quat(origin, quat_value)
 	origin += draw_heading(origin, "Color")
 	origin += visualize_color(origin, color_value)
@@ -221,41 +221,41 @@ func _draw() -> void:
 	origin += visualize_aabb(origin, aabb_value)
 	origin += draw_heading(origin, "Basis")
 	origin += visualize_basis(origin, basis_value)
-	origin += draw_heading(origin, "Transform")
+	origin += draw_heading(origin, "Transform3D")
 	origin += visualize_transform(origin, transform_value)
 	origin += draw_heading(origin, "Array")
 	origin += visualize_array(origin, array_value)
-	origin += draw_heading(origin, "PoolByteArray")
+	origin += draw_heading(origin, "PackedByteArray")
 	origin += visualize_array(origin, pool_byte_array_value)
-	origin += draw_heading(origin, "PoolIntArray")
+	origin += draw_heading(origin, "PackedInt32Array")
 	origin += visualize_array(origin, pool_int_array_value)
-	origin += draw_heading(origin, "PoolRealArray")
+	origin += draw_heading(origin, "PackedFloat32Array")
 	origin += visualize_array(origin, pool_real_array_value)
-	origin += draw_heading(origin, "PoolStringArray")
+	origin += draw_heading(origin, "PackedStringArray")
 	origin += visualize_array(origin, pool_string_array_value)
-	origin += draw_heading(origin, "PoolVector2Array")
+	origin += draw_heading(origin, "PackedVector2Array")
 	origin += visualize_array(origin, pool_vector2_array_value)
-	origin += draw_heading(origin, "PoolVector3Array")
+	origin += draw_heading(origin, "PackedVector3Array")
 	origin += visualize_array(origin, pool_vector3_array_value)
-	origin += draw_heading(origin, "PoolColorArray")
+	origin += draw_heading(origin, "PackedColorArray")
 	origin += visualize_array(origin, pool_color_array_value)
 
-	rect_min_size.y = origin.y
+	custom_minimum_size.y = origin.y
 
 func draw_heading(origin: Vector2, text: String) -> Vector2:
 	draw_string(get_font('font'), origin + Vector2(0, 10), text)
 	return Vector2(0, 20)
 
 func visualize_bool(origin: Vector2, bool_value: bool) -> Vector2:
-	draw_rect(Rect2(origin, Vector2(10, 10)), Color.red if bool_value else Color.blue)
+	draw_rect(Rect2(origin, Vector2(10, 10)), Color.RED if bool_value else Color.BLUE)
 	return Vector2(0, 30)
 
 func visualize_int(origin: Vector2, int_value: int) -> Vector2:
-	draw_rect(Rect2(origin.x * int_value, origin.y, 10, 10), Color.green)
+	draw_rect(Rect2(origin.x * int_value, origin.y, 10, 10), Color.GREEN)
 	return Vector2(0, 30)
 
 func visualize_float(origin: Vector2, float_value: float) -> Vector2:
-	draw_arc(origin + Vector2(10, 10), 10, 0, float_value, 32, Color.white)
+	draw_arc(origin + Vector2(10, 10), 10, 0, float_value, 32, Color.WHITE)
 	return Vector2(0, 40)
 
 func visualize_string(origin: Vector2, string_value: String) -> Vector2:
@@ -264,31 +264,31 @@ func visualize_string(origin: Vector2, string_value: String) -> Vector2:
 
 func visualize_vector2(origin: Vector2, vector2_value: Vector2) -> Vector2:
 	var center = origin + Vector2(20, 20)
-	draw_rect(Rect2(center - Vector2(10, 10), Vector2(20, 20)), Color.white, false)
-	draw_circle(center + vector2_value, 2, Color.white)
+	draw_rect(Rect2(center - Vector2(10, 10), Vector2(20, 20)), Color.WHITE, false)
+	draw_circle(center + vector2_value, 2, Color.WHITE)
 	return Vector2(0, 40)
 
 func visualize_rect2(origin: Vector2, rect2_value: Rect2) -> Vector2:
-	draw_rect(Rect2(origin + rect2_value.position, rect2_value.size), Color.white)
+	draw_rect(Rect2(origin + rect2_value.position, rect2_value.size), Color.WHITE)
 	return Vector2(0, 40)
 
 func visualize_vector3(origin: Vector2, vector3_value: Vector3) -> Vector2:
 	var center = origin + Vector2(20, 20)
 	draw_axes_3d(center, Vector3(20, 20, 20))
-	draw_circle(center + project_2d(vector3_value), 2.5, Color.white)
+	draw_circle(center + project_2d(vector3_value), 2.5, Color.WHITE)
 	return Vector2(0, 60)
 
 func visualize_transform2d(origin: Vector2, transform2d_value) -> Vector2:
 	var t2d_origin = origin + Vector2(20, 20) + transform2d_value.origin
-	draw_line(t2d_origin, t2d_origin + transform2d_value.x * 10, Color.red)
-	draw_line(t2d_origin, t2d_origin + transform2d_value.y * 10, Color.green)
+	draw_line(t2d_origin, t2d_origin + transform2d_value.x * 10, Color.RED)
+	draw_line(t2d_origin, t2d_origin + transform2d_value.y * 10, Color.GREEN)
 	return Vector2(0, 50)
 
 func visualize_plane(origin: Vector2, plane_value: Plane) -> Vector2:
 	var center = origin + Vector2(20, 20)
 	draw_axes_3d(center, Vector3(20, 20, 20))
 
-	var plane_corners := PoolVector2Array([
+	var plane_corners := PackedVector2Array([
 		center + project_2d(plane_value.project(Vector3(-1.0, 0.0, -1.0) * 10)),
 		center + project_2d(plane_value.project(Vector3(1.0, 0.0, -1.0) * 10)),
 		center + project_2d(plane_value.project(Vector3(1.0, 0.0, 1.0) * 10)),
@@ -296,15 +296,15 @@ func visualize_plane(origin: Vector2, plane_value: Plane) -> Vector2:
 		center + project_2d(plane_value.project(Vector3(-1.0, 0.0, -1.0) * 10))
 	])
 
-	draw_polyline(plane_corners, Color.white)
+	draw_polyline(plane_corners, Color.WHITE)
 
 	return Vector2(0, 60)
 
-func visualize_quat(origin: Vector2, quat_value: Quat) -> Vector2:
+func visualize_quat(origin: Vector2, quat_value: Quaternion) -> Vector2:
 	var center = origin + Vector2(20, 20)
 	draw_axes_3d(center, Vector3(20, 20, 20))
 
-	draw_line(center, center + project_2d(quat_value.xform(Vector3.UP * -15)), Color.white)
+	draw_line(center, center + project_2d(quat_value * (Vector3.UP * -15)), Color.WHITE)
 
 	return Vector2(0, 60)
 
@@ -320,18 +320,18 @@ func visualize_aabb(origin: Vector2, aabb_value: AABB) -> Vector2:
 	for i in range(0, 8):
 		aabb_verts.append(aabb_value.get_endpoint(i))
 
-	draw_line(center + project_2d(aabb_verts[0]), center + project_2d(aabb_verts[1]), Color.white)
-	draw_line(center + project_2d(aabb_verts[0]), center + project_2d(aabb_verts[2]), Color.white)
-	draw_line(center + project_2d(aabb_verts[0]), center + project_2d(aabb_verts[4]), Color.white)
-	draw_line(center + project_2d(aabb_verts[1]), center + project_2d(aabb_verts[3]), Color.white)
-	draw_line(center + project_2d(aabb_verts[1]), center + project_2d(aabb_verts[5]), Color.white)
-	draw_line(center + project_2d(aabb_verts[2]), center + project_2d(aabb_verts[3]), Color.white)
-	draw_line(center + project_2d(aabb_verts[2]), center + project_2d(aabb_verts[6]), Color.white)
-	draw_line(center + project_2d(aabb_verts[3]), center + project_2d(aabb_verts[7]), Color.white)
-	draw_line(center + project_2d(aabb_verts[4]), center + project_2d(aabb_verts[5]), Color.white)
-	draw_line(center + project_2d(aabb_verts[4]), center + project_2d(aabb_verts[6]), Color.white)
-	draw_line(center + project_2d(aabb_verts[5]), center + project_2d(aabb_verts[7]), Color.white)
-	draw_line(center + project_2d(aabb_verts[6]), center + project_2d(aabb_verts[7]), Color.white)
+	draw_line(center + project_2d(aabb_verts[0]), center + project_2d(aabb_verts[1]), Color.WHITE)
+	draw_line(center + project_2d(aabb_verts[0]), center + project_2d(aabb_verts[2]), Color.WHITE)
+	draw_line(center + project_2d(aabb_verts[0]), center + project_2d(aabb_verts[4]), Color.WHITE)
+	draw_line(center + project_2d(aabb_verts[1]), center + project_2d(aabb_verts[3]), Color.WHITE)
+	draw_line(center + project_2d(aabb_verts[1]), center + project_2d(aabb_verts[5]), Color.WHITE)
+	draw_line(center + project_2d(aabb_verts[2]), center + project_2d(aabb_verts[3]), Color.WHITE)
+	draw_line(center + project_2d(aabb_verts[2]), center + project_2d(aabb_verts[6]), Color.WHITE)
+	draw_line(center + project_2d(aabb_verts[3]), center + project_2d(aabb_verts[7]), Color.WHITE)
+	draw_line(center + project_2d(aabb_verts[4]), center + project_2d(aabb_verts[5]), Color.WHITE)
+	draw_line(center + project_2d(aabb_verts[4]), center + project_2d(aabb_verts[6]), Color.WHITE)
+	draw_line(center + project_2d(aabb_verts[5]), center + project_2d(aabb_verts[7]), Color.WHITE)
+	draw_line(center + project_2d(aabb_verts[6]), center + project_2d(aabb_verts[7]), Color.WHITE)
 
 	return Vector2(0, 60)
 
@@ -339,27 +339,27 @@ func visualize_basis(origin: Vector2, basis_value: Basis) -> Vector2:
 	var center = origin + Vector2(20, 20)
 	draw_axes_3d(center, Vector3(20, 20, 20))
 
-	draw_line(center, center + project_2d(basis_value.x * 15.0), Color.darkgray, 3.0)
-	draw_line(center, center + project_2d(basis_value.y * 15.0), Color.darkgray, 3.0)
-	draw_line(center, center + project_2d(basis_value.z * 15.0), Color.darkgray, 3.0)
+	draw_line(center, center + project_2d(basis_value.x * 15.0), Color.DARK_GRAY, 3.0)
+	draw_line(center, center + project_2d(basis_value.y * 15.0), Color.DARK_GRAY, 3.0)
+	draw_line(center, center + project_2d(basis_value.z * 15.0), Color.DARK_GRAY, 3.0)
 
-	draw_line(center, center + project_2d(basis_value.x * 15.0), Color.red, 1.0)
-	draw_line(center, center + project_2d(basis_value.y * 15.0), Color.green, 1.0)
-	draw_line(center, center + project_2d(basis_value.z * 15.0), Color.lightblue, 1.0)
+	draw_line(center, center + project_2d(basis_value.x * 15.0), Color.RED, 1.0)
+	draw_line(center, center + project_2d(basis_value.y * 15.0), Color.GREEN, 1.0)
+	draw_line(center, center + project_2d(basis_value.z * 15.0), Color.LIGHT_BLUE, 1.0)
 
 	return Vector2(0, 60)
 
-func visualize_transform(origin: Vector2, transform_value: Transform) -> Vector2:
+func visualize_transform(origin: Vector2, transform_value: Transform3D) -> Vector2:
 	var center = origin + Vector2(20, 20)
 	draw_axes_3d(center, Vector3(20, 20, 20))
 
-	draw_line(center + project_2d(transform_value.origin), center + project_2d(transform_value.origin + transform_value.basis.x * 15.0), Color.darkgray, 3.0)
-	draw_line(center + project_2d(transform_value.origin), center + project_2d(transform_value.origin + transform_value.basis.y * 15.0), Color.darkgray, 3.0)
-	draw_line(center + project_2d(transform_value.origin), center + project_2d(transform_value.origin + transform_value.basis.z * 15.0), Color.darkgray, 3.0)
+	draw_line(center + project_2d(transform_value.origin), center + project_2d(transform_value.origin + transform_value.basis.x * 15.0), Color.DARK_GRAY, 3.0)
+	draw_line(center + project_2d(transform_value.origin), center + project_2d(transform_value.origin + transform_value.basis.y * 15.0), Color.DARK_GRAY, 3.0)
+	draw_line(center + project_2d(transform_value.origin), center + project_2d(transform_value.origin + transform_value.basis.z * 15.0), Color.DARK_GRAY, 3.0)
 
-	draw_line(center + project_2d(transform_value.origin), center + project_2d(transform_value.origin + transform_value.basis.x * 15.0), Color.red, 1.0)
-	draw_line(center + project_2d(transform_value.origin), center + project_2d(transform_value.origin + transform_value.basis.y * 15.0), Color.green, 1.0)
-	draw_line(center + project_2d(transform_value.origin), center + project_2d(transform_value.origin + transform_value.basis.z * 15.0), Color.blue, 1.0)
+	draw_line(center + project_2d(transform_value.origin), center + project_2d(transform_value.origin + transform_value.basis.x * 15.0), Color.RED, 1.0)
+	draw_line(center + project_2d(transform_value.origin), center + project_2d(transform_value.origin + transform_value.basis.y * 15.0), Color.GREEN, 1.0)
+	draw_line(center + project_2d(transform_value.origin), center + project_2d(transform_value.origin + transform_value.basis.z * 15.0), Color.BLUE, 1.0)
 
 	return Vector2(0, 60)
 
@@ -387,7 +387,7 @@ func visualize_array(origin: Vector2, array) -> Vector2:
 			local_origin += visualize_transform2d(origin + local_origin, value)
 		elif value is Plane:
 			local_origin += visualize_plane(origin + local_origin, value)
-		elif value is Quat:
+		elif value is Quaternion:
 			local_origin += visualize_quat(origin + local_origin, value)
 		elif value is Color:
 			local_origin += visualize_color(origin + local_origin, value)
@@ -395,17 +395,17 @@ func visualize_array(origin: Vector2, array) -> Vector2:
 			local_origin += visualize_aabb(origin + local_origin, value)
 		elif value is Basis:
 			local_origin += visualize_basis(origin + local_origin, value)
-		elif value is Transform:
+		elif value is Transform3D:
 			local_origin += visualize_transform(origin + local_origin, value)
 		elif value is Array:
 			local_origin += visualize_array(origin + local_origin, value)
 
 	return local_origin
 
-func draw_axes_3d(center: Vector2, extents: Vector3) -> void:
-	draw_line(center + project_2d(Vector3.LEFT) * extents.x, center + project_2d(Vector3.RIGHT) * extents.x, Color.red)
-	draw_line(center + project_2d(Vector3.UP) * extents.y, center + project_2d(Vector3.DOWN) * extents.y, Color.green)
-	draw_line(center + project_2d(Vector3.FORWARD) * extents.z, center + project_2d(Vector3.BACK) * extents.z, Color.lightblue)
+func draw_axes_3d(center: Vector2, size: Vector3) -> void:
+	draw_line(center + project_2d(Vector3.LEFT) * size.x, center + project_2d(Vector3.RIGHT) * size.x, Color.RED)
+	draw_line(center + project_2d(Vector3.UP) * size.y, center + project_2d(Vector3.DOWN) * size.y, Color.GREEN)
+	draw_line(center + project_2d(Vector3.FORWARD) * size.z, center + project_2d(Vector3.BACK) * size.z, Color.LIGHT_BLUE)
 
 func project_2d(v: Vector3) -> Vector2:
 	return Vector2(v.x + v.z * 0.5, v.y - v.z * 0.5)

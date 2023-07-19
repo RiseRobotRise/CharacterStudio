@@ -1,7 +1,7 @@
-tool
+@tool
 extends Node
 const TYPE_ANY = 28
-onready var Definitions
+@onready var Definitions
 var Colors = [
 	Color(0,0,0,0),
 	Color("#c96ef0"),
@@ -253,12 +253,12 @@ func initiate() -> void:
 #	load_user_defined_nodes()
 """
 func load_user_defined_nodes() -> void:
-	var Dir = Directory.new()
+	var Dir = DirAccess.new()
 	var CustomNodes : Array = []
 	if  not Dir.dir_exists("user://CustomNodes/"):
 		Dir.make_dir("user://CustomNodes/")
 	Dir.open("user://CustomNodes/")
-	Dir.list_dir_begin(true, true)
+	Dir.list_dir_begin() # TODOGODOT4 fill missing arguments https://github.com/godotengine/godot/pull/40547
 	var file = Dir.get_next()
 	while (file!=""):
 		CustomNodes.append(file)

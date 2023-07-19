@@ -1,4 +1,4 @@
-tool
+@tool
 extends VSplitContainer
 
 var current_idx = 0
@@ -8,15 +8,15 @@ var Behavior_routes : Array = []
 var SaveFile : ConfigFile = ConfigFile.new()
 
 
-onready var BehaviorList : ItemList = $ViewMenuSplit/Container/ScrollContainer/Behaviors
-onready var BehaviorMenu : PopupMenu = $ViewMenuSplit/StatesGraphEdit/States
-onready var Graph : GraphEdit = $ViewMenuSplit/StatesGraphEdit
-onready var filepop : FileDialog = $ViewMenuSplit/StatesGraphEdit/Save
-export(NodePath) var node_path = null
-export(String, DIR) var BehaviorsPath = "res://addons/joyeux_npc_editor/src/NPCs/DefaultBehaviors/"
+@onready var BehaviorList : ItemList = $ViewMenuSplit/Container/ScrollContainer/Behaviors
+@onready var BehaviorMenu : PopupMenu = $ViewMenuSplit/StatesGraphEdit/States
+@onready var Graph : GraphEdit = $ViewMenuSplit/StatesGraphEdit
+@onready var filepop : FileDialog = $ViewMenuSplit/StatesGraphEdit/Save
+@export var node_path: NodePath = null
+@export var BehaviorsPath = "res://addons/joyeux_npc_editor/src/NPCs/DefaultBehaviors/" # (String, DIR)
 
 func _ready() -> void:
-	var dir = Directory.new()
+	var dir = DirAccess.new()
 	dir.open(OS.get_user_data_dir())
 	if not dir.dir_exists("behaviors"):
 		dir.make_dir_recursive("behaviors")
@@ -81,9 +81,9 @@ func list_behaviors():
 func load_behaviors_in(path : String) -> void:
 	if path == "." or path == ".." or path == "":
 		return
-	var Dir = Directory.new()
+	var Dir = DirAccess.new()
 	if Dir.open(path) == OK:
-		Dir.list_dir_begin()
+		Dir.list_dir_begin() # TODOGODOT4 fill missing arguments https://github.com/godotengine/godot/pull/40547
 		var file_name : String = Dir.get_next()
 		while (file_name != ""):
 			if not Dir.current_is_dir():
@@ -137,9 +137,9 @@ func _on_Open_pressed():
 	filepop.popup_centered()
 
 func _on_Save_file_selected(path):
-	if filepop.mode == FileDialog.MODE_OPEN_FILE:
+	if filepop.mode == FileDialog.FILE_MODE_OPEN_FILE:
 		Graph.clear_graph()
-		yield(get_tree().create_timer(0.5), "timeout")
+		await get_tree().create_timer(0.5).timeout
 		SaveFile = ConfigFile.new()
 		SaveFile.load(path)
 		load_states()

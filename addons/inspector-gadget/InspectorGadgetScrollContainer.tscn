@@ -3,17 +3,17 @@
 [ext_resource path="res://addons/inspector-gadget/src/inspector_gadget.gd" type="Script" id=1]
 
 [node name="InspectorGadgetScrollContainer" type="ScrollContainer"]
-margin_left = 962.0
-margin_right = 1920.0
-margin_bottom = 1080.0
+offset_left = 962.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 size_flags_horizontal = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="InspectorGadget" type="MarginContainer" parent="."]
-margin_right = 958.0
-margin_bottom = 1080.0
+offset_right = 958.0
+offset_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )

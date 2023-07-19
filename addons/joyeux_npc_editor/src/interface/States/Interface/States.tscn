@@ -4,15 +4,15 @@
 [ext_resource path="res://addons/joyeux_npc_editor/src/interface/States/code/States.gd" type="Script" id=2]
 [ext_resource path="res://addons/joyeux_npc_editor/src/interface/States/code/StatesGraphEdit.gd" type="Script" id=3]
 [ext_resource path="res://addons/joyeux_npc_editor/src/interface/States/code/States_FileDialog.gd" type="Script" id=4]
-[ext_resource path="res://addons/joyeux_npc_editor/src/icons/icon_reload_small.svg" type="Texture" id=5]
+[ext_resource path="res://addons/joyeux_npc_editor/src/icons/icon_reload_small.svg" type="Texture2D" id=5]
 
 [node name="States" type="VSplitContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
+offset_left = 4.0
+offset_top = 32.0
+offset_right = -4.0
+offset_bottom = -4.0
 dragger_visibility = 1
 script = ExtResource( 2 )
 __meta__ = {
@@ -22,100 +22,100 @@ node_path = NodePath("../TemplateNPC")
 BehaviorsPath = "res://addons/joyeux_npc_editor/src/NPCs/DefaultBehaviors"
 
 [node name="ViewMenuSplit" type="HSplitContainer" parent="."]
-margin_right = 1016.0
-margin_bottom = 564.0
+offset_right = 1016.0
+offset_bottom = 564.0
 
 [node name="Container" type="VBoxContainer" parent="ViewMenuSplit"]
-margin_right = 400.0
-margin_bottom = 564.0
-rect_min_size = Vector2( 400, 0 )
-custom_constants/separation = 3
+offset_right = 400.0
+offset_bottom = 564.0
+custom_minimum_size = Vector2( 400, 0 )
+theme_override_constants/separation = 3
 
 [node name="Control" type="Control" parent="ViewMenuSplit/Container"]
-margin_right = 400.0
-margin_bottom = 10.0
-rect_min_size = Vector2( 0, 10 )
+offset_right = 400.0
+offset_bottom = 10.0
+custom_minimum_size = Vector2( 0, 10 )
 
 [node name="type2" type="HBoxContainer" parent="ViewMenuSplit/Container"]
-margin_top = 13.0
-margin_right = 400.0
-margin_bottom = 33.0
+offset_top = 13.0
+offset_right = 400.0
+offset_bottom = 33.0
 
 [node name="Open" type="Button" parent="ViewMenuSplit/Container/type2"]
-margin_right = 198.0
-margin_bottom = 20.0
+offset_right = 198.0
+offset_bottom = 20.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Open"
 
 [node name="Save" type="Button" parent="ViewMenuSplit/Container/type2"]
-margin_left = 202.0
-margin_right = 400.0
-margin_bottom = 20.0
+offset_left = 202.0
+offset_right = 400.0
+offset_bottom = 20.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Save"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ViewMenuSplit/Container"]
-margin_top = 36.0
-margin_right = 400.0
-margin_bottom = 156.0
-rect_min_size = Vector2( 0, 120 )
+offset_top = 36.0
+offset_right = 400.0
+offset_bottom = 156.0
+custom_minimum_size = Vector2( 0, 120 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Behaviors" type="ItemList" parent="ViewMenuSplit/Container/ScrollContainer"]
-margin_right = 400.0
-margin_bottom = 120.0
+offset_right = 400.0
+offset_bottom = 120.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 items = [ "BasicWorkSeparator", null, false, "Say_test", null, false, "simple", null, false, "Use", null, false, "WorkingBusy", null, false ]
 
 [node name="selection" type="HBoxContainer" parent="ViewMenuSplit/Container"]
-margin_top = 159.0
-margin_right = 400.0
-margin_bottom = 179.0
+offset_top = 159.0
+offset_right = 400.0
+offset_bottom = 179.0
 
 [node name="title" type="Label" parent="ViewMenuSplit/Container/selection"]
-margin_top = 3.0
-margin_right = 59.0
-margin_bottom = 17.0
+offset_top = 3.0
+offset_right = 59.0
+offset_bottom = 17.0
 text = "Selected:"
 
 [node name="name" type="Label" parent="ViewMenuSplit/Container/selection"]
-margin_left = 63.0
-margin_top = 3.0
-margin_right = 370.0
-margin_bottom = 17.0
+offset_left = 63.0
+offset_top = 3.0
+offset_right = 370.0
+offset_bottom = 17.0
 size_flags_horizontal = 3
 text = "None"
 align = 1
 
 [node name="Refresh" type="Button" parent="ViewMenuSplit/Container/selection"]
-margin_left = 374.0
-margin_right = 400.0
-margin_bottom = 20.0
+offset_left = 374.0
+offset_right = 400.0
+offset_bottom = 20.0
 icon = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Add" type="Button" parent="ViewMenuSplit/Container"]
-margin_top = 182.0
-margin_right = 400.0
-margin_bottom = 202.0
+offset_top = 182.0
+offset_right = 400.0
+offset_bottom = 202.0
 text = "Add to Tree"
 
 [node name="HSeparator" type="HSeparator" parent="ViewMenuSplit/Container"]
-margin_top = 205.0
-margin_right = 400.0
-margin_bottom = 209.0
+offset_top = 205.0
+offset_right = 400.0
+offset_bottom = 209.0
 
 [node name="InspectorGadgetScrollContainer" type="ScrollContainer" parent="ViewMenuSplit/Container"]
-margin_top = 212.0
-margin_right = 400.0
-margin_bottom = 557.0
+offset_top = 212.0
+offset_right = 400.0
+offset_bottom = 557.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -123,8 +123,8 @@ __meta__ = {
 }
 
 [node name="InspectorGadget" type="MarginContainer" parent="ViewMenuSplit/Container/InspectorGadgetScrollContainer"]
-margin_right = 400.0
-margin_bottom = 345.0
+offset_right = 400.0
+offset_bottom = 345.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )
@@ -150,34 +150,34 @@ container_type_hints = {
 filter_built_in_properties = true
 
 [node name="HSeparator2" type="HSeparator" parent="ViewMenuSplit/Container"]
-margin_top = 560.0
-margin_right = 400.0
-margin_bottom = 564.0
+offset_top = 560.0
+offset_right = 400.0
+offset_bottom = 564.0
 
 [node name="StatesGraphEdit" type="GraphEdit" parent="ViewMenuSplit"]
-margin_left = 412.0
-margin_right = 1016.0
-margin_bottom = 564.0
+offset_left = 412.0
+offset_right = 1016.0
+offset_bottom = 564.0
 right_disconnects = true
 scroll_offset = Vector2( -604, -480 )
 script = ExtResource( 3 )
 
 [node name="States" type="PopupMenu" parent="ViewMenuSplit/StatesGraphEdit"]
-margin_left = 433.528
-margin_top = 153.245
-margin_right = 515.528
-margin_bottom = 241.245
+offset_left = 433.528
+offset_top = 153.245
+offset_right = 515.528
+offset_bottom = 241.245
 items = [ "BasicWorkSeparator", null, 0, false, false, 0, 0, null, "", false, "Say_test", null, 0, false, false, 1, 0, null, "", false, "simple", null, 0, false, false, 2, 0, null, "", false, "Use", null, 0, false, false, 3, 0, null, "", false, "WorkingBusy", null, 0, false, false, 4, 0, null, "", false ]
 
 [node name="Save" type="FileDialog" parent="ViewMenuSplit/StatesGraphEdit"]
 visible = true
-margin_left = 14.0
-margin_top = 65.0
-margin_right = 468.0
-margin_bottom = 281.0
-rect_min_size = Vector2( 0, 0 )
+offset_left = 14.0
+offset_top = 65.0
+offset_right = 468.0
+offset_bottom = 281.0
+custom_minimum_size = Vector2( 0, 0 )
 window_title = "Guardar un Archivo"
-filters = PoolStringArray( "*.jsm" )
+filters = PackedStringArray( "*.jsm" )
 current_file = "untitled"
 current_path = "res://untitled"
 script = ExtResource( 4 )

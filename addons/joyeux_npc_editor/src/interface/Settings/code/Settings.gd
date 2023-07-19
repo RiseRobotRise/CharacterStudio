@@ -1,10 +1,10 @@
-tool
+@tool
 extends VBoxContainer
-onready var default_project = $"HBoxContainer/Locations/Project Location/Path"
-onready var default_user = $"HBoxContainer/Locations/User Location/Path"
+@onready var default_project = $"HBoxContainer/Locations/Project Location/Path3D"
+@onready var default_user = $"HBoxContainer/Locations/User Location/Path3D"
 
-onready var popup : ConfirmationDialog = $Dialogs/ConfirmationDialog
-onready var file : FileDialog = $Dialogs/FileDialog
+@onready var popup : ConfirmationDialog = $Dialogs/ConfirmationDialog
+@onready var file : FileDialog = $Dialogs/FileDialog
 
 signal default_changing(which)
 signal confirm_or_cancel(which)
@@ -12,7 +12,7 @@ signal confirm_or_cancel(which)
 func _ready():
 	default_project.text = Nodes.behavior_paths[0]
 	default_user.text = Nodes.behavior_paths[1]
-	connect("default_changing", self, "_on_default_changing")
+	connect("default_changing", Callable(self, "_on_default_changing"))
 
 func _on_ProjLoc_pressed():
 	emit_signal("default_changing", "project")
@@ -22,14 +22,14 @@ func _on_UserLoc_pressed():
 
 func _on_default_changing(which : String):
 	popup.popup_centered()
-	yield(popup, "confirmed")
+	await popup.confirmed
 	match which:
 		"project":
 			file.set_project()
 		"user":
 			file.set_user()
 	file.popup_centered()
-	var result = yield(self, "confirm_or_cancel")
+	var result = await self.confirm_or_cancel
 	if result == "cancel":
 		return
 	else:

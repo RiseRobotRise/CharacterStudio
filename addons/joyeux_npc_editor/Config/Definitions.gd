@@ -1,4 +1,4 @@
-tool
+@tool
 extends Resource
 class_name NpcDefinitions
 
@@ -10,9 +10,9 @@ var CLASS_CHARACTER =  {
 	"_object_type" : "Character",
 	"_variables" : {
 		"team" : TYPE_INT,
-		"translation" : TYPE_VECTOR3,
-		"health" : TYPE_REAL,
-		"shield" : TYPE_REAL,
+		"position" : TYPE_VECTOR3,
+		"health" : TYPE_FLOAT,
+		"shield" : TYPE_FLOAT,
 		}
 	}
 
@@ -110,9 +110,9 @@ var _functions = {
 		"_category" : "inhibitors",
 		"_input_ports" : [
 			{"_label_title":"Value", "_type" : Nodes.TYPE_ANY},
-			{"_label_title":"Weight 1", "_type" : TYPE_REAL},
-			{"_label_title":"Weight 2", "_type" : TYPE_REAL},
-			{"_label_title":"Weight 3", "_type" : TYPE_REAL}
+			{"_label_title":"Weight 1", "_type" : TYPE_FLOAT},
+			{"_label_title":"Weight 2", "_type" : TYPE_FLOAT},
+			{"_label_title":"Weight 3", "_type" : TYPE_FLOAT}
 		],
 		"_output_ports" : [
 			{"_label_title" : "", "_type" : TYPE_NIL },
@@ -234,7 +234,7 @@ var _stimulus = {
 	
 	"wounded" :{
 		"_output_name": "Damage",
-		"_output_type": TYPE_REAL,
+		"_output_type": TYPE_FLOAT,
 	},
 	"radio_pos" :{
 		"_output_name": "Given position",

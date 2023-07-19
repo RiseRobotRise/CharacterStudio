@@ -1,4 +1,4 @@
-tool
+@tool
 extends GraphEdit
 
 var idx : int = 0
@@ -8,9 +8,9 @@ var SceneNodes : Dictionary
 var Currently_selected : Node = null
 var OutputFile : ConfigFile = ConfigFile.new()
 
-onready var save = $Save
+@onready var save = $Save
 func _ready() -> void:
-	connect("node_selected", self, "_on_node_selected")
+	connect("node_selected", Callable(self, "_on_node_selected"))
 	for type in range (0,27):
 		add_valid_connection_type(28,type)
 #		add_valid_connection_type(type, 28)
@@ -54,7 +54,7 @@ func load_nodes() -> void:
 
 
 func add_node_offset(type : String, node_name : String):
-	var node_start_pos = (scroll_offset + (last_mouse_pos - rect_global_position))/zoom 
+	var node_start_pos = (scroll_offset + (last_mouse_pos - global_position))/zoom 
 	add_node(type, node_name, node_start_pos)
 
 func add_node(type : String, node_name : String, offset : Vector2 = Vector2.ZERO) -> void:
@@ -65,7 +65,7 @@ func add_node(type : String, node_name : String, offset : Vector2 = Vector2.ZERO
 	if instanced is Node:
 		instanced = instanced.duplicate(7)
 	else:
-		instanced = instanced.instance()
+		instanced = instanced.instantiate()
 	instanced.offset = offset
 	instanced.name = node_name 
 	add_child(instanced)
@@ -162,7 +162,7 @@ func compile(connections):
 	OutputFile.set_value("ai_config", "connections", connections)
 
 func popup_add_menu():
-	$Behaviors.rect_position = last_mouse_pos
+	$Behaviors.position = last_mouse_pos
 	$Behaviors.popup()
 
 func _on_node_selected(node):
@@ -190,13 +190,13 @@ func _on_GraphEdit_disconnection_request(from, from_slot, to, to_slot) -> void:
 	get_node(to).emit_signal("disconnected_from", to_slot)
 
 func _on_save_file_selected(path):
-	if save.mode == FileDialog.MODE_SAVE_FILE:
+	if save.mode == FileDialog.FILE_MODE_SAVE_FILE:
 		OutputFile.save(path)
 	else:
 		OutputFile = ConfigFile.new()
 		OutputFile.load(path)
 		clear_graph()
-		yield(get_tree().create_timer(0.5), "timeout")
+		await get_tree().create_timer(0.5).timeout
 		load_nodes()
 
 func _on_save_pressed():

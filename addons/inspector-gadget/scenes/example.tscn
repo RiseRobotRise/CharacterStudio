@@ -26,21 +26,21 @@ __meta__ = {
 }
 
 [node name="VisualizerScrollContainer" type="ScrollContainer" parent="ColorRect/HBoxContainer"]
-margin_right = 958.0
-margin_bottom = 1080.0
+offset_right = 958.0
+offset_bottom = 1080.0
 size_flags_horizontal = 3
 
 [node name="PropertyVisualizer" type="Control" parent="ColorRect/HBoxContainer/VisualizerScrollContainer"]
-margin_right = 946.0
-margin_bottom = 4290.0
-rect_min_size = Vector2( 0, 4290 )
+offset_right = 946.0
+offset_bottom = 4290.0
+custom_minimum_size = Vector2( 0, 4290 )
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 float_value = 3.14159
-quat_value = Quat( -0.176777, -0.306186, -0.306186, 0.883883 )
+quat_value = Quaternion( -0.176777, -0.306186, -0.306186, 0.883883 )
 basis_value = Basis( 0.853553, 0.5, 0.146447, -0.146447, 0.5, -0.853553, -0.5, 0.707107, 0.5 )
 rid_value = null
 dictionary_value = {
@@ -50,17 +50,17 @@ dictionary_value = {
 }
 
 [node name="InspectorGadgetScrollContainer" type="ScrollContainer" parent="ColorRect/HBoxContainer"]
-margin_left = 962.0
-margin_right = 1920.0
-margin_bottom = 1080.0
+offset_left = 962.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 size_flags_horizontal = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="InspectorGadget" type="MarginContainer" parent="ColorRect/HBoxContainer/InspectorGadgetScrollContainer"]
-margin_right = 946.0
-margin_bottom = 4088.0
+offset_right = 946.0
+offset_bottom = 4088.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )

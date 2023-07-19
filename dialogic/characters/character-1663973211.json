@@ -1,0 +1,21 @@
+{
+	"color": "#ffd35959",
+	"description": "",
+	"display_name": "Juan",
+	"display_name_bool": true,
+	"id": "character-1663973211.json",
+	"mirror_portraits": false,
+	"name": "character-1663973211.json",
+	"nickname": "Pescao",
+	"nickname_bool": true,
+	"offset_x": 0,
+	"offset_y": 0,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": ""
+		}
+	],
+	"scale": 100,
+	"theme": ""
+}
