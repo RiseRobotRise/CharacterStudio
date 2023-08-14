@@ -1,4 +1,5 @@
 tool
+# The property gets selected, and the button title changes to it.
 extends MenuButton
 class_name DropDown
 signal selected_type()

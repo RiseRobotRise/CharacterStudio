@@ -72,12 +72,18 @@ func add_node(type : String, node_name : String, offset : Vector2 = Vector2.ZERO
 	idx += 1
 	
 func _input(event):
-	if event is InputEventKey:
+	if event is InputEventKey and not Engine.editor_hint:
 		if Input.is_action_pressed("Shift") and Input.is_key_pressed(KEY_A):
 			popup_add_menu()
 
-			
+
 func recursive_get_variable(node : Node):
+	"""
+	Recursively get the value of the first variable found in the node's children.
+	
+	:param node: The node to search
+	:return: The value of the first variable found, or null if no variable was found
+	"""
 	if node is Label:
 		return null
 	elif node is LineEdit:
